@@ -1,0 +1,1143 @@
+/**
+  ******************************************************************************
+  * @file    Project/STM32F10x_StdPeriph_Template/stm32f10x_it.c
+  * @author  MCD Application Team
+  * @version V3.5.0
+  * @date    08-April-2011
+  * @brief   Main Interrupt Service Routines.
+  *          This file provides template for all exceptions handler and
+  *          peripherals interrupt service routine.
+  ******************************************************************************
+  * @attention
+  *
+  * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
+  * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
+  * TIME. AS A RESULT, STMICROELECTRONICS SHALL NOT BE HELD LIABLE FOR ANY
+  * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
+  * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
+  * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
+  *
+  * <h2><center>&copy; COPYRIGHT 2011 STMicroelectronics</center></h2>
+  ******************************************************************************
+  */
+
+/* Includes ------------------------------------------------------------------*/
+#include "stm32f10x_it.h"
+#include "bsp_usart.h"
+#include "bsp_Timbase.h"
+#include "bsp_iwdg.h"
+
+extern u8 PrintFlag;
+extern vu8 HighMes;
+
+extern __IO uint16_t ADC_ConvertedValue;
+uint32_t time;
+extern vu8 PT;
+extern vu8 WAP1;
+extern vu8 WAP2;
+extern vu8 WAC1;
+extern vu8 WAC2;
+extern vu8 HT1;
+extern vu8 HT2;
+extern vu8 HT3;
+extern vu8 HT4;
+extern vu16 DE;
+extern vu8 CT;
+extern vu16 YA;
+extern vu16 PI;
+extern vu16 RO;
+extern vu16 DP;
+extern vu16 WT;
+extern vu8 LineFlag;
+
+extern int DXNum;
+extern int DZNum;
+
+extern float dDS;
+extern u16 dDX1;
+extern u16 dDX2;
+
+vu8 Rev1[10]= {0};
+
+vu8 Rev3[10]= {0};
+vu8 Rev4[10]= {0};
+vu8 MXN[3];
+vu8 MXF=0;
+vu8 MYN[3];
+vu8 MYF=0;
+vu8 MZN[3];
+vu8 MZF=0;
+vu8 HAN[3];
+vu8 HAF=0;
+vu8 YAN[3];
+vu8	YAF=0;
+vu8 WAN[3];
+vu8 WAF=0;
+vu8 GAN[3];
+vu8 GAF=0;
+vu8 BAN[3];
+vu8 BAF=0;
+vu8 HBN[3];
+vu8 HBF=0;
+vu8 YBN[3];
+vu8	YBF=0;
+vu8 WBN[3];
+vu8 WBF=0;
+vu8 GBN[3];
+vu8 GBF=0;
+vu8 BBN[3];
+vu8 BBF=0;
+vu8 LTN[3];
+vu8 LTF=0;
+vu8 YTN[3];
+vu8 YTF=0;
+vu8 LFN[3];
+vu8 LFF=0;
+vu8 ZBN[3];
+vu8 ZBF=0;
+vu8 KZN[3];
+vu8 KZF=0;
+vu8 KPN[3];
+vu8 KPF=0;
+vu8 SCN[5];
+vu8 SCF=0;
+vu8 RCF=0;
+
+u8 AFlag,BFlag,CFlag,DFlag;
+u8 XPoint,YPoint;
+
+extern u8 ModeFlag;//Mode 0:Stop Mode 1:Normal(Round) Mode 2:Strict
+/** @addtogroup STM32F10x_StdPeriph_Template
+  * @{
+  */
+
+/* Private typedef -----------------------------------------------------------*/
+/* Private define ------------------------------------------------------------*/
+/* Private macro -------------------------------------------------------------*/
+/* Private variables ---------------------------------------------------------*/
+/* Private function prototypes -----------------------------------------------*/
+/* Private functions ---------------------------------------------------------*/
+
+/******************************************************************************/
+/*            Cortex-M3 Processor Exceptions Handlers                         */
+/******************************************************************************/
+
+/**
+  * @brief  This function handles NMI exception.
+  * @param  None
+  * @retval None
+  */
+void NMI_Handler(void)
+{
+}
+
+/**
+  * @brief  This function handles Hard Fault exception.
+  * @param  None
+  * @retval None
+  */
+void HardFault_Handler(void)
+{
+    /* Go to infinite loop when Hard Fault exception occurs */
+    while (1)
+    {
+    }
+}
+
+/**
+  * @brief  This function handles Memory Manage exception.
+  * @param  None
+  * @retval None
+  */
+void MemManage_Handler(void)
+{
+    /* Go to infinite loop when Memory Manage exception occurs */
+    while (1)
+    {
+    }
+}
+
+/**
+  * @brief  This function handles Bus Fault exception.
+  * @param  None
+  * @retval None
+  */
+void BusFault_Handler(void)
+{
+    /* Go to infinite loop when Bus Fault exception occurs */
+    while (1)
+    {
+    }
+}
+
+/**
+  * @brief  This function handles Usage Fault exception.
+  * @param  None
+  * @retval None
+  */
+void UsageFault_Handler(void)
+{
+    /* Go to infinite loop when Usage Fault exception occurs */
+    while (1)
+    {
+    }
+}
+
+/**
+  * @brief  This function handles SVCall exception.
+  * @param  None
+  * @retval None
+  */
+void SVC_Handler(void)
+{
+}
+
+/**
+  * @brief  This function handles Debug Monitor exception.
+  * @param  None
+  * @retval None
+  */
+void DebugMon_Handler(void)
+{
+}
+
+/**
+  * @brief  This function handles PendSVC exception.
+  * @param  None
+  * @retval None
+  */
+void PendSV_Handler(void)
+{
+}
+
+/**
+  * @brief  This function handles SysTick Handler.
+  * @param  None
+  * @retval None
+  */
+void SysTick_Handler(void)
+{
+
+}
+
+
+void USART1_IRQHandler(void)
+{
+    u8 Rev;
+
+    if(USART_GetITStatus(USART1,USART_IT_RXNE)!=RESET)
+    {
+        Rev = USART_ReceiveData(USART1);
+
+    }
+}
+void USART2_IRQHandler(void)
+{
+    u8 Rev;
+    static u8 Rev2Start;
+    static u8 Pos2;
+    static u8 Dpos;
+    static u8 Tflag;
+    static u8 Rev2[20]= {0};
+    if(USART_GetITStatus(USART2,USART_IT_RXNE)!=RESET)
+    {
+        Rev = USART_ReceiveData(USART2);
+        if(Rev=='T')
+        {
+            Rev2Start=1;
+        }
+
+        if(Rev2Start==1)
+        {
+            if(Rev=='=')
+            {
+                switch (Tflag)
+                {
+                case 0:
+                {
+                    Tflag=1;
+                    break;
+                }
+                case 1:
+                {
+                    Dpos=Pos2;
+                    Tflag=0;
+                    break;
+                }
+                }
+            }
+
+
+            else if(Rev=='\r'&&Tflag==0)
+            {
+                Rev2Start=0;
+                WT=0;
+                DP=0;
+                for(int i=0; i<=Pos2; ++i)
+                {
+                    if(i<Dpos)
+                    {
+                        WT*=10;
+                        WT+=Rev2[i];
+                    }
+                    else
+                    {
+                        DP*=10;
+                        DP+=Rev2[i];
+                    }
+                }
+                Pos2=0;
+                Dpos=0;
+            }
+            if((Rev>='0')&&(Rev<='9'))
+            {
+                Rev2[Pos2]=Rev-'0';
+                ++Pos2;
+                if(Pos2==20)
+                {
+                    Pos2=0;
+                    Rev2Start=0;
+                }
+            }
+
+
+        }
+
+        else
+        {
+            Pos2=0;
+        }
+    }
+
+
+
+}
+void USART3_IRQHandler(void)
+{
+    u8 Rev;
+    static u8 Rev3Start;
+    static u8 Rev3Warn;
+    static u8 Pos3=0;
+    if(USART_GetITStatus(USART3,USART_IT_RXNE)!=RESET)
+    {
+        Rev = USART_ReceiveData(USART3);
+        if(Rev=='!')
+        {
+            Rev3Warn=1;
+        }
+        else if(Rev=='$')
+        {
+            Rev3Start=1;
+        }
+        if(Rev3Start==1)
+        {
+            Rev3[Pos3]=Rev;
+            ++Pos3;
+            if(Pos3==6)
+            {
+                Pos3=0;
+                Rev3Start=0;
+                for(int i=3; i<6; ++i)
+                {
+                    Rev3[i]-=48;
+                }
+                if(Rev3[1]=='D'&&Rev3[2]=='E')
+                {
+                    DE=Rev3[3]*100+Rev3[4]*10+Rev3[5];
+                }
+                else if(Rev3[1]=='T'&&Rev3[2]=='E')
+                {
+                    CT=Rev3[3]*100+Rev3[4]*10+Rev3[5];
+                }
+                else if(Rev3[1]=='Y'&&Rev3[2]=='A')
+                {
+                    YA=Rev3[3]*100+Rev3[4]*10+Rev3[5];
+                }
+                else if(Rev3[1]=='P'&&Rev3[2]=='I')
+                {
+                    PI=Rev3[3]*100+Rev3[4]*10+Rev3[5];
+                }
+                else if(Rev3[1]=='R'&&Rev3[2]=='O')
+                {
+                    RO=Rev3[3]*100+Rev3[4]*10+Rev3[5];
+                }
+            }
+        }
+        else if(Rev3Warn==1)
+        {
+            Rev3[Pos3]=Rev;
+            ++Pos3;
+            if(Pos3==2)
+            {
+                Pos3=0;
+                Rev3Warn=0;
+                if(Rev3[1]=='8')
+                {
+                    WAC1=1;
+                }
+                else if(Rev3[1]=='9')
+                {
+                    WAC2=1;
+                }
+                else
+                {
+                    if(Rev3[1]=='1')
+                    {
+                        HT1=1;
+                    }
+                    if(Rev3[1]=='2')
+                    {
+                        HT2=1;
+                    }
+                    if(Rev3[1]=='3')
+                    {
+                        HT3=1;
+                    }
+                    if(Rev3[1]=='4')
+                    {
+                        HT4=1;
+                    }
+                }
+            }
+
+        }
+        else
+        {
+            Pos3=0;
+        }
+    }
+}
+void UART4_IRQHandler(void)
+{
+    u8 Rev;
+    static u8 Rev4Start;
+    static u8 Pos4=0;
+    static u8 WaterFlag=0;
+    if(USART_GetITStatus(UART4,USART_IT_RXNE)!=RESET)
+    {
+        Rev=USART_ReceiveData(UART4);
+        if(WaterFlag==1)
+        {
+            WaterFlag=0;
+            if(Rev=='1')
+            {
+                WAP1=1;
+            }
+            else if(Rev=='2')
+            {
+                WAP2=1;
+            }
+        }
+        if(Rev=='!')
+        {
+            WaterFlag=1;
+        }
+        else if(Rev=='$')
+        {
+            Rev4Start=1;
+        }
+        if(Rev4Start==1)
+        {
+            Rev4[Pos4]=Rev;
+            ++Pos4;
+
+            if(Pos4==6)
+            {
+                Pos4=0;
+                Rev4Start=0;
+                if(Rev4[1]=='T'&&Rev4[2]=='M')
+                {
+                    PT=(Rev4[4]-'0')*10+(Rev4[5]-'0');
+                }
+            }
+        }
+        else
+        {
+            Pos4=0;
+        }
+    }
+}
+void UART5_IRQHandler(void)
+{
+    u8 Rev;
+    static u8 Rev5Start;
+    static u8 Pos5=0;
+    if(USART_GetITStatus(UART5,USART_IT_RXNE)!=RESET)
+    {
+        Rev=USART_ReceiveData(UART5);
+        if(Rev=='$')
+        {
+            Rev5Start=1;
+        }
+        if(Rev5Start==1)
+        {
+            Rev1[Pos5]=Rev;
+            ++Pos5;
+            if(Rev=='%')
+            {
+
+                Pos5=0;
+                Rev5Start=0;
+                if(Rev1[1]=='M'&&Rev1[2]=='D')
+                {
+                    ModeFlag=(Rev1[5]-'0');
+                }
+                else if(Rev1[1]=='M'&&Rev1[2]=='X')
+                {
+                    MXN[0]=Rev1[3];
+                    MXN[1]=Rev1[4];
+                    MXN[2]=Rev1[5];
+                    MXF=1;
+//					XPoint=(Rev1[3]-'0')*100+(Rev1[4]-'0')*10+(Rev1[5]-'0');
+//					XFinish=1;
+                }
+                else if(Rev1[1]=='M'&&Rev1[2]=='Y')
+                {
+                    MYN[0]=Rev1[3];
+                    MYN[1]=Rev1[4];
+                    MYN[2]=Rev1[5];
+                    MYF=1;
+//					YPoint=(Rev1[3]-'0')*100+(Rev1[4]-'0')*10+(Rev1[5]-'0');
+//					if(XFinish==1)
+//					{
+//						XFinish=0;
+//						AFlag=(XPoint>YPoint);
+//						BFlag=((XPoint+YPoint)>200);
+//						CFlag=(XPoint>100);
+//						DFlag=(YPoint>100);
+//						if(ModeFlag==1)
+//						{
+//							if(BFlag==1)
+//							{
+//								if(CFlag==0)
+//								{
+//									PrintFlag=4;
+//									printf("$MD003%%");
+//								}
+//								else if(DFlag==0)
+//								{
+//									PrintFlag=4;
+//									printf("$MD004%%");
+//								}
+//								else
+//								{
+//									if(AFlag==1)
+//									{
+//										PrintFlag=4;
+//										printf("$MD001%%");
+//									}
+//									else
+//									{
+//										PrintFlag=4;
+//										printf("$MD002%%");
+//									}
+//								}
+//							}
+//							else
+//							{
+//								if(CFlag==1)
+//								{
+//									PrintFlag=4;
+//									printf("$MD003%%");
+//								}
+//								else if(DFlag==1)
+//								{
+//									PrintFlag=4;
+//									printf("$MD004%%");
+//								}
+//								else
+//								{
+//									if(AFlag==0)
+//									{
+//										PrintFlag=4;
+//										printf("$MD001%%");
+//									}
+//									else
+//									{
+//										PrintFlag=4;
+//										printf("$MD002%%");
+//									}
+//								}
+//							}
+//							PrintFlag=4;
+//							printf("$MX%03d%% ",XPoint);
+//							printf("$MY%03d%%",YPoint);
+//						}
+//						else if(ModeFlag==2)
+//						{
+//							PrintFlag=4;
+//							printf("$MD005%%");
+//							printf("$MX%03d%% ",XPoint);
+//							printf("$MY%03d%%",YPoint);
+//						}
+//					}
+
+                }
+                else if(Rev1[1]=='M'&&Rev1[2]=='Z')
+                {
+//					if(ModeFlag!=0)
+//					{
+//						PrintFlag=4;
+//						printf("$MZ");
+//						Usart_SendByte(UART4,Rev1[3]);
+//						Usart_SendByte(UART4,Rev1[4]);
+//						Usart_SendByte(UART4,Rev1[5]);
+//						Usart_SendByte(UART4,'%');
+//					}
+                    MZN[0]=Rev1[3];
+                    MZN[1]=Rev1[4];
+                    MZN[2]=Rev1[5];
+                    MZF=1;
+                }
+
+                else if(Rev1[1]=='Y'&&Rev1[2]=='T')
+                {
+                    YTN[0]=Rev1[3];
+                    YTN[1]=Rev1[4];
+                    YTN[2]=Rev1[5];
+                    YTF=1;
+                }
+                else if(Rev1[1]=='Z'&&Rev1[2]=='B')
+                {
+                    ZBN[0]=Rev1[3];
+                    ZBN[1]=Rev1[4];
+                    ZBN[2]=Rev1[5];
+                    ZBF=1;
+                }
+                else if(Rev1[1]=='L'&&Rev1[2]=='T')
+                {
+                    LTN[0]=Rev1[3];
+                    LTN[1]=Rev1[4];
+                    LTN[2]=Rev1[5];
+                    LTF=1;
+                }
+                else if(Rev1[1]=='K'&&Rev1[2]=='Z')
+
+                {
+//					DZNum=(Rev1[3]-'0')*100+(Rev1[4]-'0')*10+(Rev1[5]-'0');
+//					dDS=DP;
+                    KZN[0]=Rev1[3];
+                    KZN[1]=Rev1[4];
+                    KZN[2]=Rev1[5];
+                    KZF=1;
+                }
+                else if(Rev1[1]=='K'&&Rev1[2]=='P')
+                {
+//					DXNum=(Rev1[3]-'0')*100+(Rev1[4]-'0')*10+(Rev1[5]-'0');
+//					dDX1=DE;
+//					dDX2=YA;
+                    KPN[0]=Rev1[3];
+                    KPN[1]=Rev1[4];
+                    KPN[2]=Rev1[5];
+                    KPF=1;
+                }
+                else if(Rev1[1]=='H'&&Rev1[2]=='A')
+                {
+//					PrintFlag=4;
+//					printf("$03");
+//					Usart_SendByte(UART4,Rev1[3]);
+//					Usart_SendByte(UART4,Rev1[4]);
+//					Usart_SendByte(UART4,Rev1[5]);
+//					Usart_SendByte(UART4,'%');
+                    HAN[0]=Rev1[3];
+                    HAN[1]=Rev1[4];
+                    HAN[2]=Rev1[5];
+                    HAF=1;
+                }
+                else if(Rev1[1]=='Y'&&Rev1[2]=='A')
+                {
+//					PrintFlag=4;
+//					printf("$04");
+//					Usart_SendByte(UART4,Rev1[3]);
+//					Usart_SendByte(UART4,Rev1[4]);
+//					Usart_SendByte(UART4,Rev1[5]);
+//					Usart_SendByte(UART4,'%');
+                    YAN[0]=Rev1[3];
+                    YAN[1]=Rev1[4];
+                    YAN[2]=Rev1[5];
+                    YAF=1;
+                }
+                else if(Rev1[1]=='W'&&Rev1[2]=='A')
+                {
+//					PrintFlag=4;
+//					printf("$05");
+//					Usart_SendByte(UART4,Rev1[3]);
+//					Usart_SendByte(UART4,Rev1[4]);
+//					Usart_SendByte(UART4,Rev1[5]);
+//					Usart_SendByte(UART4,'%');
+                    WAN[0]=Rev1[3];
+                    WAN[1]=Rev1[4];
+                    WAN[2]=Rev1[5];
+                    WAF=1;
+                }
+                else if(Rev1[1]=='G'&&Rev1[2]=='A')
+                {
+//					PrintFlag=4;
+//					printf("$06");
+//					Usart_SendByte(UART4,Rev1[3]);
+//					Usart_SendByte(UART4,Rev1[4]);
+//					Usart_SendByte(UART4,Rev1[5]);
+//					Usart_SendByte(UART4,'%');
+                    GAN[0]=Rev1[3];
+                    GAN[1]=Rev1[4];
+                    GAN[2]=Rev1[5];
+                    GAF=1;
+                }
+                else if(Rev1[1]=='B'&&Rev1[2]=='A')
+                {
+//					PrintFlag=4;
+//					printf("$BA");
+//					Usart_SendByte(UART4,Rev1[3]);
+//					Usart_SendByte(UART4,Rev1[4]);
+//					Usart_SendByte(UART4,Rev1[5]);
+//					Usart_SendByte(UART4,'%');
+                    BAN[0]=Rev1[3];
+                    BAN[1]=Rev1[4];
+                    BAN[2]=Rev1[5];
+                    BAF=1;
+                }
+                else if(Rev1[1]=='H'&&Rev1[2]=='B')
+                {
+//					PrintFlag=4;
+//					printf("$07");
+//					Usart_SendByte(UART4,Rev1[3]);
+//					Usart_SendByte(UART4,Rev1[4]);
+//					Usart_SendByte(UART4,Rev1[5]);
+//					Usart_SendByte(UART4,'%');
+                    HBN[0]=Rev1[3];
+                    HBN[1]=Rev1[4];
+                    HBN[2]=Rev1[5];
+                    HBF=1;
+                }
+                else if(Rev1[1]=='Y'&&Rev1[2]=='B')
+                {
+//					PrintFlag=4;
+//					printf("$08");
+//					Usart_SendByte(UART4,Rev1[3]);
+//					Usart_SendByte(UART4,Rev1[4]);
+//					Usart_SendByte(UART4,Rev1[5]);
+//					Usart_SendByte(UART4,'%');
+                    YBN[0]=Rev1[3];
+                    YBN[1]=Rev1[4];
+                    YBN[2]=Rev1[5];
+                    YBF=1;
+                }
+                else if(Rev1[1]=='W'&&Rev1[2]=='B')
+                {
+//					PrintFlag=4;
+//					printf("$09");
+//					Usart_SendByte(UART4,Rev1[3]);
+//					Usart_SendByte(UART4,Rev1[4]);
+//					Usart_SendByte(UART4,Rev1[5]);
+//					Usart_SendByte(UART4,'%');
+                    WBN[0]=Rev1[3];
+                    WBN[1]=Rev1[4];
+                    WBN[2]=Rev1[5];
+                    WBF=1;
+                }
+                else if(Rev1[1]=='G'&&Rev1[2]=='B')
+                {
+//					PrintFlag=4;
+//					printf("$10");
+//					Usart_SendByte(UART4,Rev1[3]);
+//					Usart_SendByte(UART4,Rev1[4]);
+//					Usart_SendByte(UART4,Rev1[5]);
+//					Usart_SendByte(UART4,'%');
+                    GBN[0]=Rev1[3];
+                    GBN[1]=Rev1[4];
+                    GBN[2]=Rev1[5];
+                    GBF=1;
+                }
+                else if(Rev1[1]=='B'&&Rev1[2]=='B')
+                {
+//					PrintFlag=4;
+//					printf("$BB");
+//					Usart_SendByte(UART4,Rev1[3]);
+//					Usart_SendByte(UART4,Rev1[4]);
+//					Usart_SendByte(UART4,Rev1[5]);
+//					Usart_SendByte(UART4,'%');
+                    BBN[0]=Rev1[3];
+                    BBN[1]=Rev1[4];
+                    BBN[2]=Rev1[5];
+                    BBF=1;
+                }
+                else if(Rev1[1]=='L'&&Rev1[2]=='F')
+                {
+                    LFN[0]=Rev1[3];
+                    LFN[1]=Rev1[4];
+                    LFN[2]=Rev1[5];
+                    LFF=1;
+                }
+                else if((Rev1[1]=='0'||Rev1[1]=='1')&&(Rev1[2]<='9'||Rev1[2]>='0'))
+                {
+//					Usart_SendByte(UART4,Rev1[0]);
+//					Usart_SendByte(UART4,Rev1[1]);
+//					Usart_SendByte(UART4,Rev1[2]);
+//					Usart_SendByte(UART4,Rev1[3]);
+//					Usart_SendByte(UART4,Rev1[4]);
+//					Usart_SendByte(UART4,Rev1[5]);
+//					Usart_SendByte(UART4,'%');
+                    SCN[0]=Rev1[1];
+                    SCN[1]=Rev1[2];
+                    SCN[2]=Rev1[3];
+                    SCN[3]=Rev1[4];
+                    SCN[4]=Rev1[5];
+                    SCF=1;
+                }
+                RCF=1;
+            }
+        }
+        else
+        {
+            Pos5=0;
+        }
+    }
+}
+void  BASIC_TIM_IRQHandler (void)
+{
+    if ( TIM_GetITStatus( BASIC_TIM, TIM_IT_Update) != RESET )
+    {
+        ++time;
+        IWDG_Feed();
+        if((time%20)==0)
+        {
+            if(LineFlag==2)
+            {
+                if(RCF==1)
+                {
+									RCF=0;
+                    if(MXF==1&&MYF==1)
+                    {
+                        MXF=0;
+                        MYF=0;
+                        XPoint=(MXN[0]-'0')*100+(MXN[1]-'0')*10+(MXN[2]-'0');
+                        YPoint=(MYN[0]-'0')*100+(MYN[1]-'0')*10+(MYN[2]-'0');
+                        AFlag=(XPoint>YPoint);
+                        BFlag=((XPoint+YPoint)>200);
+                        CFlag=(XPoint>100);
+                        DFlag=(YPoint>100);
+                        if(ModeFlag==1)
+                        {
+                            if(BFlag==1)
+                            {
+                                if(CFlag==0)
+                                {
+                                    PrintFlag=4;
+                                    printf("$MD003%%");
+                                }
+                                else if(DFlag==0)
+                                {
+                                    PrintFlag=4;
+                                    printf("$MD004%%");
+                                }
+                                else
+                                {
+                                    if(AFlag==1)
+                                    {
+                                        PrintFlag=4;
+                                        printf("$MD001%%");
+                                    }
+                                    else
+                                    {
+                                        PrintFlag=4;
+                                        printf("$MD002%%");
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if(CFlag==1)
+                                {
+                                    PrintFlag=4;
+                                    printf("$MD003%%");
+                                }
+                                else if(DFlag==1)
+                                {
+                                    PrintFlag=4;
+                                    printf("$MD004%%");
+                                }
+                                else
+                                {
+                                    if(AFlag==0)
+                                    {
+                                        PrintFlag=4;
+                                        printf("$MD001%%");
+                                    }
+                                    else
+                                    {
+                                        PrintFlag=4;
+                                        printf("$MD002%%");
+                                    }
+                                }
+                            }
+                            PrintFlag=4;
+                            printf("$MX%03d%% ",XPoint);
+                            printf("$MY%03d%%",YPoint);
+                        }
+                        else if(ModeFlag==2)
+                        {
+                            PrintFlag=4;
+                            printf("$MD005%%");
+                            printf("$MX%03d%% ",XPoint);
+                            printf("$MY%03d%%",YPoint);
+                        }
+                    }
+                    if(MZF==1)
+                    {
+                        MZF=0;
+                        if(ModeFlag==1)
+                        {
+                            PrintFlag=4;
+                            printf("$MZ%c%c%c%%",MZN[0],MZN[1],MZN[2]);
+                        }
+                    }
+                    if(HAF==1)
+                    {
+                        HAF=0;
+                        PrintFlag=4;
+                        printf("$HA%c%c%c%%",HAN[0],HAN[1],HAN[2]);
+                    }
+                    if(YAF==1)
+                    {
+                        YAF=0;
+                        PrintFlag=4;
+                        printf("$YA%c%c%c%%",YAN[0],YAN[1],YAN[2]);
+                    }
+                    if(WAF==1)
+                    {
+                        WAF=0;
+                        PrintFlag=4;
+                        printf("$WA%c%c%c%%",WAN[0],WAN[1],WAN[2]);
+                    }
+                    if(GAF==1)
+                    {
+                        GAF=0;
+                        PrintFlag=4;
+                        printf("$GA%c%c%c%%",GAN[0],GAN[1],GAN[2]);
+                    }
+                    if(BAF==1)
+                    {
+                        BAF=0;
+                        PrintFlag=4;
+                        printf("$BA%c%c%c%%",BAN[0],BAN[1],BAN[2]);
+                    }
+                    if(HBF==1)
+                    {
+                        HBF=0;
+                        PrintFlag=4;
+                        printf("$HB%c%c%c%%",HBN[0],HBN[1],HBN[2]);
+                    }
+                    if(YBF==1)
+                    {
+                        YBF=0;
+                        PrintFlag=4;
+                        printf("$YB%c%c%c%%",YBN[0],YBN[1],YBN[2]);
+                    }
+                    if(WBF==1)
+                    {
+                        WBF=0;
+                        PrintFlag=4;
+                        printf("$WB%c%c%c%%",WBN[0],WBN[1],WBN[2]);
+                    }
+                    if(GBF==1)
+                    {
+                        GBF=0;
+                        PrintFlag=4;
+                        printf("$GB%c%c%c%%",GBN[0],GBN[1],GBN[2]);
+                    }
+                    if(BBF==1)
+                    {
+                        BBF=0;
+                        PrintFlag=4;
+                        printf("$BB%c%c%c%%",BBN[0],BBN[1],BBN[2]);
+                    }
+                    if(YTF==1)
+                    {
+                        YTF=0;
+                        PrintFlag=4;
+                        printf("$YT%c%c%c%%",YTN[0],YTN[1],YTN[2]);
+                    }
+                    if(ZBF==1)
+                    {
+                        ZBF=0;
+                        PrintFlag=4;
+                        printf("$ZB%c%c%c%%",ZBN[0],ZBN[1],ZBN[2]);
+                    }
+                    if(LFF==1)
+                    {
+                        LFF=0;
+                        PrintFlag=4;
+                        printf("$LF%c%c%c%%",LFN[0],LFN[1],LFN[2]);
+                    }
+                    if(LTF==1)
+                    {
+                        LTF=0;
+                        PrintFlag=4;
+                        printf("$LT%c%c%c%%",LTN[0],LTN[1],LTN[2]);
+                    }
+                    if(SCF==1)
+                    {
+                        SCF=0;
+                        PrintFlag=4;
+                        printf("$%c%c%c%c%c%%",SCN[0],SCN[1],SCN[2],SCN[3],SCN[4]);
+                    }
+                    if(KZF==1)
+                    {
+                        KZF=0;
+                        DZNum=(KZN[0]-'0')*100+(KZN[1]-'0')*10+(KZN[2]-'0');
+                        dDS=DP;
+                    }
+                    if(KPF==1)
+                    {
+                        KPF=0;
+                        DXNum=(KPN[0]-'0')*100+(KPN[1]-'0')*10+(KPN[2]-'0');
+                        dDX1=DE;
+                        dDX2=YA;
+                    }
+                }
+            }
+        }
+        if((time%100)==0)
+        {
+            if((DXNum!=100)&&(DXNum!=300))
+            {
+                if(DXNum>200)
+                {
+                    if(DE>dDX2)
+                    {
+                        PrintFlag=4;
+                        printf("$MD004%%");
+                        printf("$MX%3d%%",400-DXNum);
+                        printf("$MY100%%");
+                    }
+                    else if(DE<dDX2)
+                    {
+                        PrintFlag=4;
+                        printf("$MD001%%");
+                        printf("$MX%3d%%",DXNum-200);
+                        printf("$MY100%%");
+                    }
+                    else
+                    {
+                        PrintFlag=4;
+                        printf("$MD001%%");
+                        printf("$MX100%%");
+                        printf("$MY100%%");
+                    }
+                }
+                else
+                {
+                    if(DE>dDX1)
+                    {
+                        PrintFlag=4;
+                        printf("$MD004%%");
+                        printf("$MX%3d%%",200-DXNum);
+                        printf("$MY100%%");
+                    }
+                    else if(DE<dDX1)
+                    {
+                        PrintFlag=4;
+                        printf("$MD001%%");
+                        printf("$MX%3d%%",DXNum);
+                        printf("$MY100%%");
+                    }
+                    else
+                    {
+                        PrintFlag=4;
+                        printf("$MD001%%");
+                        printf("$MX100%%");
+                        printf("$MY100%%");
+                    }
+                }
+            }
+            if(DZNum!=100)
+            {
+                if(DP>dDS)
+                {
+                    PrintFlag=4;
+                    printf("$MZ%3d%%",200-DZNum);
+                }
+                else if(DP<dDS)
+                {
+                    PrintFlag=4;
+                    printf("$MZ%3d%%",DZNum);
+                }
+                else
+                {
+                    PrintFlag=4;
+                    printf("$MZ100%%");
+                }
+            }
+
+        }
+        if(time==600)
+        {
+            time=0;
+            PrintFlag=5;
+            if(WAP1==1)
+            {
+                printf("$!P001%%");
+                WAP1=0;
+            }
+            if(WAP2==1)
+            {
+                printf("$!P002%%");
+                WAP2=0;
+            }
+            if(WAC1==1)
+            {
+                printf("$!C001%%");
+                WAC1=0;
+            }
+            if(WAC2==1)
+            {
+                printf("$!C002%%");
+                WAC2=0;
+            }
+            if(HT1==1)
+            {
+                printf("$!H001%%");
+                HT1=0;
+            }
+            if(HT2==1)
+            {
+                printf("$!H002%%");
+                HT2=0;
+            }
+            if(HT3==1)
+            {
+                printf("$!H003%%");
+                HT3=0;
+            }
+            if(HT4==1)
+            {
+                printf("$!H004%%");
+                HT4=0;
+            }
+            printf("$DP%05d $WT%04d $PT%03d $CT%03d $YA%03d $PI%03d $RO%03d $DE%03d\r\n",DP,WT,PT,CT,YA,PI,RO,DE);
+        }
+        TIM_ClearITPendingBit(BASIC_TIM, TIM_FLAG_Update);
+    }
+}
+/******************************************************************************/
+/*                 STM32F10x Peripherals Interrupt Handlers                   */
+/*  Add here the Interrupt Handler for the used peripheral(s) (PPP), for the  */
+/*  available peripheral interrupt handler's name please refer to the startup */
+/*  file (startup_stm32f10x_xx.s).                                            */
+/******************************************************************************/
+
+/**
+  * @brief  This function handles PPP interrupt request.
+  * @param  None
+  * @retval None
+  */
+/*void PPP_IRQHandler(void)
+{
+}*/
+
+/**
+  * @}
+  */
+
+
+/******************* (C) COPYRIGHT 2011 STMicroelectronics *****END OF FILE****/

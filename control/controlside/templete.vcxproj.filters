@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{514aa407-533b-4cee-90a4-9c7b20396e7b}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{e01c358e-dfee-49cb-8367-598472aa477c}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{4a3bfb90-c10d-4dc6-9a77-9c3a488f7eb8}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Source files\lib">
+      <UniqueIdentifier>{a2ebca1e-8880-45fe-8fa9-455ecbda42ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\core">
+      <UniqueIdentifier>{6b5a87c6-ced6-4324-bf8a-ceb172a8cd84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\user">
+      <UniqueIdentifier>{a82eb510-ab13-4bf0-9600-2c677c3efec5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\sys">
+      <UniqueIdentifier>{a8f1350a-5852-48d5-900f-ea9b5aac121a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Device-specific files">
+      <UniqueIdentifier>{50178ba9-8134-4bc6-9b93-85014342aadd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\lib">
+      <UniqueIdentifier>{bc01af76-7a02-4530-aae5-a7248bbdff50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\core">
+      <UniqueIdentifier>{fa2629d2-25fe-4a6f-91b8-a81e608ab890}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\user">
+      <UniqueIdentifier>{7ccfcc1e-a2a1-46e5-8def-f1c7f1c83f4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\sys">
+      <UniqueIdentifier>{28c54460-b01d-4036-8daf-7e7bae9c92fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files">
+      <UniqueIdentifier>{10718957-aa24-426f-b010-6c07303db48b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VisualGDB settings">
+      <UniqueIdentifier>{cb012616-c776-4a3b-912e-3eb41c8bc1ab}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="lib\misc.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_adc.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_bkp.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_can.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_cec.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_crc.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_dac.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_dbgmcu.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_dma.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_exti.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_flash.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_fsmc.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_gpio.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_i2c.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_iwdg.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_pwr.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_rcc.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_rtc.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_sdio.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_spi.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_tim.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_usart.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_wwdg.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="core\core_cm3.c">
+      <Filter>Source files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\system_stm32f10x.c">
+      <Filter>Source files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="user\main.c">
+      <Filter>Source files\user</Filter>
+    </ClCompile>
+    <ClCompile Include="user\stm32f10x_it.c">
+      <Filter>Source files\user</Filter>
+    </ClCompile>
+    <ClCompile Include="sys\usart\bsp_usart.c">
+      <Filter>Source files\sys</Filter>
+    </ClCompile>
+    <ClCompile Include="sys\PWM\bsp_GeneralTim.c">
+      <Filter>Source files\sys</Filter>
+    </ClCompile>
+    <ClCompile Include="sys\SysTick\bsp_SysTick.c">
+      <Filter>Source files\sys</Filter>
+    </ClCompile>
+    <ClCompile Include="sys\TimBase\bsp_TiMbase.c">
+      <Filter>Source files\sys</Filter>
+    </ClCompile>
+    <ClCompile Include="sys\iwdg\bsp_iwdg.c">
+      <Filter>Source files\sys</Filter>
+    </ClCompile>
+    <None Include="stm32.props">
+      <Filter>Source files\Device-specific files</Filter>
+    </None>
+    <ClCompile Include="$(BSP_ROOT)\STM32F1xxxx\StartupFiles\startup_stm32f103xe.c">
+      <Filter>Source files\Device-specific files</Filter>
+    </ClCompile>
+    <None Include="templete-Debug.vgdbsettings">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+    <None Include="templete-Release.vgdbsettings">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+    <None Include="stm32.xml">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+  </ItemGroup>
+</Project>
