@@ -5,14 +5,7 @@
 #include "stm32f10x.h"
 #include <stdio.h>
 
-extern u8 PrintFlag;
-
-/** 
-  * 串口宏定义，不同的串口挂载的总线和IO不一样，移植时需要修改这几个宏
-	* 1-修改总线时钟的宏，uart1挂载到apb2总线，其他uart挂载到apb1总线
-	* 2-修改GPIO的宏
-  */
-	
+extern vu8 PrintFlag;
 // 串口1-USART1 无
 #define  DEBUG_USARTx_CON                   USART1
 #define  DEBUG_USART_CLK_CON                RCC_APB2Periph_USART1

@@ -2,7 +2,7 @@
 
 
 //printf输出对象判断
-u8 PrintFlag=1;
+vu8 PrintFlag=1;
 
  /**
   * @brief  配置嵌套向量中断控制器NVIC
@@ -490,13 +490,3 @@ int fputc(int ch, FILE *f)
 	}
 	return ch;
 }
-
-/////重定向c库函数scanf到串口，重写向后可使用scanf、getchar等函数
-//int fgetc(FILE *f)
-//{
-//		/* 等待串口输入数据 */
-//		while (USART_GetFlagStatus(DEBUG_USARTx, USART_FLAG_RXNE) == RESET);
-
-//		return (int)USART_ReceiveData(DEBUG_USARTx);
-//}
-

@@ -101,6 +101,7 @@
     <ClCompile Include="core\core_cm3.c" />
     <ClCompile Include="core\system_stm32f10x.c" />
     <ClCompile Include="user\main.c" />
+    <ClCompile Include="user\SendString.c" />
     <ClCompile Include="user\stm32f10x_it.c" />
     <ClCompile Include="sys\usart\bsp_usart.c" />
     <ClCompile Include="sys\PWM\bsp_GeneralTim.c" />

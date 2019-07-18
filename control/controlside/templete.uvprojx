@@ -532,6 +532,11 @@
               <FileType>1</FileType>
               <FilePath>.\user\stm32f10x_it.c</FilePath>
             </File>
+            <File>
+              <FileName>SendString.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\user\SendString.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

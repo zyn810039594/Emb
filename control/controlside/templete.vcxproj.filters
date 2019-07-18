@@ -159,5 +159,8 @@
     <None Include="stm32.xml">
       <Filter>VisualGDB settings</Filter>
     </None>
+    <ClCompile Include="user\SendString.c">
+      <Filter>Source files\user</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

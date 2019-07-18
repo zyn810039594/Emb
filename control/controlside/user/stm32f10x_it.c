@@ -23,39 +23,26 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x_it.h"
-#include "bsp_usart.h"
-#include "bsp_Timbase.h"
-#include "bsp_iwdg.h"
-#include <string.h>
 
-extern u8 PrintFlag;
-extern vu8 HighMes;
-
+u8 ModeFlag=1;//Mode 0:Stop Mode 1:Normal(Round) Mode 2:Strict
 extern __IO uint16_t ADC_ConvertedValue;
-uint32_t time;
-extern vu8 PT;
-extern vu8 WAP1;
-extern vu8 WAP2;
-extern vu8 WAC1;
-extern vu8 WAC2;
-extern vu8 HT1;
-extern vu8 HT2;
-extern vu8 HT3;
-extern vu8 HT4;
-extern vu16 DE;
-extern vu8 CT;
-extern vu16 YA;
-extern vu16 PI;
-extern vu16 RO;
-extern vu16 DP;
-extern vu16 WT;
-
-extern int DXNum;
-extern int DZNum;
-
-extern float dDS;
-extern u16 dDX1;
-extern u16 dDX2;
+//uint32_t time;
+vu8 PT = 0;
+vu8 WAP1 = 0;
+vu8 WAP2 = 0;
+vu8 WAC1 = 0;
+vu8 WAC2 = 0;
+vu8 HT1 = 0;
+vu8 HT2 = 0;
+vu8 HT3 = 0;
+vu8 HT4 = 0;
+vu16 DE = 0;
+vu8 CT = 0;
+vu16 YA = 0;
+vu16 PI = 0;
+vu16 RO = 0;
+vu16 DP = 0;
+vu16 WT = 0;
 
 __IO char Rev1[80]= {0};
 
@@ -66,10 +53,7 @@ vu8 RCF=0;
 
 __IO char CL[80]={0};
 
-u8 AFlag,BFlag,CFlag,DFlag;
-u8 XPoint,YPoint;
 
-extern u8 ModeFlag;//Mode 0:Stop Mode 1:Normal(Round) Mode 2:Strict
 /** @addtogroup STM32F10x_StdPeriph_Template
   * @{
   */
@@ -439,13 +423,12 @@ void UART5_IRQHandler(void)
             if(Rev=='%')
             {
 								
-								if(Pos5==79)
+								if(Pos5==77)
 								{
 									RCF=1;
-									Rev1[79]=0;
+									Rev1[77]=0;
 									strcpy(CL,Rev1);
 								}
-								
                 Pos5=0;
                 Rev5Start=0;
             }

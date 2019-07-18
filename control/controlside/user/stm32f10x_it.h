@@ -29,6 +29,10 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x.h"
+#include "bsp_usart.h"
+#include "bsp_Timbase.h"
+#include "bsp_iwdg.h"
+#include <string.h>
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
