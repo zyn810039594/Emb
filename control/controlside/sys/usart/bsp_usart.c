@@ -3,7 +3,7 @@
 
 //printf输出对象判断
 vu8 PrintFlag=1;
-
+u8 UART4DMACache[10];
  /**
   * @brief  配置嵌套向量中断控制器NVIC
   * @param  无
@@ -156,6 +156,7 @@ void USART_Config_SE1(void)
 	// 使能串口
 	USART_Cmd(DEBUG_USARTx_SE1, ENABLE);	    
 }
+
 //舵机2号串口定义
 static void NVIC_Configuration_SE2(void)
 {
@@ -368,19 +369,41 @@ void USART_Config_SON(void)
 	// 完成串口的初始化配置
 	USART_Init(DEBUG_USARTx_SON, &USART_InitStructure);
 	
-	// 串口中断优先级配置
-	NVIC_Configuration_SON();
-	
-	// 使能串口接收中断
-	USART_ITConfig(DEBUG_USARTx_SON, USART_IT_RXNE, ENABLE);	
+//	// 串口中断优先级配置
+//	NVIC_Configuration_SON();
+//	
+//	// 使能串口接收中断
+//	USART_ITConfig(DEBUG_USARTx_SON, USART_IT_RXNE, ENABLE);	
 	
 	// 使能串口
 	USART_Cmd(DEBUG_USARTx_SON, ENABLE);	    
+	USART_DMACmd(UART4,USART_DMAReq_Rx,ENABLE);
+	USART_ITConfig(DEBUG_USARTx_SON, USART_IT_IDLE, ENABLE);
+	
+}
+
+//串口4接收DMA初始化
+void UART4_DMA_Init(void)
+{
+	DMA_InitTypeDef DMA_InitStructure;
+	DMA_DeInit(DMA2_Channel3);
+	DMA_InitStructure.DMA_PeripheralBaseAddr=(uint32_t)(&UART4->DR);
+	DMA_InitStructure.DMA_MemoryBaseAddr=(uint32_t)UART4DMACache;
+	DMA_InitStructure.DMA_DIR=DMA_DIR_PeripheralSRC;
+	DMA_InitStructure.DMA_BufferSize=10;
+	DMA_InitStructure.DMA_PeripheralInc=DMA_MemoryInc_Enable;
+	DMA_InitStructure.DMA_PeripheralDataSize=DMA_PeripheralDataSize_Byte;
+	DMA_InitStructure.DMA_MemoryDataSize=DMA_MemoryDataSize_Byte;
+	DMA_InitStructure.DMA_Mode=DMA_Mode_Normal;
+	DMA_InitStructure.DMA_Priority=DMA_Priority_Medium;
+	DMA_InitStructure.DMA_M2M=DMA_M2M_Disable;
+	DMA_Init(DMA2_Channel3,&DMA_InitStructure);
+	DMA_Cmd(DMA2_Channel3,ENABLE);
 }
 
 void USART_Config(void)
 {
-	USART_Config_CON();
+	//USART_Config_CON();
 	USART_Config_SE1();
 	USART_Config_SE2();
 	USART_Config_ARD();

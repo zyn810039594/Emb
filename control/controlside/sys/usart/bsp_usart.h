@@ -6,6 +6,7 @@
 #include <stdio.h>
 
 extern vu8 PrintFlag;
+extern u8 UART4DMACache[10];
 // ´®¿Ú1-USART1 ÎÞ
 #define  DEBUG_USARTx_CON                   USART1
 #define  DEBUG_USART_CLK_CON                RCC_APB2Periph_USART1
@@ -104,3 +105,4 @@ void Usart_SendString( USART_TypeDef * pUSARTx, char *str);
 void Usart_SendHalfWord( USART_TypeDef * pUSARTx, uint16_t ch);
 
 #endif /* __USART_H */
+

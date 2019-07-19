@@ -51,7 +51,7 @@ vu8 Rev4[10]= {0};
 
 vu8 RCF=0;
 
-__IO char CL[80]={0};
+__IO char CL[80]= {0};
 
 
 /** @addtogroup STM32F10x_StdPeriph_Template
@@ -356,53 +356,70 @@ void USART3_IRQHandler(void)
 }
 void UART4_IRQHandler(void)
 {
-    u8 Rev;
-    static u8 Rev4Start;
-    static u8 Pos4=0;
-    static u8 WaterFlag=0;
-    if(USART_GetITStatus(UART4,USART_IT_RXNE)!=RESET)
-    {
-        Rev=USART_ReceiveData(UART4);
-        if(WaterFlag==1)
-        {
-            WaterFlag=0;
-            if(Rev=='1')
-            {
-                WAP1=1;
-            }
-            else if(Rev=='2')
-            {
-                WAP2=1;
-            }
-        }
-        if(Rev=='!')
-        {
-            WaterFlag=1;
-        }
-        else if(Rev=='$')
-        {
-            Rev4Start=1;
-        }
-        if(Rev4Start==1)
-        {
-            Rev4[Pos4]=Rev;
-            ++Pos4;
+//    u8 Rev;
+//    static u8 Rev4Start;
+//    static u8 Pos4=0;
+//    static u8 WaterFlag=0;
+//    if(USART_GetITStatus(UART4,USART_IT_RXNE)!=RESET)
+//    {
+//        Rev=USART_ReceiveData(UART4);
+//        if(WaterFlag==1)
+//        {
+//            WaterFlag=0;
+//            if(Rev=='1')
+//            {
+//                WAP1=1;
+//            }
+//            else if(Rev=='2')
+//            {
+//                WAP2=1;
+//            }
+//        }
+//        if(Rev=='!')
+//        {
+//            WaterFlag=1;
+//        }
+//        else if(Rev=='$')
+//        {
+//            Rev4Start=1;
+//        }
+//        if(Rev4Start==1)
+//        {
+//            Rev4[Pos4]=Rev;
+//            ++Pos4;
 
-            if(Pos4==6)
-            {
-                Pos4=0;
-                Rev4Start=0;
-                if(Rev4[1]=='T'&&Rev4[2]=='M')
-                {
-                    PT=(Rev4[4]-'0')*10+(Rev4[5]-'0');
-                }
-            }
-        }
-        else
-        {
-            Pos4=0;
-        }
-    }
+//            if(Pos4==6)
+//            {
+//                Pos4=0;
+//                Rev4Start=0;
+//                if(Rev4[1]=='T'&&Rev4[2]=='M')
+//                {
+//                    PT=(Rev4[4]-'0')*10+(Rev4[5]-'0');
+//                }
+//            }
+//        }
+//        else
+//        {
+//            Pos4=0;
+//        }
+//    }
+	u8 len;
+	if(USART_GetITStatus(UART4,USART_IT_IDLE)!=RESET)
+	{
+		len=10-DMA2_Channel3->CNDTR;
+		if(len==8)
+		{
+			WAP1=UART4DMACache[1]-'0';
+			WAP2=UART4DMACache[3]-'0';
+			PT=(UART4DMACache[6]-'0')*10+(UART4DMACache[7]-'0');
+			
+		}
+		DMA_Cmd(DMA2_Channel3,DISABLE);
+		DMA2_Channel3->CNDTR=10;
+		DMA_Cmd(DMA2_Channel3,ENABLE);
+		USART_ClearITPendingBit(UART4,USART_IT_IDLE);
+		USART_ReceiveData(UART4);
+	}
 }
 void UART5_IRQHandler(void)
 {
@@ -422,21 +439,21 @@ void UART5_IRQHandler(void)
             ++Pos5;
             if(Rev=='%')
             {
-								
-								if(Pos5==77)
-								{
-									RCF=1;
-									Rev1[77]=0;
-									strcpy(CL,Rev1);
-								}
+
+                if(Pos5==77)
+                {
+                    RCF=1;
+                    Rev1[77]=0;
+                    strcpy(CL,Rev1);
+                }
                 Pos5=0;
                 Rev5Start=0;
             }
-						if(Pos5==80)
-						{
-								Pos5=0;
+            if(Pos5==80)
+            {
+                Pos5=0;
                 Rev5Start=0;
-						}
+            }
         }
         else
         {
@@ -448,7 +465,7 @@ void  BASIC_TIM_IRQHandler (void)
 {
     if ( TIM_GetITStatus( BASIC_TIM, TIM_IT_Update) != RESET )
     {
-        
+
         TIM_ClearITPendingBit(BASIC_TIM, TIM_FLAG_Update);
     }
 }
