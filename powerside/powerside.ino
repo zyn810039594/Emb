@@ -5,7 +5,7 @@ char Receive[70];
 char Rev2Start = 0;
 char Pos2 = 0;
 char MoveMode = 0;
-char SendLetter[8]="0:0:00";
+char SendLetter[9]="$0:0:000%";
 int XNum = 100;
 int YNum = 100;
 u8 LFMode = 0;
@@ -55,17 +55,30 @@ static unsigned char MovNum[202][2] = {{0xbc, 0x02}, {0xc4, 0x02}, {0xcc, 0x02},
   {0xac, 0x08}, {0xb4, 0x08}, {0xbc, 0x08}, {0xc4, 0x08}, {0xcc, 0x08}, {0xd4, 0x08}, {0xdc, 0x08}, {0xe4, 0x08}, {0xec, 0x08}, {0xf4, 0x08},
   {0xfc, 0x08}
 };
-static unsigned char LFNum[2][2] = {{0x4c, 0x04}, {0x6c, 0x07}};
+static unsigned char LFNum[10][2] = {{0x8a, 0x02}, {0xa3, 0x02},{0xbc, 0x02},{0x20, 0x03},{0xe8, 0x03},{0x4c, 0x04},{0xb0, 0x04},{0x14, 0x05},{0x2d, 0x05},{0x46, 0x05}};
 unsigned char DM0_Speed20_Position_0[15]    =    { 0xff, 0x01, 0x00, 0x14, 0x00, 0xff, 0x02, 0x00, 0xf4, 0x01 };
 unsigned char port[16] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f};
 Servo myservo1;
 Servo myservo2;
 Servo myservo3;
+
+Servo HAServo;
+Servo YAServo;
+Servo WAServo;
+Servo GAServo;
+
+Servo HBServo;
+Servo YBServo;
+Servo WBServo;
+Servo GBServo;
+
+
 int ChangeNum = 0;
 u8 MovPort;
 int a0, a1, a2;
 float Water1Num, Water2Num, result;
-u8 TemOut, Water1Out, Water2Out;
+u8 TemOut;
+uint64_t Clock=0;
 
 void EleChange(int change, unsigned char portnum)
 {
@@ -110,11 +123,21 @@ void setup()
   pinMode(9, OUTPUT);
   //  pinMode(10,OUTPUT);
   //  pinMode(11,OUTPUT);
-  myservo1.attach(10);
-  myservo2.attach(11);
-  myservo3.attach(8);
+  myservo1.attach(12);
+  myservo2.attach(13);
+  myservo3.attach(10);
+  
+  HAServo.attach(2);
+  YAServo.attach(3);
+  WAServo.attach(4);
+  GAServo.attach(5);
+  HBServo.attach(6);
+  YBServo.attach(7);
+  WBServo.attach(8);
+  GBServo.attach(9);
+  
   MovInit();
-  EleChange(0,11);
+  EleChange(50,12);
 }
 
 void loop()
@@ -174,31 +197,40 @@ void loop()
           ChangeNum = (Receive[11] - '0') * 100 + (Receive[12] - '0') * 10 + (Receive[13] - '0');
           MovChange(ChangeNum, 0);
           MovChange(ChangeNum, 15);
-          ChangeNum = (Receive[15] - '0') * 100 + (Receive[16] - '0') * 10 + (Receive[17] - '0');
-          EleChange(ChangeNum, 11);
+          
           digitalWrite(9, Receive[19] - '0');
           ChangeNum = (Receive[21] - '0') * 100 + (Receive[22] - '0') * 10 + (Receive[23] - '0');
           ChangeNum = map(ChangeNum, 0, 200, 1100, 1900);
           myservo3.writeMicroseconds(ChangeNum);
           ChangeNum = (Receive[25] - '0') * 100 + (Receive[26] - '0') * 10 + (Receive[27] - '0');
-          EleChange(ChangeNum, 3);
+          ChangeNum = map(ChangeNum, 0, 200, 1100, 1900);
+          HAServo.writeMicroseconds(ChangeNum);
           ChangeNum = (Receive[29] - '0') * 100 + (Receive[30] - '0') * 10 + (Receive[31] - '0');
-          EleChange(ChangeNum, 4);
+          ChangeNum = map(ChangeNum, 0, 200, 1100, 1900);
+          YAServo.writeMicroseconds(ChangeNum);
           ChangeNum = (Receive[33] - '0') * 100 + (Receive[34] - '0') * 10 + (Receive[35] - '0');
-          EleChange(ChangeNum, 5);
+          ChangeNum = map(ChangeNum, 0, 200, 1100, 1900);
+          WAServo.writeMicroseconds(ChangeNum);
           ChangeNum = (Receive[37] - '0') * 100 + (Receive[38] - '0') * 10 + (Receive[39] - '0');
-          EleChange(ChangeNum, 6);
+          ChangeNum = map(ChangeNum, 0, 200, 1100, 1900);
+          GAServo.writeMicroseconds(ChangeNum);
           ChangeNum = (Receive[41] - '0') * 100 + (Receive[42] - '0') * 10 + (Receive[43] - '0');
           ChangeNum = map(ChangeNum, 0, 200, 1100, 1900);
           myservo1.writeMicroseconds(ChangeNum);
+          ChangeNum = (Receive[15] - '0') * 100 + (Receive[16] - '0') * 10 + (Receive[17] - '0');
+          EleChange(ChangeNum, 11);
           ChangeNum = (Receive[45] - '0') * 100 + (Receive[46] - '0') * 10 + (Receive[47] - '0');
-          EleChange(ChangeNum, 7);
+          ChangeNum = map(ChangeNum, 0, 200, 1100, 1900);
+          HBServo.writeMicroseconds(ChangeNum);
           ChangeNum = (Receive[49] - '0') * 100 + (Receive[50] - '0') * 10 + (Receive[51] - '0');
-          EleChange(ChangeNum, 8);
+          ChangeNum = map(ChangeNum, 0, 200, 1100, 1900);
+          YBServo.writeMicroseconds(ChangeNum);
           ChangeNum = (Receive[53] - '0') * 100 + (Receive[54] - '0') * 10 + (Receive[55] - '0');
-          EleChange(ChangeNum, 9);
+          ChangeNum = map(ChangeNum, 0, 200, 1100, 1900);
+          WBServo.writeMicroseconds(ChangeNum);
           ChangeNum = (Receive[57] - '0') * 100 + (Receive[58] - '0') * 10 + (Receive[59] - '0');
-          EleChange(ChangeNum, 10);
+          ChangeNum = map(ChangeNum, 0, 200, 1100, 1900);
+          GBServo.writeMicroseconds(ChangeNum);
           ChangeNum = (Receive[61] - '0') * 100 + (Receive[62] - '0') * 10 + (Receive[63] - '0');
           ChangeNum = map(ChangeNum, 0, 200, 1100, 1900);
           myservo2.writeMicroseconds(ChangeNum);
@@ -213,27 +245,39 @@ void loop()
 
     }
   }
-  a0 = analogRead(A0);
-  a1 = analogRead(A1);
-  a2 = analogRead(A2);
-  result = (float)a0 * (5 / 1024.0) * 100;
-  Water1Num = (float)a1 * (5 / 1024.0);
-  Water2Num = (float)a2 * (5 / 1024.0);
-  u8 TemOut = (u8)result;
-  if (Water1Num >= 2.5)
+  if(Clock==2000)
   {
-    Water1Out = 1;
+    Clock=0;
+    a0 = analogRead(0);
+    a1 = analogRead(1);
+    a2 = analogRead(2);
+    result = (float)a0 * (5 / 1024.0) * 100;
+    Water1Num = (float)a1 * (5 / 1024.0);
+    Water2Num = (float)a2 * (5 / 1024.0);
+    u8 TemOut = (u8)result;
+    if (Water1Num >= 2.5)
+    {
+      SendLetter[1]=('1');
+    }
+    else
+    {
+      SendLetter[1]=('0');
+    }
+    if (Water2Num >= 2.5)
+    {
+      SendLetter[3]=('1');
+    }
+    else
+    {
+      SendLetter[3]=('0');
+    }
+    
+    SendLetter[5]=(TemOut/100+'0');
+    TemOut%=100;
+    SendLetter[6]=(TemOut/10+'0');
+    SendLetter[7]=(TemOut%10+'0');
+    Serial3.print(SendLetter);
   }
-  else if (Water2Num >= 2.5)
-  {
-    Water2Out = 1;
-  }
-  SendLetter[0]=(Water1Out+'0');
-  SendLetter[2]=(Water2Out+'0');
-  Water1Out=0;
-  Water2Out=0;
-  SendLetter[5]=(TemOut/10+'0');
-  SendLetter[6]=(TemOut%10+'0');
-  Serial3.print(SendLetter);
+  ++Clock;
 
 }

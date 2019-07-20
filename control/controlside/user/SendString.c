@@ -5,7 +5,6 @@ void SendDown(void)
     if (RCF == 1)
     {
         u8 Mode=0;
-        PrintFlag = 4;
         RCF = 0;
         ModeFlag=(CL[3]-'0')+1;
         if(CL[1]=='1')
@@ -69,9 +68,13 @@ void SendDown(void)
             {
                 Mode=5;
             }
-            printf("$%1d:%c%c%c:%c%c%c:%c%c%c:%c%c%c:%c:%c%c%c:%c%c%c:%c%c%c:%c%c%c:%c%c%c:%c%c%c:%c%c%c:%c%c%c:%c%c%c:%c%c%c:%c%c%c:%c%%",Mode,CL[5], CL[6], CL[7],CL[9], CL[10], CL[11],CL[13], CL[14], CL[15],CL[17], CL[18], CL[19],CL[21],CL[23], CL[24], CL[25],CL[35], CL[36], CL[37],CL[39], CL[40], CL[41],CL[43], CL[44], CL[45],CL[47], CL[48], CL[49],CL[51], CL[52], CL[53],CL[55], CL[56], CL[57],CL[59], CL[60], CL[61],CL[63], CL[64], CL[65],CL[67], CL[68], CL[69],CL[71], CL[72], CL[73],CL[75]);
-
+						
+						
+            
         }
+				PrintFlag = 4;
+				printf("$%1d:%c%c%c:%c%c%c:%c%c%c:%c%c%c:%c:%c%c%c:%c%c%c:%c%c%c:%c%c%c:%c%c%c:%c%c%c:%c%c%c:%c%c%c:%c%c%c:%c%c%c:%c%c%c:%c%%",Mode,CL[5], CL[6], CL[7],CL[9], CL[10], CL[11],CL[13], CL[14], CL[15],CL[17], CL[18], CL[19],CL[21],CL[23], CL[24], CL[25],CL[35], CL[36], CL[37],CL[39], CL[40], CL[41],CL[43], CL[44], CL[45],CL[47], CL[48], CL[49],CL[51], CL[52], CL[53],CL[55], CL[56], CL[57],CL[59], CL[60], CL[61],CL[63], CL[64], CL[65],CL[67], CL[68], CL[69],CL[71], CL[72], CL[73],CL[75]);
+
     }
 }
 void SendUp(void)

@@ -157,9 +157,9 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>426</LineNumber>
+          <LineNumber>410</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134221716</Address>
+          <Address>134221116</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -168,23 +168,39 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>.\user\stm32f10x_it.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\templete\user/stm32f10x_it.c\426</Expression>
+          <Expression>\\templete\user/stm32f10x_it.c\410</Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>443</LineNumber>
+          <LineNumber>416</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>0</Address>
+          <Address>134221142</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>0</BreakIfRCount>
+          <BreakIfRCount>1</BreakIfRCount>
           <Filename>.\user\stm32f10x_it.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression></Expression>
+          <Expression>\\templete\user/stm32f10x_it.c\416</Expression>
+        </Bp>
+        <Bp>
+          <Number>2</Number>
+          <Type>0</Type>
+          <LineNumber>422</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134221164</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>.\user\stm32f10x_it.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\templete\user/stm32f10x_it.c\422</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -201,59 +217,24 @@
         <Ww>
           <count>2</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Rev1</ItemText>
+          <ItemText>UART4DMACache</ItemText>
+        </Ww>
+        <Ww>
+          <count>3</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>UART4Start</ItemText>
+        </Ww>
+        <Ww>
+          <count>4</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>UART4End</ItemText>
         </Ww>
       </WatchWindow1>
       <WatchWindow2>
         <Ww>
           <count>0</count>
           <WinNumber>2</WinNumber>
-          <ItemText>Rev2[20]</ItemText>
-        </Ww>
-        <Ww>
-          <count>1</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>Rev1[1]</ItemText>
-        </Ww>
-        <Ww>
-          <count>2</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>Rev1[2]</ItemText>
-        </Ww>
-        <Ww>
-          <count>3</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>Rev1[3]</ItemText>
-        </Ww>
-        <Ww>
-          <count>4</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>Rev1[4]</ItemText>
-        </Ww>
-        <Ww>
-          <count>5</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>Rev1[5]</ItemText>
-        </Ww>
-        <Ww>
-          <count>6</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>Pos5</ItemText>
-        </Ww>
-        <Ww>
-          <count>7</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>Rev1[79]</ItemText>
-        </Ww>
-        <Ww>
-          <count>8</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>Rev1[78]</ItemText>
-        </Ww>
-        <Ww>
-          <count>9</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>Rev1[77]</ItemText>
+          <ItemText>i</ItemText>
         </Ww>
       </WatchWindow2>
       <Tracepoint>

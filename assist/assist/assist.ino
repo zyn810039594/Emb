@@ -7,10 +7,14 @@
 #include <DFRobot_QMC5883.h>
 #include <Wire.h>
 
-char SendString[32]="0:0:0:0:0:0:000:000:000:000:000";
+char SendString[33]="$0:0:0:0:0:0:000:000:000:000:000%";
 
 float postureangles[3]; // yaw pitch roll
-int angles[3];
+int AngleInt[3];
+int TemInt;
+int DEInt;
+char WaterFlag[2]={0};
+char HitFlag[4]={0};
 DFRobot_QMC5883 compass;
 // Set the FreeSixIMU object
 FreeSixIMU sixDOF = FreeSixIMU();
@@ -27,7 +31,6 @@ void setup()
   delay(5);
   while (!compass.begin())
   {
-    Serial.println("Could not find a valid QMC5883 sensor, check wiring!");
     delay(500);
   }
     if(compass.isHMC()){
@@ -56,43 +59,21 @@ void setup()
 
 void loop() { 
 
-  char water1=digitalRead(2);
+  WaterFlag[0]=digitalRead(2);
   int a3=analogRead(A3);
   float water2=(float)a3*(5 / 1024.0);
-  char hit1=digitalRead(4);
-  char hit2=digitalRead(5);
-  char hit3=digitalRead(6);
-  char hit4=digitalRead(7);
+  HitFlag[0]=digitalRead(4);
+  HitFlag[1]=digitalRead(5);
+  HitFlag[2]=digitalRead(6);
+  HitFlag[3]=digitalRead(7);
 
-  if(water1==1)
-  {
-    Serial.print("!8");
-    water1=0;
-  }
   if(water2>=2)
   {
-    Serial.print("!9");
-    water2=0;
+    WaterFlag[1]=1;
   }
-  if(hit1==1)
+  else
   {
-    Serial.print("!1");
-    hit1=0;
-  }
-  if(hit2==1)
-  {
-    Serial.print("!2");
-    hit2=0;
-  }
-  if(hit3==1)
-  {
-    Serial.print("!3");
-    hit3=0;
-  }
-  if(hit4==1)
-  {
-    Serial.print("!4");
-    hit4=0;
+    WaterFlag[1]=0;
   }
 
   
@@ -120,43 +101,9 @@ void loop() {
 
   // Convert to degrees
   float headingDegrees = heading * 180/PI; 
-
-  // Output
-//  Serial.print("$HE");
-//  if(heading<100)
-//  {
-//    Serial.print("0");
-//    if(heading<10)
-//    {
-//      Serial.print("0");
-//    }
-//    
-//  }
-//  Serial.print(heading,0);
-  Serial.print("$DE");
-  if(headingDegrees<100)
-  {
-    Serial.print("0");
-    if(headingDegrees<10)
-    {
-      Serial.print("0");
-    }
-    
-  }
-  Serial.println(headingDegrees,0);
-  Serial.print("$TE");
   float Temperature=bmp.readTemperatureValue();
-  if(Temperature<100)
-  {
-    Serial.print("0");
-    if(Temperature<10)
-    {
-      Serial.print("0");
-    }
-    
-  }
-  Serial.print(Temperature,0);
-  Serial.println();
+  DEInt=(int)headingDegrees;
+  TemInt=(int)Temperature;
   sixDOF.getEuler(postureangles);
   for(int i=0;i<3;++i)
   {
@@ -164,42 +111,34 @@ void loop() {
     {
       postureangles[i]+=360;
     }
+    AngleInt[i]=postureangles[i];
   }
-  Serial.print("$YA"); 
-  if((postureangles[0])<100)
-  {
-    Serial.print("0");
-    if((postureangles[0])<10)
-    {
-      Serial.print("0");
-    }
-    
-  }
-  Serial.print(postureangles[0],0);
-  Serial.println();
-  Serial.print("$PI"); 
-  if((postureangles[1])<100)
-  {
-    Serial.print("0");
-    if((postureangles[1])<10)
-    {
-      Serial.print("0");
-    }
-    
-  }
-  Serial.print(postureangles[1],0);
-  Serial.println();
-  Serial.print("$RO");
-  if((postureangles[2])<100)
-  {
-    Serial.print("0");
-    if((postureangles[2])<10)
-    {
-      Serial.print("0");
-    }
-    
-  }
-  Serial.print(postureangles[2],0);
-  Serial.println();
+  SendString[1]=WaterFlag[0]+'0';
+  SendString[3]=WaterFlag[1]+'0';
+  SendString[5]=HitFlag[0]+'0';
+  SendString[7]=HitFlag[1]+'0';
+  SendString[9]=HitFlag[2]+'0';
+  SendString[11]=HitFlag[3]+'0';
+  SendString[13]=(DEInt/100)+'0';
+  DEInt%=100;
+  SendString[14]=(DEInt/10)+'0';
+  SendString[15]=(DEInt%10)+'0';
+  SendString[17]=(TemInt/100)+'0';
+  TemInt%=100;
+  SendString[18]=(TemInt/10)+'0';
+  SendString[19]=(TemInt%10)+'0';
+  SendString[21]=(AngleInt[0]/100)+'0';
+  AngleInt[0]%=100;
+  SendString[22]=(AngleInt[0]/10)+'0';
+  SendString[23]=(AngleInt[0]%10)+'0';
+  SendString[25]=(AngleInt[1]/100)+'0';
+  AngleInt[1]%=100;
+  SendString[26]=(AngleInt[1]/10)+'0';
+  SendString[27]=(AngleInt[1]%10)+'0';
+  SendString[29]=(AngleInt[2]/100)+'0';
+  AngleInt[2]%=100;
+  SendString[30]=(AngleInt[2]/10)+'0';
+  SendString[31]=(AngleInt[2]%10)+'0';
+  Serial.print(SendString);
   delay(90);   
 }

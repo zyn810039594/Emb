@@ -180,242 +180,259 @@ void USART1_IRQHandler(void)
 }
 void USART2_IRQHandler(void)
 {
-    u8 Rev;
-    static u8 Rev2Start;
-    static u8 Pos2;
-    static u8 Dpos;
-    static u8 Tflag;
-    static u8 Rev2[20]= {0};
-    if(USART_GetITStatus(USART2,USART_IT_RXNE)!=RESET)
-    {
-        Rev = USART_ReceiveData(USART2);
-        if(Rev=='T')
-        {
-            Rev2Start=1;
-        }
+	char USART2Start=0;
+	char USART2End=0;
+	char Start2=0;
+	if(USART_GetITStatus(USART2,USART_IT_IDLE)!=RESET)
+	{
+		USART_ReceiveData(USART2);
+		USART2->DR;
+		for(char i=0;i<40;i++)
+		{
+			if(USART2DMACache[i]=='T')
+			{
+				USART2Start=i;
+				Start2=1;
+			}
+			else if(USART2DMACache[i]=='\n'&&Start2==1)
+			{
+				USART2End=1;
+				break;
+			}
+		}
+		if(USART2End==1)
+		{
+			if(USART2DMACache[USART2Start+4]=='.')
+			{
+				WT=(USART2DMACache[USART2Start+2]-'0')*1000+(USART2DMACache[USART2Start+3]-'0')*100+(USART2DMACache[USART2Start+5]-'0')*10+(USART2DMACache[USART2Start+6]-'0');
+				if(USART2DMACache[USART2Start+9]=='-')
+				{
+					DP=0;
+				}
+				else
+				{
+					if(USART2DMACache[USART2Start+10]=='.')
+					{
+						DP=(USART2DMACache[USART2Start+9]-'0')*100+(USART2DMACache[USART2Start+11]-'0')*10+(USART2DMACache[USART2Start+12]-'0');
+						if(USART2DMACache[USART2Start+14]=='\n')
+						{
+							USART2RecComplete=1;
+						}
+					}
+					else if(USART2DMACache[USART2Start+11]=='.')
+					{
+						DP=(USART2DMACache[USART2Start+9]-'0')*1000+(USART2DMACache[USART2Start+10]-'0')*100+(USART2DMACache[USART2Start+12]-'0')*10+(USART2DMACache[USART2Start+13]-'0');
+						if(USART2DMACache[USART2Start+15]=='\n')
+						{
+							USART2RecComplete=1;
+						}
+					}
+					else if(USART2DMACache[USART2Start+12]=='.')
+					{
+						DP=(USART2DMACache[USART2Start+9]-'0')*10000+(USART2DMACache[USART2Start+10]-'0')*1000+(USART2DMACache[USART2Start+11]-'0')*100+(USART2DMACache[USART2Start+13]-'0')*10+(USART2DMACache[USART2Start+14]-'0');
+						if(USART2DMACache[USART2Start+16]=='\n')
+						{
+							USART2RecComplete=1;
+						}
+					}
+				}
+			}
+			else if(USART2DMACache[USART2Start+3]=='.')
+			{
+				WT=(USART2DMACache[USART2Start+2]-'0')*100+(USART2DMACache[USART2Start+4]-'0')*10+(USART2DMACache[USART2Start+5]-'0');
+				if(USART2DMACache[USART2Start+8]=='-')
+				{
+					DP=0;
+				}
+				else
+				{
+					if(USART2DMACache[USART2Start+9]=='.')
+					{
+						DP=(USART2DMACache[USART2Start+8]-'0')*100+(USART2DMACache[USART2Start+10]-'0')*10+(USART2DMACache[USART2Start+11]-'0');
+						if(USART2DMACache[USART2Start+13]=='\n')
+						{
+							USART2RecComplete=1;
+						}
+					}
+					else if(USART2DMACache[USART2Start+10]=='.')
+					{
+						DP=(USART2DMACache[USART2Start+8]-'0')*1000+(USART2DMACache[USART2Start+9]-'0')*100+(USART2DMACache[USART2Start+11]-'0')*10+(USART2DMACache[USART2Start+12]-'0');
+						if(USART2DMACache[USART2Start+14]=='\n')
+						{
+							USART2RecComplete=1;
+						}
+					}
+					else if(USART2DMACache[USART2Start+11]=='.')
+					{
+						DP=(USART2DMACache[USART2Start+8]-'0')*10000+(USART2DMACache[USART2Start+9]-'0')*1000+(USART2DMACache[USART2Start+10]-'0')*100+(USART2DMACache[USART2Start+12]-'0')*10+(USART2DMACache[USART2Start+13]-'0');
+						if(USART2DMACache[USART2Start+15]=='\n')
+						{
+							USART2RecComplete=1;
+						}
+					}
+				}
+			}
+		}
+		DMA_Cmd(DMA1_Channel6,DISABLE);
+		DMA1_Channel6->CNDTR=40;
+		DMA_Cmd(DMA1_Channel6,ENABLE);
+		USART_ClearITPendingBit(USART2,USART_IT_IDLE);
+		
+	}
+//    u8 Rev;
+//    static u8 Rev2Start;
+//    static u8 Pos2;
+//    static u8 Dpos;
+//    static u8 Tflag;
+//    static u8 Rev2[20]= {0};
+//    if(USART_GetITStatus(USART2,USART_IT_RXNE)!=RESET)
+//    {
+//        Rev = USART_ReceiveData(USART2);
+//        if(Rev=='T')
+//        {
+//            Rev2Start=1;
+//        }
 
-        if(Rev2Start==1)
-        {
-            if(Rev=='=')
-            {
-                switch (Tflag)
-                {
-                case 0:
-                {
-                    Tflag=1;
-                    break;
-                }
-                case 1:
-                {
-                    Dpos=Pos2;
-                    Tflag=0;
-                    break;
-                }
-                }
-            }
+//        if(Rev2Start==1)
+//        {
+//            if(Rev=='=')
+//            {
+//                switch (Tflag)
+//                {
+//                case 0:
+//                {
+//                    Tflag=1;
+//                    break;
+//                }
+//                case 1:
+//                {
+//                    Dpos=Pos2;
+//                    Tflag=0;
+//                    break;
+//                }
+//                }
+//            }
 
 
-            else if(Rev=='\r'&&Tflag==0)
-            {
-                Rev2Start=0;
-                WT=0;
-                DP=0;
-                for(int i=0; i<=Pos2; ++i)
-                {
-                    if(i<Dpos)
-                    {
-                        WT*=10;
-                        WT+=Rev2[i];
-                    }
-                    else
-                    {
-                        DP*=10;
-                        DP+=Rev2[i];
-                    }
-                }
-                Pos2=0;
-                Dpos=0;
-            }
-            if((Rev>='0')&&(Rev<='9'))
-            {
-                Rev2[Pos2]=Rev-'0';
-                ++Pos2;
-                if(Pos2==20)
-                {
-                    Pos2=0;
-                    Rev2Start=0;
-                }
-            }
+//            else if(Rev=='\r'&&Tflag==0)
+//            {
+//                Rev2Start=0;
+//                WT=0;
+//                DP=0;
+//                for(int i=0; i<=Pos2; ++i)
+//                {
+//                    if(i<Dpos)
+//                    {
+//                        WT*=10;
+//                        WT+=Rev2[i];
+//                    }
+//                    else
+//                    {
+//                        DP*=10;
+//                        DP+=Rev2[i];
+//                    }
+//                }
+//                Pos2=0;
+//                Dpos=0;
+//            }
+//            if((Rev>='0')&&(Rev<='9'))
+//            {
+//                Rev2[Pos2]=Rev-'0';
+//                ++Pos2;
+//                if(Pos2==20)
+//                {
+//                    Pos2=0;
+//                    Rev2Start=0;
+//                }
+//            }
 
 
-        }
+//        }
 
-        else
-        {
-            Pos2=0;
-        }
-    }
+//        else
+//        {
+//            Pos2=0;
+//        }
+//    }
 
 
 
 }
 void USART3_IRQHandler(void)
 {
-    u8 Rev;
-    static u8 Rev3Start;
-    static u8 Rev3Warn;
-    static u8 Pos3=0;
-    if(USART_GetITStatus(USART3,USART_IT_RXNE)!=RESET)
-    {
-        Rev = USART_ReceiveData(USART3);
-        if(Rev=='!')
-        {
-            Rev3Warn=1;
-        }
-        else if(Rev=='$')
-        {
-            Rev3Start=1;
-        }
-        if(Rev3Start==1)
-        {
-            Rev3[Pos3]=Rev;
-            ++Pos3;
-            if(Pos3==6)
-            {
-                Pos3=0;
-                Rev3Start=0;
-                for(int i=3; i<6; ++i)
-                {
-                    Rev3[i]-=48;
-                }
-                if(Rev3[1]=='D'&&Rev3[2]=='E')
-                {
-                    DE=Rev3[3]*100+Rev3[4]*10+Rev3[5];
-                }
-                else if(Rev3[1]=='T'&&Rev3[2]=='E')
-                {
-                    CT=Rev3[3]*100+Rev3[4]*10+Rev3[5];
-                }
-                else if(Rev3[1]=='Y'&&Rev3[2]=='A')
-                {
-                    YA=Rev3[3]*100+Rev3[4]*10+Rev3[5];
-                }
-                else if(Rev3[1]=='P'&&Rev3[2]=='I')
-                {
-                    PI=Rev3[3]*100+Rev3[4]*10+Rev3[5];
-                }
-                else if(Rev3[1]=='R'&&Rev3[2]=='O')
-                {
-                    RO=Rev3[3]*100+Rev3[4]*10+Rev3[5];
-                }
-            }
-        }
-        else if(Rev3Warn==1)
-        {
-            Rev3[Pos3]=Rev;
-            ++Pos3;
-            if(Pos3==2)
-            {
-                Pos3=0;
-                Rev3Warn=0;
-                if(Rev3[1]=='8')
-                {
-                    WAC1=1;
-                }
-                else if(Rev3[1]=='9')
-                {
-                    WAC2=1;
-                }
-                else
-                {
-                    if(Rev3[1]=='1')
-                    {
-                        HT1=1;
-                    }
-                    if(Rev3[1]=='2')
-                    {
-                        HT2=1;
-                    }
-                    if(Rev3[1]=='3')
-                    {
-                        HT3=1;
-                    }
-                    if(Rev3[1]=='4')
-                    {
-                        HT4=1;
-                    }
-                }
-            }
+	char USART3Start=0;
+	char USART3End=0;
+	char Start3=0;
+	if(USART_GetITStatus(USART3,USART_IT_IDLE)!=RESET)
+	{
+		for(char i=0;i<70;i++)
+		{
+			if(USART3DMACache[i]=='$')
+			{
+				USART3Start=i+1;
+				Start3=1;
+			}
+			else if(USART3DMACache[i]=='%'&&Start3==1)
+			{
+				USART3End=i;
+				break;
+			}
+		}
+		if((USART3End-USART3Start)==31)
+		{
+			WAC1=USART3DMACache[USART3Start]-'0';
+			WAC2=USART3DMACache[USART3Start+2]-'0';
+			HT1=USART3DMACache[USART3Start+4]-'0';
+			HT2=USART3DMACache[USART3Start+6]-'0';
+			HT3=USART3DMACache[USART3Start+8]-'0';
+			HT4=USART3DMACache[USART3Start+10]-'0';
+			DE=(USART3DMACache[USART3Start+12]-'0')*100+(USART3DMACache[USART3Start+13]-'0')*10+(USART3DMACache[USART3Start+14]-'0');
+			CT=(USART3DMACache[USART3Start+16]-'0')*100+(USART3DMACache[USART3Start+17]-'0')*10+(USART3DMACache[USART3Start+18]-'0');
+			YA=(USART3DMACache[USART3Start+20]-'0')*100+(USART3DMACache[USART3Start+21]-'0')*10+(USART3DMACache[USART3Start+22]-'0');
+			PI=(USART3DMACache[USART3Start+24]-'0')*100+(USART3DMACache[USART3Start+25]-'0')*10+(USART3DMACache[USART3Start+26]-'0');
+			RO=(USART3DMACache[USART3Start+28]-'0')*100+(USART3DMACache[USART3Start+29]-'0')*10+(USART3DMACache[USART3Start+30]-'0');
 
-        }
-        else
-        {
-            Pos3=0;
-        }
-    }
+			USART3RecComplete=1;
+
+		}
+		DMA_Cmd(DMA1_Channel3,DISABLE);
+		DMA1_Channel3->CNDTR=70;
+		DMA_Cmd(DMA1_Channel3,ENABLE);
+		USART_ClearITPendingBit(USART3,USART_IT_IDLE);
+		USART_ReceiveData(USART3);
+	}
 }
 void UART4_IRQHandler(void)
 {
-//    u8 Rev;
-//    static u8 Rev4Start;
-//    static u8 Pos4=0;
-//    static u8 WaterFlag=0;
-//    if(USART_GetITStatus(UART4,USART_IT_RXNE)!=RESET)
-//    {
-//        Rev=USART_ReceiveData(UART4);
-//        if(WaterFlag==1)
-//        {
-//            WaterFlag=0;
-//            if(Rev=='1')
-//            {
-//                WAP1=1;
-//            }
-//            else if(Rev=='2')
-//            {
-//                WAP2=1;
-//            }
-//        }
-//        if(Rev=='!')
-//        {
-//            WaterFlag=1;
-//        }
-//        else if(Rev=='$')
-//        {
-//            Rev4Start=1;
-//        }
-//        if(Rev4Start==1)
-//        {
-//            Rev4[Pos4]=Rev;
-//            ++Pos4;
-
-//            if(Pos4==6)
-//            {
-//                Pos4=0;
-//                Rev4Start=0;
-//                if(Rev4[1]=='T'&&Rev4[2]=='M')
-//                {
-//                    PT=(Rev4[4]-'0')*10+(Rev4[5]-'0');
-//                }
-//            }
-//        }
-//        else
-//        {
-//            Pos4=0;
-//        }
-//    }
-	u8 len;
+	char UART4Start=0;
+	char UART4End=0;
+	char Start4=0;
 	if(USART_GetITStatus(UART4,USART_IT_IDLE)!=RESET)
 	{
-		len=10-DMA2_Channel3->CNDTR;
-		if(len==8)
+		for(char i=0;i<20;i++)
 		{
-			WAP1=UART4DMACache[1]-'0';
-			WAP2=UART4DMACache[3]-'0';
-			PT=(UART4DMACache[6]-'0')*10+(UART4DMACache[7]-'0');
+			if(UART4DMACache[i]=='$')
+			{
+				UART4Start=i+1;
+				Start4=1;
+			}
+			else if(UART4DMACache[i]=='%'&&Start4==1)
+			{
+				UART4End=i;
+				break;
+			}
+		}
+		if(UART4End-UART4Start==7)
+		{
+			WAP1=UART4DMACache[UART4Start]-'0';
+			WAP2=UART4DMACache[UART4Start+2]-'0';
+			PT=(UART4DMACache[UART4Start+5]-'0')*10+(UART4DMACache[UART4Start+6]-'0');
 			
+			UART4RecComplete=1;
+
 		}
 		DMA_Cmd(DMA2_Channel3,DISABLE);
-		DMA2_Channel3->CNDTR=10;
+		DMA2_Channel3->CNDTR=20;
 		DMA_Cmd(DMA2_Channel3,ENABLE);
 		USART_ClearITPendingBit(UART4,USART_IT_IDLE);
 		USART_ReceiveData(UART4);

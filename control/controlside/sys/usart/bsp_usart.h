@@ -6,25 +6,12 @@
 #include <stdio.h>
 
 extern vu8 PrintFlag;
-extern u8 UART4DMACache[10];
-// 串口1-USART1 无
-#define  DEBUG_USARTx_CON                   USART1
-#define  DEBUG_USART_CLK_CON                RCC_APB2Periph_USART1
-#define  DEBUG_USART_APBxClkCmd_CON         RCC_APB2PeriphClockCmd
-#define  DEBUG_USART_BAUDRATE_CON           115200
-
-// USART GPIO 引脚宏定义
-#define  DEBUG_USART_GPIO_CLK_CON           (RCC_APB2Periph_GPIOA)
-#define  DEBUG_USART_GPIO_APBxClkCmd_CON    RCC_APB2PeriphClockCmd
-    
-#define  DEBUG_USART_TX_GPIO_PORT_CON       GPIOA   
-#define  DEBUG_USART_TX_GPIO_PIN_CON        GPIO_Pin_9
-#define  DEBUG_USART_RX_GPIO_PORT_CON       GPIOA
-#define  DEBUG_USART_RX_GPIO_PIN_CON        GPIO_Pin_10
-
-#define  DEBUG_USART_IRQ_CON                USART1_IRQn
-#define  DEBUG_USART_IRQHandler_CON         USART1_IRQHandler
-
+extern u8 UART4DMACache[20];
+extern u8 USART3DMACache[70];
+extern u8 USART2DMACache[40];
+extern u8 USART2RecComplete;
+extern u8 USART3RecComplete;
+extern u8 UART4RecComplete;
 
 // 串口2-USART2 水深
 #define  DEBUG_USARTx_SON                   USART2
