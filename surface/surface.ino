@@ -13,7 +13,7 @@ u8 ArmNum = 0;
 u8 SideFlag = 0;
 u8 SideNum = 0;
 u8 LeafFlag=0;
-u8 LeafNum=0;
+u8 LeafNum=8;
 u8 Rev;
 int ALR[16] = {0};
 int ALT[16] = {0};
@@ -23,6 +23,10 @@ u8 Arm1State[5] = {0};
 u8 Arm2State[5] = {0};
 u8 LightState=0;
 u8 THState=0;
+
+u8 TimerState=0;
+
+
 void PrintBlank()
 {
   int i=50000;
@@ -33,6 +37,24 @@ void PrintBlank()
 }
 void TimerInterrupt()
 {
+  if(LeafFlag==1)
+  {
+    ++TimerState;
+    switch(TimerState)
+    {
+      case 7:
+      LeafNum=3;
+      break;
+      case 12:
+      LeafNum=1;
+      break;
+      case 19:
+      LeafNum=8;
+      LeafFlag=0;
+      TimerState=0;
+      break;
+    }
+  }
   digitalWrite(2, Ring);
   Serial.print('$');
   Serial.print(ControlNum);
@@ -218,7 +240,7 @@ void setup()
   pinMode(7, INPUT);
   pinMode(6, INPUT);
   pinMode(2, OUTPUT);
-  FlexiTimer2::set(800, TimerInterrupt);
+  FlexiTimer2::set(200, TimerInterrupt);
   FlexiTimer2::start();
 }
 
@@ -246,7 +268,7 @@ void loop()
     ALT[4] = map(analogRead(4),0,1023,200,0);
     ALT[5] = map(analogRead(5),0,1023,190,10);
     ALT[6] = map(analogRead(6),0,1023,0,200);
-    ALT[7] = map(analogRead(7),0,1023,0,200);
+    ALT[7] = map(analogRead(7),0,1023,200,0);
     ALT[8] = map(analogRead(8),0,1023,0,200);
     ALT[9] = map(analogRead(9),0,1023,0,200);
     ALT[10] = map(analogRead(10),0,1023,0,200);
@@ -352,10 +374,13 @@ void loop()
     ArmNum = digitalRead(6);
     ArmFlag = 1;
   }
-  if (LeafNum != digitalRead(7))
+  if (digitalRead(7)==1)
   {
-    LeafNum = digitalRead(7);
-    LeafFlag = 1;
+    if(LeafFlag!=1)
+    {
+      LeafFlag = 1;
+      LeafNum=1;
+    }
   }
   if (SideNum != digitalRead(8))
   {

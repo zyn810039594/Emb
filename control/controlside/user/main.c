@@ -10,10 +10,10 @@ int main(void)
     //GENERAL_TIM_Init();
     USART_Config();
     //BASIC_TIM_Init();
-    //IWDG_Config(IWDG_Prescaler_64, 1250);
+    IWDG_Config(IWDG_Prescaler_64, 1250);
     while (1)
     {
-        //IWDG_Feed();
+        IWDG_Feed();
         SendDown();
         SendUp();
     }

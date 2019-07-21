@@ -8,7 +8,7 @@ char MoveMode = 0;
 char SendLetter[9]="$0:0:000%";
 int XNum = 100;
 int YNum = 100;
-u8 LFMode = 0;
+u8 LFMode = 8;
 static unsigned char EleNum[202][2] = {{0xf4, 0x01}, {0xfe, 0x01}, {0x08, 0x02}, {0x12, 0x02}, {0x1c, 0x02},
   {0x26, 0x02}, {0x30, 0x02}, {0x3a, 0x02}, {0x44, 0x02}, {0x4e, 0x02}, {0x58, 0x02}, {0x62, 0x02}, {0x6c, 0x02},
   {0x76, 0x02}, {0x80, 0x02}, {0x8a, 0x02}, {0x94, 0x02}, {0x9e, 0x02}, {0xa8, 0x02}, {0xb2, 0x02}, {0xbc, 0x02}, {0xc6, 0x02},
@@ -92,7 +92,7 @@ void MovChange(int change, unsigned char portnum)
   Serial2.write(MovSend, 10);
 }
 
-void LFChange(u8 changeflag)
+void LFChange(int changeflag)
 {
   u8 LFSend[10] = {DM0_Speed20_Position_0[0], DM0_Speed20_Position_0[1], port[12], DM0_Speed20_Position_0[3], DM0_Speed20_Position_0[4], DM0_Speed20_Position_0[5], DM0_Speed20_Position_0[6], port[12], LFNum[changeflag][0], LFNum[changeflag][1]};
   Serial2.write(LFSend, 10);
@@ -120,7 +120,7 @@ void setup()
   delay(8000);
   Serial3.begin(9600);
   Serial2.begin(9600);
-  pinMode(9, OUTPUT);
+  pinMode(11, OUTPUT);
   //  pinMode(10,OUTPUT);
   //  pinMode(11,OUTPUT);
   myservo1.attach(12);
@@ -198,41 +198,41 @@ void loop()
           MovChange(ChangeNum, 0);
           MovChange(ChangeNum, 15);
           
-          digitalWrite(9, Receive[19] - '0');
+          digitalWrite(11, Receive[19] - '0');
           ChangeNum = (Receive[21] - '0') * 100 + (Receive[22] - '0') * 10 + (Receive[23] - '0');
           ChangeNum = map(ChangeNum, 0, 200, 1100, 1900);
           myservo3.writeMicroseconds(ChangeNum);
           ChangeNum = (Receive[25] - '0') * 100 + (Receive[26] - '0') * 10 + (Receive[27] - '0');
-          ChangeNum = map(ChangeNum, 0, 200, 1100, 1900);
+          ChangeNum = map(ChangeNum, 0, 200, 500, 2500);
           HAServo.writeMicroseconds(ChangeNum);
           ChangeNum = (Receive[29] - '0') * 100 + (Receive[30] - '0') * 10 + (Receive[31] - '0');
-          ChangeNum = map(ChangeNum, 0, 200, 1100, 1900);
+          ChangeNum = map(ChangeNum, 0, 200, 500, 2500);
           YAServo.writeMicroseconds(ChangeNum);
           ChangeNum = (Receive[33] - '0') * 100 + (Receive[34] - '0') * 10 + (Receive[35] - '0');
-          ChangeNum = map(ChangeNum, 0, 200, 1100, 1900);
+          ChangeNum = map(ChangeNum, 0, 200, 500, 2500);
           WAServo.writeMicroseconds(ChangeNum);
           ChangeNum = (Receive[37] - '0') * 100 + (Receive[38] - '0') * 10 + (Receive[39] - '0');
-          ChangeNum = map(ChangeNum, 0, 200, 1100, 1900);
+          ChangeNum = map(ChangeNum, 0, 200, 500, 2500);
           GAServo.writeMicroseconds(ChangeNum);
           ChangeNum = (Receive[41] - '0') * 100 + (Receive[42] - '0') * 10 + (Receive[43] - '0');
-          ChangeNum = map(ChangeNum, 0, 200, 1100, 1900);
+          ChangeNum = map(ChangeNum, 0, 200, 500, 2500);
           myservo1.writeMicroseconds(ChangeNum);
           ChangeNum = (Receive[15] - '0') * 100 + (Receive[16] - '0') * 10 + (Receive[17] - '0');
           EleChange(ChangeNum, 11);
           ChangeNum = (Receive[45] - '0') * 100 + (Receive[46] - '0') * 10 + (Receive[47] - '0');
-          ChangeNum = map(ChangeNum, 0, 200, 1100, 1900);
+          ChangeNum = map(ChangeNum, 0, 200, 500, 2500);
           HBServo.writeMicroseconds(ChangeNum);
           ChangeNum = (Receive[49] - '0') * 100 + (Receive[50] - '0') * 10 + (Receive[51] - '0');
-          ChangeNum = map(ChangeNum, 0, 200, 1100, 1900);
+          ChangeNum = map(ChangeNum, 0, 200, 500, 2500);
           YBServo.writeMicroseconds(ChangeNum);
           ChangeNum = (Receive[53] - '0') * 100 + (Receive[54] - '0') * 10 + (Receive[55] - '0');
-          ChangeNum = map(ChangeNum, 0, 200, 1100, 1900);
+          ChangeNum = map(ChangeNum, 0, 200, 500, 2500);
           WBServo.writeMicroseconds(ChangeNum);
           ChangeNum = (Receive[57] - '0') * 100 + (Receive[58] - '0') * 10 + (Receive[59] - '0');
-          ChangeNum = map(ChangeNum, 0, 200, 1100, 1900);
+          ChangeNum = map(ChangeNum, 0, 200, 500, 2500);
           GBServo.writeMicroseconds(ChangeNum);
           ChangeNum = (Receive[61] - '0') * 100 + (Receive[62] - '0') * 10 + (Receive[63] - '0');
-          ChangeNum = map(ChangeNum, 0, 200, 1100, 1900);
+          ChangeNum = map(ChangeNum, 0, 200, 500, 2500);
           myservo2.writeMicroseconds(ChangeNum);
           LFMode = (Receive[65] - '0');
           LFChange(LFMode);
@@ -255,7 +255,7 @@ void loop()
     Water1Num = (float)a1 * (5 / 1024.0);
     Water2Num = (float)a2 * (5 / 1024.0);
     u8 TemOut = (u8)result;
-    if (Water1Num >= 2.5)
+    if (Water1Num >= 1.5)
     {
       SendLetter[1]=('1');
     }
@@ -263,7 +263,7 @@ void loop()
     {
       SendLetter[1]=('0');
     }
-    if (Water2Num >= 2.5)
+    if (Water2Num >= 1.5)
     {
       SendLetter[3]=('1');
     }

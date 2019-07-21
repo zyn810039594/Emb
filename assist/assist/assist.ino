@@ -67,7 +67,7 @@ void loop() {
   HitFlag[2]=digitalRead(6);
   HitFlag[3]=digitalRead(7);
 
-  if(water2>=2)
+  if(water2>=1.5)
   {
     WaterFlag[1]=1;
   }
