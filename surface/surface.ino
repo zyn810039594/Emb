@@ -42,13 +42,7 @@ void TimerInterrupt()
     ++TimerState;
     switch(TimerState)
     {
-      case 7:
-      LeafNum=3;
-      break;
-      case 12:
-      LeafNum=1;
-      break;
-      case 19:
+      case 25:
       LeafNum=8;
       LeafFlag=0;
       TimerState=0;
@@ -265,18 +259,18 @@ void loop()
     ALT[1] = map(analogRead(1),0,1023,20,180);
     ALT[2] = map(analogRead(2),0,1023,200,0);
     ALT[3] = map(analogRead(3),0,1023,0,200);
-    ALT[4] = map(analogRead(4),0,1023,200,0);
+    ALT[4] = map(analogRead(4),0,1023,185,75);
     ALT[5] = map(analogRead(5),0,1023,190,10);
     ALT[6] = map(analogRead(6),0,1023,0,200);
     ALT[7] = map(analogRead(7),0,1023,200,0);
     ALT[8] = map(analogRead(8),0,1023,0,200);
-    ALT[9] = map(analogRead(9),0,1023,0,200);
-    ALT[10] = map(analogRead(10),0,1023,0,200);
+    ALT[9] = map(analogRead(9),0,1023,15,185);
+    ALT[10] = map(analogRead(10),0,1023,30,120);
     ALT[11] = map(analogRead(11),0,1023,0,200);
-    ALT[12] = map(analogRead(12),0,1023,0,200);
+    ALT[12] = map(analogRead(12),0,1023,200,0);
     ALT[13] = map(analogRead(13),0,1023,0,200);
-    ALT[14] = map(analogRead(14),0,1023,0,200);
-    ALT[15] = map(analogRead(15),0,1023,0,200);
+    ALT[14] = map(analogRead(14),0,1023,15,185);
+    ALT[15] = map(analogRead(15),0,1023,50,120);
 //    if ((ALR[0] != ALT[0]) || (ALR[1] != ALT[1]))
 //    {
       MoveState = 1;
@@ -378,7 +372,7 @@ void loop()
   {
     if(LeafFlag!=1)
     {
-      LeafFlag = 1;
+      LeafFlag = 0;
       LeafNum=1;
     }
   }
