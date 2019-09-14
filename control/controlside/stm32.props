@@ -10,13 +10,13 @@
 	<ItemDefinitionGroup>
 		<ClCompile>
 			<PreprocessorDefinitions>ARM_MATH_CM3;flash_layout;STM32F103RCTx;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
-			<AdditionalIncludeDirectories>$(ProjectDir);%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+			<AdditionalIncludeDirectories>%(ClCompile.AdditionalIncludeDirectories);$(ProjectDir)</AdditionalIncludeDirectories>
 		</ClCompile>
 	</ItemDefinitionGroup>
 	<ItemDefinitionGroup>
 		<Link>
 			<LinkerScript Condition="'%(Link.LinkerScript)' == ''">$(BSP_ROOT)/STM32F1xxxx/LinkerScripts/STM32F103RCTx_flash.lds</LinkerScript>
-			<AdditionalOptions>--specs=nano.specs -u _printf_float --specs=nosys.specs %(Link.AdditionalOptions)</AdditionalOptions>
+			<AdditionalOptions>--specs=nano.specs --specs=nosys.specs %(Link.AdditionalOptions)</AdditionalOptions>
 		</Link>
 	</ItemDefinitionGroup>
 	<PropertyGroup>
@@ -25,8 +25,8 @@
 
 	<ItemDefinitionGroup>
 		<ToolchainSettingsContainer>
-			<ARMCPU>cortex-m3</ARMCPU>
-			<InstructionSet>THUMB</InstructionSet>
+			<ARMCPU  Condition="'%(ToolchainSettingsContainer.ARMCPU)' == ''">cortex-m3</ARMCPU>
+			<InstructionSet  Condition="'%(ToolchainSettingsContainer.InstructionSet)' == ''">THUMB</InstructionSet>
 		</ToolchainSettingsContainer>
 	</ItemDefinitionGroup>
 </Project>

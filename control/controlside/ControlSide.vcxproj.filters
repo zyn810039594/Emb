@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{b52a1182-8b74-4b67-bfa0-c2df1be01f6d}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{d9e27d19-90b8-4899-a7b4-c95cdc4538ea}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{7cda9be0-bdb9-47c6-91c4-fe75392597f3}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Source files\lib">
+      <UniqueIdentifier>{f7ebc589-dbaf-4ce7-bce9-4d141203348f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\core">
+      <UniqueIdentifier>{51d71b6b-9d9e-4e24-aae5-2c95ac044d8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\user">
+      <UniqueIdentifier>{0f11012b-03df-44e6-8a40-fd9e7cce7833}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\sys">
+      <UniqueIdentifier>{c97a517f-20ac-4079-a795-2f6b4f1af22b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Device-specific files">
+      <UniqueIdentifier>{f91f9037-2180-4f6e-a3ed-0d885ec46c6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\lib">
+      <UniqueIdentifier>{c4463ea8-0d90-42e9-8963-9a4cf63e3436}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\core">
+      <UniqueIdentifier>{94fa5b9c-091e-4e7d-9ba5-a5a73722c135}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\user">
+      <UniqueIdentifier>{619f7bc2-a459-4e28-89e6-f32588b4f1a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\sys">
+      <UniqueIdentifier>{a26be1ef-2950-4b9c-a0d0-cff8a47ae6da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files">
+      <UniqueIdentifier>{16a3e7f6-bc22-4596-92fe-bb13e3f43d72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VisualGDB settings">
+      <UniqueIdentifier>{dc1ddd7a-ba1b-47a2-aff6-c8e81448ee6d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="lib\misc.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_adc.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_bkp.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_can.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_cec.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_crc.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_dac.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_dbgmcu.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_dma.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_exti.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_flash.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_fsmc.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_gpio.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_i2c.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_iwdg.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_pwr.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_rcc.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_rtc.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_sdio.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_spi.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_tim.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_usart.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\stm32f10x_wwdg.c">
+      <Filter>Source files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="core\core_cm3.c">
+      <Filter>Source files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\system_stm32f10x.c">
+      <Filter>Source files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="user\main.c">
+      <Filter>Source files\user</Filter>
+    </ClCompile>
+    <ClCompile Include="user\stm32f10x_it.c">
+      <Filter>Source files\user</Filter>
+    </ClCompile>
+    <ClCompile Include="user\SendString.c">
+      <Filter>Source files\user</Filter>
+    </ClCompile>
+    <ClCompile Include="sys\usart\bsp_usart.c">
+      <Filter>Source files\sys</Filter>
+    </ClCompile>
+    <ClCompile Include="sys\PWM\bsp_GeneralTim.c">
+      <Filter>Source files\sys</Filter>
+    </ClCompile>
+    <ClCompile Include="sys\SysTick\bsp_SysTick.c">
+      <Filter>Source files\sys</Filter>
+    </ClCompile>
+    <ClCompile Include="sys\TimBase\bsp_TiMbase.c">
+      <Filter>Source files\sys</Filter>
+    </ClCompile>
+    <ClCompile Include="sys\iwdg\bsp_iwdg.c">
+      <Filter>Source files\sys</Filter>
+    </ClCompile>
+    <None Include="stm32.props">
+      <Filter>Source files\Device-specific files</Filter>
+    </None>
+    <ClCompile Include="$(BSP_ROOT)\STM32F1xxxx\StartupFiles\startup_stm32f103xe.c">
+      <Filter>Source files\Device-specific files</Filter>
+    </ClCompile>
+    <None Include="ControlSide-Debug.vgdbsettings">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+    <None Include="ControlSide-Release.vgdbsettings">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+    <None Include="stm32.xml">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+  </ItemGroup>
+</Project>

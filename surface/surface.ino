@@ -77,9 +77,9 @@ void TimerInterrupt()
 	}
 	Serial.print(ALR[0]);
 	Serial.print(":");
-	if (DownFlag)
+	if (DownNum)
 	{
-		Serial.print("120");
+		Serial.print("065");
 	}
 	else
 	{

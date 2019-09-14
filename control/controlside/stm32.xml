@@ -18,11 +18,10 @@
       </KeyValue>
       <KeyValue>
         <Key>com.sysprogs.mcuoptions.ignore_startup_file</Key>
-        <Value />
       </KeyValue>
       <KeyValue>
         <Key>com.sysprogs.toolchainoptions.arm.libctype</Key>
-        <Value>--specs=nano.specs -u _printf_float</Value>
+        <Value>--specs=nano.specs</Value>
       </KeyValue>
       <KeyValue>
         <Key>com.sysprogs.toolchainoptions.arm.libnosys</Key>
@@ -45,7 +44,7 @@
     <AllDependencies>
       <ProjectDependency>
         <RelativePath>templete.uvprojx</RelativePath>
-        <Timestamp>132075509707017062</Timestamp>
+        <Timestamp>132077501117356042</Timestamp>
       </ProjectDependency>
     </AllDependencies>
     <RootDirectory>
@@ -144,6 +143,9 @@
             <VirtualFileSnapshot>
               <RelativePath>user\stm32f10x_it.c</RelativePath>
             </VirtualFileSnapshot>
+            <VirtualFileSnapshot>
+              <RelativePath>user\SendString.c</RelativePath>
+            </VirtualFileSnapshot>
           </Files>
         </VirtualDirectorySnapshot>
         <VirtualDirectorySnapshot>
@@ -173,14 +175,14 @@
       <ImportedConfiguration>
         <Settings>
           <IncludeDirectories>
-            <string>C:\Users\zyn77\OneDrive\controlside\user</string>
-            <string>C:\Users\zyn77\OneDrive\controlside\core</string>
-            <string>C:\Users\zyn77\OneDrive\controlside\lib</string>
-            <string>C:\Users\zyn77\OneDrive\controlside\sys\usart</string>
-            <string>C:\Users\zyn77\OneDrive\controlside\sys\PWM</string>
-            <string>C:\Users\zyn77\OneDrive\controlside\sys\SysTick</string>
-            <string>C:\Users\zyn77\OneDrive\controlside\sys\TimBase</string>
-            <string>C:\Users\zyn77\OneDrive\controlside\sys\iwdg</string>
+            <string>D:\Emb\Emb\control\controlside\user</string>
+            <string>D:\Emb\Emb\control\controlside\core</string>
+            <string>D:\Emb\Emb\control\controlside\lib</string>
+            <string>D:\Emb\Emb\control\controlside\sys\usart</string>
+            <string>D:\Emb\Emb\control\controlside\sys\PWM</string>
+            <string>D:\Emb\Emb\control\controlside\sys\SysTick</string>
+            <string>D:\Emb\Emb\control\controlside\sys\TimBase</string>
+            <string>D:\Emb\Emb\control\controlside\sys\iwdg</string>
           </IncludeDirectories>
           <PreprocessorMacros>
             <string>$$com.sysprogs.bspoptions.primary_memory$$_layout</string>

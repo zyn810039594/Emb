@@ -1,0 +1,1862 @@
+{
+    "Core": {
+        "Name": "Arduino/Genuino Mega or Mega 2560",
+        "SourceDirectory": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino",
+        "ArchiveFile": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\core.a",
+        "Invocations": [
+            {
+                "GCC": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2/bin/avr-gcc",
+                "InputFile": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\wiring_pulse.S",
+                "ObjectFile": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\wiring_pulse.S.o",
+                "Arguments": [
+                    "-c",
+                    "-g",
+                    "-x",
+                    "assembler-with-cpp",
+                    "-flto",
+                    "-MMD",
+                    "-mmcu=atmega2560",
+                    "-DF_CPU=16000000L",
+                    "-DARDUINO=10600",
+                    "-DARDUINO_AVR_MEGA2560",
+                    "-DARDUINO_ARCH_AVR",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\mega",
+                    "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\wiring_pulse.S",
+                    "-o",
+                    "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\wiring_pulse.S.o"
+                ]
+            },
+            {
+                "GCC": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2/bin/avr-gcc",
+                "InputFile": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\wiring_analog.c",
+                "ObjectFile": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\wiring_analog.c.o",
+                "Arguments": [
+                    "-c",
+                    "-g",
+                    "-Os",
+                    "-w",
+                    "-std=gnu11",
+                    "-ffunction-sections",
+                    "-fdata-sections",
+                    "-MMD",
+                    "-flto",
+                    "-fno-fat-lto-objects",
+                    "-mmcu=atmega2560",
+                    "-DF_CPU=16000000L",
+                    "-DARDUINO=10600",
+                    "-DARDUINO_AVR_MEGA2560",
+                    "-DARDUINO_ARCH_AVR",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\mega",
+                    "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\wiring_analog.c",
+                    "-o",
+                    "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\wiring_analog.c.o"
+                ]
+            },
+            {
+                "GCC": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2/bin/avr-gcc",
+                "InputFile": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\wiring_shift.c",
+                "ObjectFile": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\wiring_shift.c.o",
+                "Arguments": [
+                    "-c",
+                    "-g",
+                    "-Os",
+                    "-w",
+                    "-std=gnu11",
+                    "-ffunction-sections",
+                    "-fdata-sections",
+                    "-MMD",
+                    "-flto",
+                    "-fno-fat-lto-objects",
+                    "-mmcu=atmega2560",
+                    "-DF_CPU=16000000L",
+                    "-DARDUINO=10600",
+                    "-DARDUINO_AVR_MEGA2560",
+                    "-DARDUINO_ARCH_AVR",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\mega",
+                    "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\wiring_shift.c",
+                    "-o",
+                    "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\wiring_shift.c.o"
+                ]
+            },
+            {
+                "GCC": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2/bin/avr-gcc",
+                "InputFile": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\hooks.c",
+                "ObjectFile": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\hooks.c.o",
+                "Arguments": [
+                    "-c",
+                    "-g",
+                    "-Os",
+                    "-w",
+                    "-std=gnu11",
+                    "-ffunction-sections",
+                    "-fdata-sections",
+                    "-MMD",
+                    "-flto",
+                    "-fno-fat-lto-objects",
+                    "-mmcu=atmega2560",
+                    "-DF_CPU=16000000L",
+                    "-DARDUINO=10600",
+                    "-DARDUINO_AVR_MEGA2560",
+                    "-DARDUINO_ARCH_AVR",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\mega",
+                    "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\hooks.c",
+                    "-o",
+                    "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\hooks.c.o"
+                ]
+            },
+            {
+                "GCC": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2/bin/avr-gcc",
+                "InputFile": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\WInterrupts.c",
+                "ObjectFile": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\WInterrupts.c.o",
+                "Arguments": [
+                    "-c",
+                    "-g",
+                    "-Os",
+                    "-w",
+                    "-std=gnu11",
+                    "-ffunction-sections",
+                    "-fdata-sections",
+                    "-MMD",
+                    "-flto",
+                    "-fno-fat-lto-objects",
+                    "-mmcu=atmega2560",
+                    "-DF_CPU=16000000L",
+                    "-DARDUINO=10600",
+                    "-DARDUINO_AVR_MEGA2560",
+                    "-DARDUINO_ARCH_AVR",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\mega",
+                    "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\WInterrupts.c",
+                    "-o",
+                    "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\WInterrupts.c.o"
+                ]
+            },
+            {
+                "GCC": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2/bin/avr-gcc",
+                "InputFile": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\wiring_pulse.c",
+                "ObjectFile": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\wiring_pulse.c.o",
+                "Arguments": [
+                    "-c",
+                    "-g",
+                    "-Os",
+                    "-w",
+                    "-std=gnu11",
+                    "-ffunction-sections",
+                    "-fdata-sections",
+                    "-MMD",
+                    "-flto",
+                    "-fno-fat-lto-objects",
+                    "-mmcu=atmega2560",
+                    "-DF_CPU=16000000L",
+                    "-DARDUINO=10600",
+                    "-DARDUINO_AVR_MEGA2560",
+                    "-DARDUINO_ARCH_AVR",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\mega",
+                    "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\wiring_pulse.c",
+                    "-o",
+                    "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\wiring_pulse.c.o"
+                ]
+            },
+            {
+                "GCC": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2/bin/avr-gcc",
+                "InputFile": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\wiring.c",
+                "ObjectFile": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\wiring.c.o",
+                "Arguments": [
+                    "-c",
+                    "-g",
+                    "-Os",
+                    "-w",
+                    "-std=gnu11",
+                    "-ffunction-sections",
+                    "-fdata-sections",
+                    "-MMD",
+                    "-flto",
+                    "-fno-fat-lto-objects",
+                    "-mmcu=atmega2560",
+                    "-DF_CPU=16000000L",
+                    "-DARDUINO=10600",
+                    "-DARDUINO_AVR_MEGA2560",
+                    "-DARDUINO_ARCH_AVR",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\mega",
+                    "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\wiring.c",
+                    "-o",
+                    "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\wiring.c.o"
+                ]
+            },
+            {
+                "GCC": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2/bin/avr-gcc",
+                "InputFile": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\wiring_digital.c",
+                "ObjectFile": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\wiring_digital.c.o",
+                "Arguments": [
+                    "-c",
+                    "-g",
+                    "-Os",
+                    "-w",
+                    "-std=gnu11",
+                    "-ffunction-sections",
+                    "-fdata-sections",
+                    "-MMD",
+                    "-flto",
+                    "-fno-fat-lto-objects",
+                    "-mmcu=atmega2560",
+                    "-DF_CPU=16000000L",
+                    "-DARDUINO=10600",
+                    "-DARDUINO_AVR_MEGA2560",
+                    "-DARDUINO_ARCH_AVR",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\mega",
+                    "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\wiring_digital.c",
+                    "-o",
+                    "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\wiring_digital.c.o"
+                ]
+            },
+            {
+                "GCC": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2/bin/avr-g++",
+                "InputFile": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\USBCore.cpp",
+                "ObjectFile": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\USBCore.cpp.o",
+                "Arguments": [
+                    "-c",
+                    "-g",
+                    "-Os",
+                    "-w",
+                    "-std=gnu++11",
+                    "-fpermissive",
+                    "-fno-exceptions",
+                    "-ffunction-sections",
+                    "-fdata-sections",
+                    "-fno-threadsafe-statics",
+                    "-Wno-error=narrowing",
+                    "-MMD",
+                    "-flto",
+                    "-mmcu=atmega2560",
+                    "-DF_CPU=16000000L",
+                    "-DARDUINO=10600",
+                    "-DARDUINO_AVR_MEGA2560",
+                    "-DARDUINO_ARCH_AVR",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\mega",
+                    "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\USBCore.cpp",
+                    "-o",
+                    "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\USBCore.cpp.o"
+                ]
+            },
+            {
+                "GCC": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2/bin/avr-g++",
+                "InputFile": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\new.cpp",
+                "ObjectFile": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\new.cpp.o",
+                "Arguments": [
+                    "-c",
+                    "-g",
+                    "-Os",
+                    "-w",
+                    "-std=gnu++11",
+                    "-fpermissive",
+                    "-fno-exceptions",
+                    "-ffunction-sections",
+                    "-fdata-sections",
+                    "-fno-threadsafe-statics",
+                    "-Wno-error=narrowing",
+                    "-MMD",
+                    "-flto",
+                    "-mmcu=atmega2560",
+                    "-DF_CPU=16000000L",
+                    "-DARDUINO=10600",
+                    "-DARDUINO_AVR_MEGA2560",
+                    "-DARDUINO_ARCH_AVR",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\mega",
+                    "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\new.cpp",
+                    "-o",
+                    "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\new.cpp.o"
+                ]
+            },
+            {
+                "GCC": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2/bin/avr-g++",
+                "InputFile": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\WMath.cpp",
+                "ObjectFile": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\WMath.cpp.o",
+                "Arguments": [
+                    "-c",
+                    "-g",
+                    "-Os",
+                    "-w",
+                    "-std=gnu++11",
+                    "-fpermissive",
+                    "-fno-exceptions",
+                    "-ffunction-sections",
+                    "-fdata-sections",
+                    "-fno-threadsafe-statics",
+                    "-Wno-error=narrowing",
+                    "-MMD",
+                    "-flto",
+                    "-mmcu=atmega2560",
+                    "-DF_CPU=16000000L",
+                    "-DARDUINO=10600",
+                    "-DARDUINO_AVR_MEGA2560",
+                    "-DARDUINO_ARCH_AVR",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\mega",
+                    "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\WMath.cpp",
+                    "-o",
+                    "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\WMath.cpp.o"
+                ]
+            },
+            {
+                "GCC": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2/bin/avr-g++",
+                "InputFile": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\HardwareSerial3.cpp",
+                "ObjectFile": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\HardwareSerial3.cpp.o",
+                "Arguments": [
+                    "-c",
+                    "-g",
+                    "-Os",
+                    "-w",
+                    "-std=gnu++11",
+                    "-fpermissive",
+                    "-fno-exceptions",
+                    "-ffunction-sections",
+                    "-fdata-sections",
+                    "-fno-threadsafe-statics",
+                    "-Wno-error=narrowing",
+                    "-MMD",
+                    "-flto",
+                    "-mmcu=atmega2560",
+                    "-DF_CPU=16000000L",
+                    "-DARDUINO=10600",
+                    "-DARDUINO_AVR_MEGA2560",
+                    "-DARDUINO_ARCH_AVR",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\mega",
+                    "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\HardwareSerial3.cpp",
+                    "-o",
+                    "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\HardwareSerial3.cpp.o"
+                ]
+            },
+            {
+                "GCC": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2/bin/avr-g++",
+                "InputFile": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\HardwareSerial.cpp",
+                "ObjectFile": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\HardwareSerial.cpp.o",
+                "Arguments": [
+                    "-c",
+                    "-g",
+                    "-Os",
+                    "-w",
+                    "-std=gnu++11",
+                    "-fpermissive",
+                    "-fno-exceptions",
+                    "-ffunction-sections",
+                    "-fdata-sections",
+                    "-fno-threadsafe-statics",
+                    "-Wno-error=narrowing",
+                    "-MMD",
+                    "-flto",
+                    "-mmcu=atmega2560",
+                    "-DF_CPU=16000000L",
+                    "-DARDUINO=10600",
+                    "-DARDUINO_AVR_MEGA2560",
+                    "-DARDUINO_ARCH_AVR",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\mega",
+                    "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\HardwareSerial.cpp",
+                    "-o",
+                    "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\HardwareSerial.cpp.o"
+                ]
+            },
+            {
+                "GCC": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2/bin/avr-g++",
+                "InputFile": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\abi.cpp",
+                "ObjectFile": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\abi.cpp.o",
+                "Arguments": [
+                    "-c",
+                    "-g",
+                    "-Os",
+                    "-w",
+                    "-std=gnu++11",
+                    "-fpermissive",
+                    "-fno-exceptions",
+                    "-ffunction-sections",
+                    "-fdata-sections",
+                    "-fno-threadsafe-statics",
+                    "-Wno-error=narrowing",
+                    "-MMD",
+                    "-flto",
+                    "-mmcu=atmega2560",
+                    "-DF_CPU=16000000L",
+                    "-DARDUINO=10600",
+                    "-DARDUINO_AVR_MEGA2560",
+                    "-DARDUINO_ARCH_AVR",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\mega",
+                    "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\abi.cpp",
+                    "-o",
+                    "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\abi.cpp.o"
+                ]
+            },
+            {
+                "GCC": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2/bin/avr-g++",
+                "InputFile": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\WString.cpp",
+                "ObjectFile": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\WString.cpp.o",
+                "Arguments": [
+                    "-c",
+                    "-g",
+                    "-Os",
+                    "-w",
+                    "-std=gnu++11",
+                    "-fpermissive",
+                    "-fno-exceptions",
+                    "-ffunction-sections",
+                    "-fdata-sections",
+                    "-fno-threadsafe-statics",
+                    "-Wno-error=narrowing",
+                    "-MMD",
+                    "-flto",
+                    "-mmcu=atmega2560",
+                    "-DF_CPU=16000000L",
+                    "-DARDUINO=10600",
+                    "-DARDUINO_AVR_MEGA2560",
+                    "-DARDUINO_ARCH_AVR",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\mega",
+                    "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\WString.cpp",
+                    "-o",
+                    "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\WString.cpp.o"
+                ]
+            },
+            {
+                "GCC": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2/bin/avr-g++",
+                "InputFile": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\Print.cpp",
+                "ObjectFile": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\Print.cpp.o",
+                "Arguments": [
+                    "-c",
+                    "-g",
+                    "-Os",
+                    "-w",
+                    "-std=gnu++11",
+                    "-fpermissive",
+                    "-fno-exceptions",
+                    "-ffunction-sections",
+                    "-fdata-sections",
+                    "-fno-threadsafe-statics",
+                    "-Wno-error=narrowing",
+                    "-MMD",
+                    "-flto",
+                    "-mmcu=atmega2560",
+                    "-DF_CPU=16000000L",
+                    "-DARDUINO=10600",
+                    "-DARDUINO_AVR_MEGA2560",
+                    "-DARDUINO_ARCH_AVR",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\mega",
+                    "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\Print.cpp",
+                    "-o",
+                    "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\Print.cpp.o"
+                ]
+            },
+            {
+                "GCC": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2/bin/avr-g++",
+                "InputFile": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\PluggableUSB.cpp",
+                "ObjectFile": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\PluggableUSB.cpp.o",
+                "Arguments": [
+                    "-c",
+                    "-g",
+                    "-Os",
+                    "-w",
+                    "-std=gnu++11",
+                    "-fpermissive",
+                    "-fno-exceptions",
+                    "-ffunction-sections",
+                    "-fdata-sections",
+                    "-fno-threadsafe-statics",
+                    "-Wno-error=narrowing",
+                    "-MMD",
+                    "-flto",
+                    "-mmcu=atmega2560",
+                    "-DF_CPU=16000000L",
+                    "-DARDUINO=10600",
+                    "-DARDUINO_AVR_MEGA2560",
+                    "-DARDUINO_ARCH_AVR",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\mega",
+                    "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\PluggableUSB.cpp",
+                    "-o",
+                    "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\PluggableUSB.cpp.o"
+                ]
+            },
+            {
+                "GCC": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2/bin/avr-g++",
+                "InputFile": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\Tone.cpp",
+                "ObjectFile": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\Tone.cpp.o",
+                "Arguments": [
+                    "-c",
+                    "-g",
+                    "-Os",
+                    "-w",
+                    "-std=gnu++11",
+                    "-fpermissive",
+                    "-fno-exceptions",
+                    "-ffunction-sections",
+                    "-fdata-sections",
+                    "-fno-threadsafe-statics",
+                    "-Wno-error=narrowing",
+                    "-MMD",
+                    "-flto",
+                    "-mmcu=atmega2560",
+                    "-DF_CPU=16000000L",
+                    "-DARDUINO=10600",
+                    "-DARDUINO_AVR_MEGA2560",
+                    "-DARDUINO_ARCH_AVR",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\mega",
+                    "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\Tone.cpp",
+                    "-o",
+                    "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\Tone.cpp.o"
+                ]
+            },
+            {
+                "GCC": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2/bin/avr-g++",
+                "InputFile": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\CDC.cpp",
+                "ObjectFile": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\CDC.cpp.o",
+                "Arguments": [
+                    "-c",
+                    "-g",
+                    "-Os",
+                    "-w",
+                    "-std=gnu++11",
+                    "-fpermissive",
+                    "-fno-exceptions",
+                    "-ffunction-sections",
+                    "-fdata-sections",
+                    "-fno-threadsafe-statics",
+                    "-Wno-error=narrowing",
+                    "-MMD",
+                    "-flto",
+                    "-mmcu=atmega2560",
+                    "-DF_CPU=16000000L",
+                    "-DARDUINO=10600",
+                    "-DARDUINO_AVR_MEGA2560",
+                    "-DARDUINO_ARCH_AVR",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\mega",
+                    "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\CDC.cpp",
+                    "-o",
+                    "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\CDC.cpp.o"
+                ]
+            },
+            {
+                "GCC": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2/bin/avr-g++",
+                "InputFile": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\IPAddress.cpp",
+                "ObjectFile": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\IPAddress.cpp.o",
+                "Arguments": [
+                    "-c",
+                    "-g",
+                    "-Os",
+                    "-w",
+                    "-std=gnu++11",
+                    "-fpermissive",
+                    "-fno-exceptions",
+                    "-ffunction-sections",
+                    "-fdata-sections",
+                    "-fno-threadsafe-statics",
+                    "-Wno-error=narrowing",
+                    "-MMD",
+                    "-flto",
+                    "-mmcu=atmega2560",
+                    "-DF_CPU=16000000L",
+                    "-DARDUINO=10600",
+                    "-DARDUINO_AVR_MEGA2560",
+                    "-DARDUINO_ARCH_AVR",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\mega",
+                    "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\IPAddress.cpp",
+                    "-o",
+                    "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\IPAddress.cpp.o"
+                ]
+            },
+            {
+                "GCC": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2/bin/avr-g++",
+                "InputFile": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\Stream.cpp",
+                "ObjectFile": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\Stream.cpp.o",
+                "Arguments": [
+                    "-c",
+                    "-g",
+                    "-Os",
+                    "-w",
+                    "-std=gnu++11",
+                    "-fpermissive",
+                    "-fno-exceptions",
+                    "-ffunction-sections",
+                    "-fdata-sections",
+                    "-fno-threadsafe-statics",
+                    "-Wno-error=narrowing",
+                    "-MMD",
+                    "-flto",
+                    "-mmcu=atmega2560",
+                    "-DF_CPU=16000000L",
+                    "-DARDUINO=10600",
+                    "-DARDUINO_AVR_MEGA2560",
+                    "-DARDUINO_ARCH_AVR",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\mega",
+                    "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\Stream.cpp",
+                    "-o",
+                    "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\Stream.cpp.o"
+                ]
+            },
+            {
+                "GCC": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2/bin/avr-g++",
+                "InputFile": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\HardwareSerial0.cpp",
+                "ObjectFile": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\HardwareSerial0.cpp.o",
+                "Arguments": [
+                    "-c",
+                    "-g",
+                    "-Os",
+                    "-w",
+                    "-std=gnu++11",
+                    "-fpermissive",
+                    "-fno-exceptions",
+                    "-ffunction-sections",
+                    "-fdata-sections",
+                    "-fno-threadsafe-statics",
+                    "-Wno-error=narrowing",
+                    "-MMD",
+                    "-flto",
+                    "-mmcu=atmega2560",
+                    "-DF_CPU=16000000L",
+                    "-DARDUINO=10600",
+                    "-DARDUINO_AVR_MEGA2560",
+                    "-DARDUINO_ARCH_AVR",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\mega",
+                    "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\HardwareSerial0.cpp",
+                    "-o",
+                    "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\HardwareSerial0.cpp.o"
+                ]
+            },
+            {
+                "GCC": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2/bin/avr-g++",
+                "InputFile": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\HardwareSerial2.cpp",
+                "ObjectFile": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\HardwareSerial2.cpp.o",
+                "Arguments": [
+                    "-c",
+                    "-g",
+                    "-Os",
+                    "-w",
+                    "-std=gnu++11",
+                    "-fpermissive",
+                    "-fno-exceptions",
+                    "-ffunction-sections",
+                    "-fdata-sections",
+                    "-fno-threadsafe-statics",
+                    "-Wno-error=narrowing",
+                    "-MMD",
+                    "-flto",
+                    "-mmcu=atmega2560",
+                    "-DF_CPU=16000000L",
+                    "-DARDUINO=10600",
+                    "-DARDUINO_AVR_MEGA2560",
+                    "-DARDUINO_ARCH_AVR",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\mega",
+                    "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\HardwareSerial2.cpp",
+                    "-o",
+                    "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\HardwareSerial2.cpp.o"
+                ]
+            },
+            {
+                "GCC": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2/bin/avr-g++",
+                "InputFile": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\HardwareSerial1.cpp",
+                "ObjectFile": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\HardwareSerial1.cpp.o",
+                "Arguments": [
+                    "-c",
+                    "-g",
+                    "-Os",
+                    "-w",
+                    "-std=gnu++11",
+                    "-fpermissive",
+                    "-fno-exceptions",
+                    "-ffunction-sections",
+                    "-fdata-sections",
+                    "-fno-threadsafe-statics",
+                    "-Wno-error=narrowing",
+                    "-MMD",
+                    "-flto",
+                    "-mmcu=atmega2560",
+                    "-DF_CPU=16000000L",
+                    "-DARDUINO=10600",
+                    "-DARDUINO_AVR_MEGA2560",
+                    "-DARDUINO_ARCH_AVR",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\mega",
+                    "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\HardwareSerial1.cpp",
+                    "-o",
+                    "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\HardwareSerial1.cpp.o"
+                ]
+            },
+            {
+                "GCC": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2/bin/avr-g++",
+                "InputFile": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\main.cpp",
+                "ObjectFile": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\main.cpp.o",
+                "Arguments": [
+                    "-c",
+                    "-g",
+                    "-Os",
+                    "-w",
+                    "-std=gnu++11",
+                    "-fpermissive",
+                    "-fno-exceptions",
+                    "-ffunction-sections",
+                    "-fdata-sections",
+                    "-fno-threadsafe-statics",
+                    "-Wno-error=narrowing",
+                    "-MMD",
+                    "-flto",
+                    "-mmcu=atmega2560",
+                    "-DF_CPU=16000000L",
+                    "-DARDUINO=10600",
+                    "-DARDUINO_AVR_MEGA2560",
+                    "-DARDUINO_ARCH_AVR",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\mega",
+                    "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\main.cpp",
+                    "-o",
+                    "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\core\\main.cpp.o"
+                ]
+            }
+        ]
+    },
+    "Sketch": {
+        "Name": "",
+        "SourceDirectory": "",
+        "ArchiveFile": "",
+        "Invocations": [
+            {
+                "GCC": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2/bin/avr-g++",
+                "InputFile": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\sketch\\Claw.ino.cpp",
+                "ObjectFile": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\sketch\\Claw.ino.cpp.o",
+                "Arguments": [
+                    "-c",
+                    "-g",
+                    "-O0",
+                    "-w",
+                    "-std=gnu++11",
+                    "-fpermissive",
+                    "-fno-exceptions",
+                    "-ffunction-sections",
+                    "-fdata-sections",
+                    "-fno-threadsafe-statics",
+                    "-Wno-error=narrowing",
+                    "-MMD",
+                    "-mmcu=atmega2560",
+                    "-DF_CPU=16000000L",
+                    "-DARDUINO=10600",
+                    "-DARDUINO_AVR_MEGA2560",
+                    "-DARDUINO_ARCH_AVR",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino",
+                    "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\mega",
+                    "-IC:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\Servo\\src",
+                    "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\sketch\\Claw.ino.cpp",
+                    "-o",
+                    "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\sketch\\Claw.ino.cpp.o"
+                ]
+            }
+        ]
+    },
+    "Libraries": [
+        {
+            "Name": "Servo",
+            "SourceDirectory": "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\Servo\\src",
+            "ArchiveFile": "",
+            "Invocations": [
+                {
+                    "GCC": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2/bin/avr-g++",
+                    "InputFile": "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\Servo\\src\\avr\\Servo.cpp",
+                    "ObjectFile": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\libraries\\Servo\\avr\\Servo.cpp.o",
+                    "Arguments": [
+                        "-c",
+                        "-g",
+                        "-Os",
+                        "-w",
+                        "-std=gnu++11",
+                        "-fpermissive",
+                        "-fno-exceptions",
+                        "-ffunction-sections",
+                        "-fdata-sections",
+                        "-fno-threadsafe-statics",
+                        "-Wno-error=narrowing",
+                        "-MMD",
+                        "-flto",
+                        "-mmcu=atmega2560",
+                        "-DF_CPU=16000000L",
+                        "-DARDUINO=10600",
+                        "-DARDUINO_AVR_MEGA2560",
+                        "-DARDUINO_ARCH_AVR",
+                        "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino",
+                        "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\mega",
+                        "-IC:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\Servo\\src",
+                        "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\Servo\\src\\avr\\Servo.cpp",
+                        "-o",
+                        "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\libraries\\Servo\\avr\\Servo.cpp.o"
+                    ]
+                },
+                {
+                    "GCC": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2/bin/avr-g++",
+                    "InputFile": "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\Servo\\src\\megaavr\\Servo.cpp",
+                    "ObjectFile": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\libraries\\Servo\\megaavr\\Servo.cpp.o",
+                    "Arguments": [
+                        "-c",
+                        "-g",
+                        "-Os",
+                        "-w",
+                        "-std=gnu++11",
+                        "-fpermissive",
+                        "-fno-exceptions",
+                        "-ffunction-sections",
+                        "-fdata-sections",
+                        "-fno-threadsafe-statics",
+                        "-Wno-error=narrowing",
+                        "-MMD",
+                        "-flto",
+                        "-mmcu=atmega2560",
+                        "-DF_CPU=16000000L",
+                        "-DARDUINO=10600",
+                        "-DARDUINO_AVR_MEGA2560",
+                        "-DARDUINO_ARCH_AVR",
+                        "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino",
+                        "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\mega",
+                        "-IC:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\Servo\\src",
+                        "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\Servo\\src\\megaavr\\Servo.cpp",
+                        "-o",
+                        "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\libraries\\Servo\\megaavr\\Servo.cpp.o"
+                    ]
+                },
+                {
+                    "GCC": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2/bin/avr-g++",
+                    "InputFile": "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\Servo\\src\\nrf52\\Servo.cpp",
+                    "ObjectFile": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\libraries\\Servo\\nrf52\\Servo.cpp.o",
+                    "Arguments": [
+                        "-c",
+                        "-g",
+                        "-Os",
+                        "-w",
+                        "-std=gnu++11",
+                        "-fpermissive",
+                        "-fno-exceptions",
+                        "-ffunction-sections",
+                        "-fdata-sections",
+                        "-fno-threadsafe-statics",
+                        "-Wno-error=narrowing",
+                        "-MMD",
+                        "-flto",
+                        "-mmcu=atmega2560",
+                        "-DF_CPU=16000000L",
+                        "-DARDUINO=10600",
+                        "-DARDUINO_AVR_MEGA2560",
+                        "-DARDUINO_ARCH_AVR",
+                        "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino",
+                        "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\mega",
+                        "-IC:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\Servo\\src",
+                        "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\Servo\\src\\nrf52\\Servo.cpp",
+                        "-o",
+                        "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\libraries\\Servo\\nrf52\\Servo.cpp.o"
+                    ]
+                },
+                {
+                    "GCC": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2/bin/avr-g++",
+                    "InputFile": "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\Servo\\src\\sam\\Servo.cpp",
+                    "ObjectFile": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\libraries\\Servo\\sam\\Servo.cpp.o",
+                    "Arguments": [
+                        "-c",
+                        "-g",
+                        "-Os",
+                        "-w",
+                        "-std=gnu++11",
+                        "-fpermissive",
+                        "-fno-exceptions",
+                        "-ffunction-sections",
+                        "-fdata-sections",
+                        "-fno-threadsafe-statics",
+                        "-Wno-error=narrowing",
+                        "-MMD",
+                        "-flto",
+                        "-mmcu=atmega2560",
+                        "-DF_CPU=16000000L",
+                        "-DARDUINO=10600",
+                        "-DARDUINO_AVR_MEGA2560",
+                        "-DARDUINO_ARCH_AVR",
+                        "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino",
+                        "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\mega",
+                        "-IC:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\Servo\\src",
+                        "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\Servo\\src\\sam\\Servo.cpp",
+                        "-o",
+                        "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\libraries\\Servo\\sam\\Servo.cpp.o"
+                    ]
+                },
+                {
+                    "GCC": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2/bin/avr-g++",
+                    "InputFile": "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\Servo\\src\\samd\\Servo.cpp",
+                    "ObjectFile": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\libraries\\Servo\\samd\\Servo.cpp.o",
+                    "Arguments": [
+                        "-c",
+                        "-g",
+                        "-Os",
+                        "-w",
+                        "-std=gnu++11",
+                        "-fpermissive",
+                        "-fno-exceptions",
+                        "-ffunction-sections",
+                        "-fdata-sections",
+                        "-fno-threadsafe-statics",
+                        "-Wno-error=narrowing",
+                        "-MMD",
+                        "-flto",
+                        "-mmcu=atmega2560",
+                        "-DF_CPU=16000000L",
+                        "-DARDUINO=10600",
+                        "-DARDUINO_AVR_MEGA2560",
+                        "-DARDUINO_ARCH_AVR",
+                        "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino",
+                        "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\mega",
+                        "-IC:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\Servo\\src",
+                        "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\Servo\\src\\samd\\Servo.cpp",
+                        "-o",
+                        "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\libraries\\Servo\\samd\\Servo.cpp.o"
+                    ]
+                },
+                {
+                    "GCC": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2/bin/avr-g++",
+                    "InputFile": "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\Servo\\src\\stm32f4\\Servo.cpp",
+                    "ObjectFile": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\libraries\\Servo\\stm32f4\\Servo.cpp.o",
+                    "Arguments": [
+                        "-c",
+                        "-g",
+                        "-Os",
+                        "-w",
+                        "-std=gnu++11",
+                        "-fpermissive",
+                        "-fno-exceptions",
+                        "-ffunction-sections",
+                        "-fdata-sections",
+                        "-fno-threadsafe-statics",
+                        "-Wno-error=narrowing",
+                        "-MMD",
+                        "-flto",
+                        "-mmcu=atmega2560",
+                        "-DF_CPU=16000000L",
+                        "-DARDUINO=10600",
+                        "-DARDUINO_AVR_MEGA2560",
+                        "-DARDUINO_ARCH_AVR",
+                        "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino",
+                        "-IC:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\mega",
+                        "-IC:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\Servo\\src",
+                        "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\Servo\\src\\stm32f4\\Servo.cpp",
+                        "-o",
+                        "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\\libraries\\Servo\\stm32f4\\Servo.cpp.o"
+                    ]
+                }
+            ]
+        }
+    ],
+    "KnownHeaders": [
+        {
+            "Name": "EEPROM.h",
+            "LibraryDirectories": [
+                "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\libraries\\EEPROM\\src"
+            ]
+        },
+        {
+            "Name": "SPI.h",
+            "LibraryDirectories": [
+                "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\libraries\\SPI\\src"
+            ]
+        },
+        {
+            "Name": "CommunicationUtils.h",
+            "LibraryDirectories": [
+                "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\FreeSixIMU-master"
+            ]
+        },
+        {
+            "Name": "FlexiTimer2.h",
+            "LibraryDirectories": [
+                "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\flexitimer2-master",
+                "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\wimleers-flexitimer2-7338cfb"
+            ]
+        },
+        {
+            "Name": "SoftwareSerial.h",
+            "LibraryDirectories": [
+                "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\libraries\\SoftwareSerial\\src"
+            ]
+        },
+        {
+            "Name": "FIMU_ADXL345.h",
+            "LibraryDirectories": [
+                "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\FreeSixIMU-master"
+            ]
+        },
+        {
+            "Name": "DFRobot_BMP280.h",
+            "LibraryDirectories": [
+                "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\DFRobot_BMP280-master"
+            ]
+        },
+        {
+            "Name": "DFRobot_QMC5883.h",
+            "LibraryDirectories": [
+                "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\DFRobot_QMC5883-master"
+            ]
+        },
+        {
+            "Name": "FreeSixIMU.h",
+            "LibraryDirectories": [
+                "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\FreeSixIMU-master"
+            ]
+        },
+        {
+            "Name": "HID.h",
+            "LibraryDirectories": [
+                "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\libraries\\HID\\src"
+            ]
+        },
+        {
+            "Name": "Wire.h",
+            "LibraryDirectories": [
+                "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\libraries\\Wire\\src"
+            ]
+        },
+        {
+            "Name": "DebugUtils.h",
+            "LibraryDirectories": [
+                "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\FreeSixIMU-master"
+            ]
+        },
+        {
+            "Name": "FIMU_ITG3200.h",
+            "LibraryDirectories": [
+                "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\FreeSixIMU-master"
+            ]
+        },
+        {
+            "Name": "Servo.h",
+            "LibraryDirectories": [
+                "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\Servo\\src"
+            ]
+        }
+    ],
+    "Prototypes": [
+        {
+            "FunctionName": "setup",
+            "File": "D:\\Emb\\Emb\\Claw\\Claw\\sketches\\Claw.ino",
+            "Prototype": "void setup();",
+            "Modifiers": "",
+            "Line": 34
+        },
+        {
+            "FunctionName": "loop",
+            "File": "D:\\Emb\\Emb\\Claw\\Claw\\sketches\\Claw.ino",
+            "Prototype": "void loop();",
+            "Modifiers": "",
+            "Line": 50
+        }
+    ],
+    "KnownLibraries": [
+        {
+            "Folder": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\libraries\\EEPROM",
+            "SrcFolder": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\libraries\\EEPROM\\src",
+            "UtilityFolder": "",
+            "Layout": 2,
+            "Name": "EEPROM",
+            "RealName": "EEPROM",
+            "IsLegacy": false,
+            "Version": "2.0",
+            "Author": "Arduino, Christopher Andrews",
+            "Maintainer": "Arduino \u003cinfo@arduino.cc\u003e",
+            "Sentence": "Enables reading and writing to the permanent board storage.",
+            "Paragraph": "This library allows to read and write data in a memory type, the EEPROM, that keeps its content also when the board is powered off. The amount of EEPROM available depends on the microcontroller type.",
+            "URL": "http://www.arduino.cc/en/Reference/EEPROM",
+            "Category": "Data Storage",
+            "License": "Unspecified"
+        },
+        {
+            "Folder": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\libraries\\SPI",
+            "SrcFolder": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\libraries\\SPI\\src",
+            "UtilityFolder": "",
+            "Layout": 2,
+            "Name": "SPI",
+            "RealName": "SPI",
+            "IsLegacy": false,
+            "Version": "1.0",
+            "Author": "Arduino",
+            "Maintainer": "Arduino \u003cinfo@arduino.cc\u003e",
+            "Sentence": "Enables the communication with devices that use the Serial Peripheral Interface (SPI) Bus.",
+            "Paragraph": "SPI is a synchronous serial data protocol used by microcontrollers for communicating with one or more peripheral devices quickly over short distances. It uses three lines common to all devices (MISO, MOSI and SCK) and one specific for each device.",
+            "URL": "http://www.arduino.cc/en/Reference/SPI",
+            "Category": "Communication",
+            "License": "Unspecified"
+        },
+        {
+            "Folder": "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\DFRobot_BMP280-master",
+            "SrcFolder": "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\DFRobot_BMP280-master",
+            "UtilityFolder": "",
+            "Layout": 1,
+            "Name": "DFRobot_BMP280-master",
+            "RealName": "",
+            "IsLegacy": true,
+            "Version": "",
+            "Author": "",
+            "Maintainer": "",
+            "Sentence": "",
+            "Paragraph": "",
+            "URL": "",
+            "Category": "",
+            "License": ""
+        },
+        {
+            "Folder": "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\DFRobot_QMC5883-master",
+            "SrcFolder": "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\DFRobot_QMC5883-master",
+            "UtilityFolder": "",
+            "Layout": 1,
+            "Name": "DFRobot_QMC5883-master",
+            "RealName": "",
+            "IsLegacy": true,
+            "Version": "",
+            "Author": "",
+            "Maintainer": "",
+            "Sentence": "",
+            "Paragraph": "",
+            "URL": "",
+            "Category": "",
+            "License": ""
+        },
+        {
+            "Folder": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\libraries\\Wire",
+            "SrcFolder": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\libraries\\Wire\\src",
+            "UtilityFolder": "",
+            "Layout": 2,
+            "Name": "Wire",
+            "RealName": "Wire",
+            "IsLegacy": false,
+            "Version": "1.0",
+            "Author": "Arduino",
+            "Maintainer": "Arduino \u003cinfo@arduino.cc\u003e",
+            "Sentence": "This library allows you to communicate with I2C and Two Wire Interface devices.",
+            "Paragraph": "It allows the communication with I2C devices like temperature sensors, realtime clocks and many others using SDA (Data Line) and SCL (Clock Line).",
+            "URL": "http://www.arduino.cc/en/Reference/Wire",
+            "Category": "Communication",
+            "License": "Unspecified"
+        },
+        {
+            "Folder": "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\Servo",
+            "SrcFolder": "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\Servo\\src",
+            "UtilityFolder": "",
+            "Layout": 2,
+            "Name": "Servo",
+            "RealName": "Servo",
+            "IsLegacy": false,
+            "Version": "1.1.5",
+            "Author": "Michael Margolis, Arduino",
+            "Maintainer": "Arduino \u003cinfo@arduino.cc\u003e",
+            "Sentence": "Allows Arduino/Genuino boards to control a variety of servo motors.",
+            "Paragraph": "This library can control a great number of servos.\u003cbr /\u003eIt makes careful use of timers: the library can control 12 servos using only 1 timer.\u003cbr /\u003eOn the Arduino Due you can control up to 60 servos.\u003cbr /\u003e",
+            "URL": "http://www.arduino.cc/en/Reference/Servo",
+            "Category": "Device Control",
+            "License": "Unspecified"
+        },
+        {
+            "Folder": "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\FreeSixIMU-master",
+            "SrcFolder": "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\FreeSixIMU-master",
+            "UtilityFolder": "",
+            "Layout": 1,
+            "Name": "FreeSixIMU-master",
+            "RealName": "",
+            "IsLegacy": true,
+            "Version": "",
+            "Author": "",
+            "Maintainer": "",
+            "Sentence": "",
+            "Paragraph": "",
+            "URL": "",
+            "Category": "",
+            "License": ""
+        },
+        {
+            "Folder": "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\flexitimer2-master",
+            "SrcFolder": "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\flexitimer2-master",
+            "UtilityFolder": "",
+            "Layout": 1,
+            "Name": "flexitimer2-master",
+            "RealName": "",
+            "IsLegacy": true,
+            "Version": "",
+            "Author": "",
+            "Maintainer": "",
+            "Sentence": "",
+            "Paragraph": "",
+            "URL": "",
+            "Category": "",
+            "License": ""
+        },
+        {
+            "Folder": "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\wimleers-flexitimer2-7338cfb",
+            "SrcFolder": "C:\\Users\\zyn77\\Documents\\Arduino\\Libraries\\wimleers-flexitimer2-7338cfb",
+            "UtilityFolder": "",
+            "Layout": 1,
+            "Name": "wimleers-flexitimer2-7338cfb",
+            "RealName": "",
+            "IsLegacy": true,
+            "Version": "",
+            "Author": "",
+            "Maintainer": "",
+            "Sentence": "",
+            "Paragraph": "",
+            "URL": "",
+            "Category": "",
+            "License": ""
+        },
+        {
+            "Folder": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\libraries\\SoftwareSerial",
+            "SrcFolder": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\libraries\\SoftwareSerial\\src",
+            "UtilityFolder": "",
+            "Layout": 2,
+            "Name": "SoftwareSerial",
+            "RealName": "SoftwareSerial",
+            "IsLegacy": false,
+            "Version": "1.0",
+            "Author": "Arduino",
+            "Maintainer": "Arduino \u003cinfo@arduino.cc\u003e",
+            "Sentence": "Enables serial communication on any digital pin.",
+            "Paragraph": "The SoftwareSerial library has been developed to allow serial communication on any digital pin of the board, using software to replicate the functionality of the hardware UART. It is possible to have multiple software serial ports with speeds up to 115200 bps.",
+            "URL": "http://www.arduino.cc/en/Reference/SoftwareSerial",
+            "Category": "Communication",
+            "License": "Unspecified"
+        },
+        {
+            "Folder": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\libraries\\HID",
+            "SrcFolder": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\libraries\\HID\\src",
+            "UtilityFolder": "",
+            "Layout": 2,
+            "Name": "HID",
+            "RealName": "HID",
+            "IsLegacy": false,
+            "Version": "1.0",
+            "Author": "Arduino",
+            "Maintainer": "Arduino \u003cinfo@arduino.cc\u003e",
+            "Sentence": "Module for PluggableUSB infrastructure. Exposes an API for devices like Keyboards, Mice and Gamepads.",
+            "Paragraph": "-",
+            "URL": "http://www.arduino.cc/en/Reference/HID",
+            "Category": "Communication",
+            "License": "Unspecified"
+        }
+    ],
+    "LinkerCommandLine": "\"C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2/bin/avr-gcc\" -w -Os -g -flto -fuse-linker-plugin -Wl,--gc-sections -mmcu=atmega2560  -o \"D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug/Claw.ino.elf\" {object_files} \"D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug/{archive_file}\" \"-LD:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug\" -lm",
+    "BuildProperties": [
+        {
+            "Key": "bootloader.extended_fuses",
+            "Value": "0xFD"
+        },
+        {
+            "Key": "recipe.cpp.o.pattern",
+            "Value": "\"{compiler.path}{compiler.cpp.cmd}\" {compiler.cpp.flags} -mmcu={build.mcu} -DF_CPU={build.f_cpu} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} {compiler.cpp.extra_flags} {build.extra_flags} {includes} \"{source_file}\" -o \"{object_file}\""
+        },
+        {
+            "Key": "menu.cpu.atmega1280.bootloader.file",
+            "Value": "atmega/ATmegaBOOT_168_atmega1280.hex"
+        },
+        {
+            "Key": "pid.1",
+            "Value": "0x0042"
+        },
+        {
+            "Key": "compiler.S.extra_flags",
+            "Value": ""
+        },
+        {
+            "Key": "build.path",
+            "Value": "D:\\Emb\\Emb\\Claw\\Claw\\Output\\Arduino_Genuino_Mega_or_Mega_2560\\Debug"
+        },
+        {
+            "Key": "menu.cpu.atmega1280.bootloader.high_fuses",
+            "Value": "0xDA"
+        },
+        {
+            "Key": "compiler.c.elf.cmd",
+            "Value": "avr-gcc"
+        },
+        {
+            "Key": "menu.cpu.atmega2560.upload.maximum_size",
+            "Value": "253952"
+        },
+        {
+            "Key": "compiler.elf2hex.extra_flags",
+            "Value": ""
+        },
+        {
+            "Key": "recipe.output.tmp_file",
+            "Value": "{build.project_name}.hex"
+        },
+        {
+            "Key": "compiler.c.elf.extra_flags",
+            "Value": ""
+        },
+        {
+            "Key": "build.system.path",
+            "Value": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\system"
+        },
+        {
+            "Key": "_id",
+            "Value": "mega"
+        },
+        {
+            "Key": "name",
+            "Value": "Arduino/Genuino Mega or Mega 2560"
+        },
+        {
+            "Key": "pid.4",
+            "Value": "0x0210"
+        },
+        {
+            "Key": "build.core",
+            "Value": "arduino"
+        },
+        {
+            "Key": "preproc.macros.flags",
+            "Value": "-w -x c++ -E -CC"
+        },
+        {
+            "Key": "build.arch",
+            "Value": "AVR"
+        },
+        {
+            "Key": "recipe.output.save_file",
+            "Value": "{build.project_name}.{build.variant}.hex"
+        },
+        {
+            "Key": "compiler.elf2hex.flags",
+            "Value": "-O ihex -R .eeprom"
+        },
+        {
+            "Key": "tools.avrdude.bootloader.params.verbose",
+            "Value": "-v"
+        },
+        {
+            "Key": "compiler.cpp.extra_flags",
+            "Value": ""
+        },
+        {
+            "Key": "vid.0",
+            "Value": "0x2341"
+        },
+        {
+            "Key": "vid.3",
+            "Value": "0x2A03"
+        },
+        {
+            "Key": "software",
+            "Value": "ARDUINO"
+        },
+        {
+            "Key": "menu.cpu.atmega2560",
+            "Value": "ATmega2560 (Mega 2560)"
+        },
+        {
+            "Key": "tools.avrdude.erase.pattern",
+            "Value": "\"{cmd.path}\" \"-C{config.path}\" {erase.verbose} -p{build.mcu} -c{protocol} {program.extra_params} -e -Ulock:w:{bootloader.unlock_bits}:m -Uefuse:w:{bootloader.extended_fuses}:m -Uhfuse:w:{bootloader.high_fuses}:m -Ulfuse:w:{bootloader.low_fuses}:m"
+        },
+        {
+            "Key": "compiler.ar.cmd",
+            "Value": "avr-gcc-ar"
+        },
+        {
+            "Key": "compiler.warning_flags.default",
+            "Value": ""
+        },
+        {
+            "Key": "vid.4",
+            "Value": "0x2341"
+        },
+        {
+            "Key": "compiler.size.cmd",
+            "Value": "avr-size"
+        },
+        {
+            "Key": "compiler.c.flags",
+            "Value": "-c -g -Os {compiler.warning_flags} -std=gnu11 -ffunction-sections -fdata-sections -MMD -flto -fno-fat-lto-objects"
+        },
+        {
+            "Key": "tools.avrdude.path",
+            "Value": "{runtime.tools.avrdude.path}"
+        },
+        {
+            "Key": "menu.cpu.atmega1280.build.mcu",
+            "Value": "atmega1280"
+        },
+        {
+            "Key": "tools.avrdude.network_cmd",
+            "Value": "{runtime.tools.arduinoOTA.path}/bin/arduinoOTA"
+        },
+        {
+            "Key": "compiler.cpp.cmd",
+            "Value": "avr-g++"
+        },
+        {
+            "Key": "extra.time.utc",
+            "Value": "1567766180"
+        },
+        {
+            "Key": "menu.cpu.atmega1280.upload.maximum_size",
+            "Value": "126976"
+        },
+        {
+            "Key": "compiler.S.flags",
+            "Value": "-c -g -x assembler-with-cpp -flto -MMD"
+        },
+        {
+            "Key": "tools.avrdude.erase.params.verbose",
+            "Value": "-v"
+        },
+        {
+            "Key": "menu.cpu.atmega2560.bootloader.high_fuses",
+            "Value": "0xD8"
+        },
+        {
+            "Key": "pid.3",
+            "Value": "0x0042"
+        },
+        {
+            "Key": "vid.1",
+            "Value": "0x2341"
+        },
+        {
+            "Key": "preproc.includes.flags",
+            "Value": "-w -x c++ -M -MG -MP"
+        },
+        {
+            "Key": "recipe.preproc.includes",
+            "Value": "\"{compiler.path}{compiler.cpp.cmd}\" {compiler.cpp.flags} {preproc.includes.flags} -mmcu={build.mcu} -DF_CPU={build.f_cpu} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} {compiler.cpp.extra_flags} {build.extra_flags} {includes} \"{source_file}\""
+        },
+        {
+            "Key": "tools.avrdude.upload.params.noverify",
+            "Value": "-V"
+        },
+        {
+            "Key": "extra.time.local",
+            "Value": "1567794980"
+        },
+        {
+            "Key": "tools.avrdude.bootloader.params.quiet",
+            "Value": "-q -q"
+        },
+        {
+            "Key": "ide_version",
+            "Value": "10600"
+        },
+        {
+            "Key": "build.usb_manufacturer",
+            "Value": "\"Unknown\""
+        },
+        {
+            "Key": "menu.cpu.atmega1280.upload.speed",
+            "Value": "57600"
+        },
+        {
+            "Key": "build.mcu",
+            "Value": "atmega2560"
+        },
+        {
+            "Key": "menu.cpu.atmega1280.build.board",
+            "Value": "AVR_MEGA"
+        },
+        {
+            "Key": "build.variant.path",
+            "Value": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\variants\\mega"
+        },
+        {
+            "Key": "build.source.path",
+            "Value": "D:\\Emb\\Emb\\Claw\\Claw\\sketches"
+        },
+        {
+            "Key": "bootloader.high_fuses",
+            "Value": "0xD8"
+        },
+        {
+            "Key": "recipe.size.regex",
+            "Value": "^(?:\\.text|\\.data|\\.bootloader)\\s+([0-9]+).*"
+        },
+        {
+            "Key": "vid.2",
+            "Value": "0x2A03"
+        },
+        {
+            "Key": "upload.maximum_data_size",
+            "Value": "8192"
+        },
+        {
+            "Key": "compiler.objcopy.cmd",
+            "Value": "avr-objcopy"
+        },
+        {
+            "Key": "tools.avrdude.program.pattern",
+            "Value": "\"{cmd.path}\" \"-C{config.path}\" {program.verbose} {program.verify} -p{build.mcu} -c{protocol} {program.extra_params} \"-Uflash:w:{build.path}/{build.project_name}.hex:i\""
+        },
+        {
+            "Key": "menu.cpu.atmega2560.build.mcu",
+            "Value": "atmega2560"
+        },
+        {
+            "Key": "runtime.tools.avr-gcc.path",
+            "Value": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2"
+        },
+        {
+            "Key": "tools.avrdude.upload.params.quiet",
+            "Value": "-q -q"
+        },
+        {
+            "Key": "menu.cpu.atmega2560.bootloader.file",
+            "Value": "stk500v2/stk500boot_v2_mega2560.hex"
+        },
+        {
+            "Key": "runtime.tools.arduinoOTA-1.2.1.path",
+            "Value": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\arduinoOTA\\1.2.1"
+        },
+        {
+            "Key": "menu.cpu.atmega1280.bootloader.extended_fuses",
+            "Value": "0xF5"
+        },
+        {
+            "Key": "tools.avrdude.cmd.path",
+            "Value": "{path}/bin/avrdude"
+        },
+        {
+            "Key": "tools.ctags.pattern",
+            "Value": "\"{cmd.path}\" -u --language-force=c++ -f - --c++-kinds=svpf --fields=KSTtzns --line-directives \"{source_file}\""
+        },
+        {
+            "Key": "tools.avrdude.upload.network_pattern",
+            "Value": "\"{network_cmd}\" -address {serial.port} -port {upload.network.port} -sketch \"{build.path}/{build.project_name}.hex\" -upload {upload.network.endpoint_upload} -sync {upload.network.endpoint_sync} -reset {upload.network.endpoint_reset} -sync_exp {upload.network.sync_return}"
+        },
+        {
+            "Key": "compiler.path",
+            "Value": "{runtime.tools.avr-gcc.path}/bin/"
+        },
+        {
+            "Key": "extra.time.dst",
+            "Value": "0"
+        },
+        {
+            "Key": "recipe.objcopy.hex.pattern",
+            "Value": "\"{compiler.path}{compiler.elf2hex.cmd}\" {compiler.elf2hex.flags} {compiler.elf2hex.extra_flags} \"{build.path}/{build.project_name}.elf\" \"{build.path}/{build.project_name}.hex\""
+        },
+        {
+            "Key": "compiler.c.elf.flags",
+            "Value": "{compiler.warning_flags} -Os -g -flto -fuse-linker-plugin -Wl,--gc-sections"
+        },
+        {
+            "Key": "recipe.S.o.pattern",
+            "Value": "\"{compiler.path}{compiler.c.cmd}\" {compiler.S.flags} -mmcu={build.mcu} -DF_CPU={build.f_cpu} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} {compiler.S.extra_flags} {build.extra_flags} {includes} \"{source_file}\" -o \"{object_file}\""
+        },
+        {
+            "Key": "tools.ctags.path",
+            "Value": "{runtime.tools.ctags.path}"
+        },
+        {
+            "Key": "runtime.hardware.path",
+            "Value": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr"
+        },
+        {
+            "Key": "pid.0",
+            "Value": "0x0010"
+        },
+        {
+            "Key": "recipe.size.regex.eeprom",
+            "Value": "^(?:\\.eeprom)\\s+([0-9]+).*"
+        },
+        {
+            "Key": "build.variant",
+            "Value": "mega"
+        },
+        {
+            "Key": "runtime.tools.ctags-5.8-arduino11.path",
+            "Value": "C:\\Program Files (x86)\\Sysprogs\\VisualGDB\\Arduino\\tools-builder\\ctags\\5.8-arduino11"
+        },
+        {
+            "Key": "tools.avrdude.program.verify",
+            "Value": ""
+        },
+        {
+            "Key": "compiler.objcopy.eep.extra_flags",
+            "Value": ""
+        },
+        {
+            "Key": "build.core.path",
+            "Value": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino"
+        },
+        {
+            "Key": "tools.avrdude.bootloader.pattern",
+            "Value": "\"{cmd.path}\" \"-C{config.path}\" {bootloader.verbose} -p{build.mcu} -c{protocol} {program.extra_params} \"-Uflash:w:{runtime.platform.path}/bootloaders/{bootloader.file}:i\" -Ulock:w:{bootloader.lock_bits}:m"
+        },
+        {
+            "Key": "upload.protocol",
+            "Value": "wiring"
+        },
+        {
+            "Key": "vid.5",
+            "Value": "0x2341"
+        },
+        {
+            "Key": "compiler.warning_flags.none",
+            "Value": "-w"
+        },
+        {
+            "Key": "tools.avrdude.upload.params.verbose",
+            "Value": "-v"
+        },
+        {
+            "Key": "runtime.tools.avrdude-6.3.0-arduino14.path",
+            "Value": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avrdude\\6.3.0-arduino14"
+        },
+        {
+            "Key": "archive_file_path",
+            "Value": "{build.path}/{archive_file}"
+        },
+        {
+            "Key": "compiler.warning_flags.all",
+            "Value": "-Wall -Wextra"
+        },
+        {
+            "Key": "compiler.c.extra_flags",
+            "Value": ""
+        },
+        {
+            "Key": "runtime.ide.version",
+            "Value": "10600"
+        },
+        {
+            "Key": "bootloader.unlock_bits",
+            "Value": "0x3F"
+        },
+        {
+            "Key": "build.extra_flags",
+            "Value": ""
+        },
+        {
+            "Key": "recipe.objcopy.eep.pattern",
+            "Value": "\"{compiler.path}{compiler.objcopy.cmd}\" {compiler.objcopy.eep.flags} {compiler.objcopy.eep.extra_flags} \"{build.path}/{build.project_name}.elf\" \"{build.path}/{build.project_name}.eep\""
+        },
+        {
+            "Key": "tools.avrdude.program.params.verbose",
+            "Value": "-v"
+        },
+        {
+            "Key": "compiler.warning_flags",
+            "Value": "-w"
+        },
+        {
+            "Key": "recipe.c.combine.pattern",
+            "Value": "\"{compiler.path}{compiler.c.elf.cmd}\" {compiler.c.elf.flags} -mmcu={build.mcu} {compiler.c.elf.extra_flags} -o \"{build.path}/{build.project_name}.elf\" {object_files} \"{build.path}/{archive_file}\" \"-L{build.path}\" -lm"
+        },
+        {
+            "Key": "recipe.size.regex.data",
+            "Value": "^(?:\\.data|\\.bss|\\.noinit)\\s+([0-9]+).*"
+        },
+        {
+            "Key": "tools.avrdude.upload.pattern",
+            "Value": "\"{cmd.path}\" \"-C{config.path}\" {upload.verbose} {upload.verify} -p{build.mcu} -c{upload.protocol} \"-P{serial.port}\" -b{upload.speed} -D \"-Uflash:w:{build.path}/{build.project_name}.hex:i\""
+        },
+        {
+            "Key": "tools.avrdude.program.params.quiet",
+            "Value": "-q -q"
+        },
+        {
+            "Key": "compiler.ar.extra_flags",
+            "Value": ""
+        },
+        {
+            "Key": "runtime.tools.avrdude.path",
+            "Value": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avrdude\\6.3.0-arduino14"
+        },
+        {
+            "Key": "menu.cpu.atmega1280.upload.protocol",
+            "Value": "arduino"
+        },
+        {
+            "Key": "runtime.ide.path",
+            "Value": "C:\\Program Files (x86)\\Sysprogs\\VisualGDB\\Arduino"
+        },
+        {
+            "Key": "compiler.elf2hex.cmd",
+            "Value": "avr-objcopy"
+        },
+        {
+            "Key": "pid.2",
+            "Value": "0x0010"
+        },
+        {
+            "Key": "recipe.c.o.pattern",
+            "Value": "\"{compiler.path}{compiler.c.cmd}\" {compiler.c.flags} -mmcu={build.mcu} -DF_CPU={build.f_cpu} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} {compiler.c.extra_flags} {build.extra_flags} {includes} \"{source_file}\" -o \"{object_file}\""
+        },
+        {
+            "Key": "bootloader.low_fuses",
+            "Value": "0xFF"
+        },
+        {
+            "Key": "menu.cpu.atmega2560.build.board",
+            "Value": "AVR_MEGA2560"
+        },
+        {
+            "Key": "build.board",
+            "Value": "AVR_MEGA2560"
+        },
+        {
+            "Key": "compiler.cpp.flags",
+            "Value": "-c -g -Os {compiler.warning_flags} -std=gnu++11 -fpermissive -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -Wno-error=narrowing -MMD -flto"
+        },
+        {
+            "Key": "menu.cpu.atmega2560.upload.speed",
+            "Value": "115200"
+        },
+        {
+            "Key": "upload.tool",
+            "Value": "avrdude"
+        },
+        {
+            "Key": "runtime.tools.avr-gcc-5.4.0-atmel3.6.1-arduino2.path",
+            "Value": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\avr-gcc\\5.4.0-atmel3.6.1-arduino2"
+        },
+        {
+            "Key": "bootloader.file",
+            "Value": "stk500v2/stk500boot_v2_mega2560.hex"
+        },
+        {
+            "Key": "tools.avrdude.upload.verify",
+            "Value": ""
+        },
+        {
+            "Key": "tools.avrdude.erase.params.quiet",
+            "Value": "-q -q"
+        },
+        {
+            "Key": "tools.avrdude_remote.upload.pattern",
+            "Value": "/usr/bin/run-avrdude /tmp/sketch.hex {upload.verbose} -p{build.mcu}"
+        },
+        {
+            "Key": "compiler.c.cmd",
+            "Value": "avr-gcc"
+        },
+        {
+            "Key": "tools.avrdude.config.path",
+            "Value": "{path}/etc/avrdude.conf"
+        },
+        {
+            "Key": "recipe.ar.pattern",
+            "Value": "\"{compiler.path}{compiler.ar.cmd}\" {compiler.ar.flags} {compiler.ar.extra_flags} \"{archive_file_path}\" \"{object_file}\""
+        },
+        {
+            "Key": "extra.time.zone",
+            "Value": "28800"
+        },
+        {
+            "Key": "tools.ctags.cmd.path",
+            "Value": "{path}/ctags"
+        },
+        {
+            "Key": "upload.speed",
+            "Value": "115200"
+        },
+        {
+            "Key": "bootloader.tool",
+            "Value": "avrdude"
+        },
+        {
+            "Key": "version",
+            "Value": "1.6.23"
+        },
+        {
+            "Key": "upload.maximum_size",
+            "Value": "253952"
+        },
+        {
+            "Key": "compiler.objcopy.eep.flags",
+            "Value": "-O ihex -j .eeprom --set-section-flags=.eeprom=alloc,load --no-change-warnings --change-section-lma .eeprom=0"
+        },
+        {
+            "Key": "pid.5",
+            "Value": "0x0242"
+        },
+        {
+            "Key": "runtime.platform.path",
+            "Value": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\hardware\\avr\\1.6.23"
+        },
+        {
+            "Key": "bootloader.lock_bits",
+            "Value": "0x0F"
+        },
+        {
+            "Key": "compiler.ar.flags",
+            "Value": "rcs"
+        },
+        {
+            "Key": "recipe.size.pattern",
+            "Value": "\"{compiler.path}{compiler.size.cmd}\" -A \"{build.path}/{build.project_name}.elf\""
+        },
+        {
+            "Key": "compiler.warning_flags.more",
+            "Value": "-Wall"
+        },
+        {
+            "Key": "build.project_name",
+            "Value": "Claw.ino"
+        },
+        {
+            "Key": "build.fqbn",
+            "Value": "arduino:avr:mega:cpu=atmega2560"
+        },
+        {
+            "Key": "menu.cpu.atmega2560.upload.protocol",
+            "Value": "wiring"
+        },
+        {
+            "Key": "menu.cpu.atmega2560.bootloader.extended_fuses",
+            "Value": "0xFD"
+        },
+        {
+            "Key": "menu.cpu.atmega1280",
+            "Value": "ATmega1280"
+        },
+        {
+            "Key": "runtime.tools.ctags.path",
+            "Value": "C:\\Program Files (x86)\\Sysprogs\\VisualGDB\\Arduino\\tools-builder\\ctags\\5.8-arduino11"
+        },
+        {
+            "Key": "build.f_cpu",
+            "Value": "16000000L"
+        },
+        {
+            "Key": "compiler.ldflags",
+            "Value": ""
+        },
+        {
+            "Key": "build.usb_flags",
+            "Value": "-DUSB_VID={build.vid} -DUSB_PID={build.pid} '-DUSB_MANUFACTURER={build.usb_manufacturer}' '-DUSB_PRODUCT={build.usb_product}'"
+        },
+        {
+            "Key": "runtime.tools.arduinoOTA.path",
+            "Value": "C:\\Users\\zyn77\\Documents\\ArduinoData\\packages\\arduino\\tools\\arduinoOTA\\1.2.1"
+        },
+        {
+            "Key": "tools.avrdude.program.params.noverify",
+            "Value": "-V"
+        },
+        {
+            "Key": "runtime.os",
+            "Value": "windows"
+        },
+        {
+            "Key": "recipe.preproc.macros",
+            "Value": "\"{compiler.path}{compiler.cpp.cmd}\" {compiler.cpp.flags} {preproc.macros.flags} -mmcu={build.mcu} -DF_CPU={build.f_cpu} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} {compiler.cpp.extra_flags} {build.extra_flags} {includes} \"{source_file}\" -o \"{preprocessed_file_path}\""
+        }
+    ]
+}
