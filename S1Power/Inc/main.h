@@ -61,7 +61,11 @@ void Error_Handler(void);
 
 /* Private defines -----------------------------------------------------------*/
 /* USER CODE BEGIN Private defines */
-
+#define u8 unsigned char
+#define u16 unsigned int
+#define vu8 volatile unsigned char
+#define vu16 volatile unsigned int
+	
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

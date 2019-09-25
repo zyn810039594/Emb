@@ -61,7 +61,11 @@ extern DMA_HandleTypeDef hdma_usart2_rx;
 extern DMA_HandleTypeDef hdma_usart2_tx;
 extern UART_HandleTypeDef huart2;
 /* USER CODE BEGIN EV */
-
+extern vu8 UART2RX_Len;
+extern vu8 UART2RX_Finish;
+extern u8 UART2RX_Cache[70];
+extern char UART2RX_CacheSize;
+extern u8* UART2RX_Position;
 /* USER CODE END EV */
 
 /******************************************************************************/
@@ -248,7 +252,34 @@ void DMA1_Channel7_IRQHandler(void)
 void USART2_IRQHandler(void)
 {
   /* USER CODE BEGIN USART2_IRQn 0 */
-
+	uint32_t tmp_flag = 0;
+	uint32_t temp;
+	tmp_flag = __HAL_UART_GET_FLAG(&huart2, UART_FLAG_IDLE);
+	if((tmp_flag != RESET))
+	{ 
+		__HAL_UART_CLEAR_IDLEFLAG(&huart2); 
+		temp = huart2.Instance->SR; 
+		temp = huart2.Instance->DR; 
+		HAL_UART_DMAStop(&huart2); 
+		temp  = hdma_usart2_rx.Instance->CNDTR; 
+		UART2RX_Len =  UART2RX_CacheSize - temp; 
+		if (UART2RX_Len >= UART2RX_CacheSize)
+		{
+			if ((UART2RX_Cache[(UART2RX_Len - 1)] == '%')&&(UART2RX_Cache[UART2RX_Len - UART2RX_CacheSize] == '$'))
+			{
+				UART2RX_Finish = 1; 
+				UART2RX_Position = &UART2RX_Cache[UART2RX_Len - UART2RX_CacheSize];
+			}
+			else
+			{
+				HAL_UART_Receive_DMA(&huart2, UART2RX_Cache, UART2RX_CacheSize);
+			}
+		}
+		else
+		{
+			HAL_UART_Receive_DMA(&huart2, UART2RX_Cache, UART2RX_CacheSize);
+		}
+	}
   /* USER CODE END USART2_IRQn 0 */
   HAL_UART_IRQHandler(&huart2);
   /* USER CODE BEGIN USART2_IRQn 1 */

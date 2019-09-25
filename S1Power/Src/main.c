@@ -55,7 +55,19 @@ DMA_HandleTypeDef hdma_usart2_rx;
 DMA_HandleTypeDef hdma_usart2_tx;
 
 /* USER CODE BEGIN PV */
-
+vu8 UART2RX_Len = 0;
+vu8 UART2RX_Finish = 0;
+u8 UART2RX_Cache[70];
+char UART2RX_CacheSize = 70;
+u8 ModeFlag = 0;
+u8 AFlag, BFlag, CFlag, DFlag;
+int XPoint, YPoint, ZPoint;
+u8 Mode = 0;
+float ModeCoefficient = 1;
+u8* UART2RX_Position = NULL;
+u8 UART2TX_Send[5] = "$0:0%";
+u8 UART2TX_Size = 5;
+volatile uint32_t ADCCache[4];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -111,17 +123,198 @@ int main(void)
   MX_USART2_UART_Init();
   MX_IWDG_Init();
   /* USER CODE BEGIN 2 */
-
+	HAL_IWDG_Refresh(&hiwdg);
+	HAL_ADCEx_Calibration_Start(&hadc1);
+	HAL_ADC_Start_DMA(&hadc1, ADCCache, 4); 
+	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
+	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
+	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
+	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_4);
+	HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while (1)
-  {
+	while (1)
+	{
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-  }
+		HAL_IWDG_Refresh(&hiwdg);
+		if (UART2RX_Finish == 1)
+		{
+			UART2RX_Finish = 0;
+			ModeFlag = (UART2RX_Position[1] - '0');
+			XPoint = (UART2RX_Position[3] - '0') * 100 + (UART2RX_Position[4] - '0') * 10 + (UART2RX_Position[5] - '0');
+			YPoint = (UART2RX_Position[7] - '0') * 100 + (UART2RX_Position[8] - '0') * 10 + (UART2RX_Position[9] - '0');
+			ZPoint = (UART2RX_Position[11] - '0') * 100 + (UART2RX_Position[12] - '0') * 10 + (UART2RX_Position[13] - '0');
+			AFlag = (XPoint > YPoint);
+			BFlag = ((XPoint + YPoint) > 200);
+			CFlag = (XPoint > 100);
+			DFlag = (YPoint > 100);
+			switch (ModeFlag)
+			{
+			case 0:
+				ModeCoefficient = 0.8;
+				if (BFlag == 1)
+				{
+					if (CFlag == 0)
+					{
+						Mode = 3;
+					}
+					else if (DFlag == 0)
+					{
+						Mode = 4;
+					}
+					else
+					{
+						if (AFlag == 1)
+						{
+							Mode = 1;
+						}
+						else
+						{
+							Mode = 2;
+						}
+					}
+				}
+				else
+				{
+					if (CFlag == 1)
+					{
+						Mode = 3;
+					}
+					else if (DFlag == 1)
+					{
+						Mode = 4;
+					}
+					else
+					{
+						if (AFlag == 0)
+						{
+							Mode = 1;
+						}
+						else
+						{
+							Mode = 2;
+						}
+					}
+				}
+				break;
+			case 1:
+				ModeCoefficient = 0.8;
+				Mode = 5;
+				break;
+			case 2:
+				ModeCoefficient = 1;
+				if (BFlag == 1)
+				{
+					if (CFlag == 0)
+					{
+						Mode = 3;
+					}
+					else if (DFlag == 0)
+					{
+						Mode = 4;
+					}
+					else
+					{
+						if (AFlag == 1)
+						{
+							Mode = 1;
+						}
+						else
+						{
+							Mode = 2;
+						}
+					}
+				}
+				else
+				{
+					if (CFlag == 1)
+					{
+						Mode = 3;
+					}
+					else if (DFlag == 1)
+					{
+						Mode = 4;
+					}
+					else
+					{
+						if (AFlag == 0)
+						{
+							Mode = 1;
+						}
+						else
+						{
+							Mode = 2;
+						}
+					}
+				}
+				break;
+			case 3:
+				ModeCoefficient = 1;
+				Mode = 5;
+				break;
+			}
+			XPoint = (int)((XPoint - 100) * ModeCoefficient)*20+500;
+			YPoint = (int)((YPoint - 100) * ModeCoefficient)*20+500;
+			ZPoint = (ZPoint - 100) * 20 + 500;
+			switch (Mode)
+			{
+			case 1:
+				TIM1->CCR1 = XPoint;
+				TIM1->CCR2 = XPoint;
+				TIM1->CCR3 = (100 - XPoint + YPoint);
+				TIM1->CCR4 = (100 - XPoint + YPoint);
+				break;
+			case 2:
+				TIM1->CCR1 = YPoint;
+				TIM1->CCR2 = YPoint;
+				TIM1->CCR3 = (100 - XPoint + YPoint);
+				TIM1->CCR4 = (100 - XPoint + YPoint);
+				break;
+			case 3:
+				TIM1->CCR1 = (XPoint + YPoint - 100);
+				TIM1->CCR2 = (XPoint + YPoint - 100);
+				TIM1->CCR3 = YPoint;
+				TIM1->CCR4 = YPoint;
+				break;
+			case 4:
+				TIM1->CCR1 = (XPoint + YPoint - 100);
+				TIM1->CCR2 = (XPoint + YPoint - 100);
+				TIM1->CCR3 = (200 - XPoint);
+				TIM1->CCR4 = (200 - XPoint);
+				break;
+			case 5:
+				TIM1->CCR1 = XPoint;
+				TIM1->CCR2 = (200 - XPoint);
+				TIM1->CCR3 = (200 - XPoint);
+				TIM1->CCR4 = XPoint;
+				break;
+			}			
+			TIM2->CCR1 = ZPoint;
+			if ((3.3 / 4096*ADCCache[2]) > 2)
+			{
+				UART2TX_Send[1] = '1';
+			}
+			else
+			{
+				UART2TX_Send[1] = '0';
+			}
+			if ((3.3 / 4096*ADCCache[3]) > 2)
+			{
+				UART2TX_Send[3] = '1';
+			}
+			else
+			{
+				UART2TX_Send[3] = '0';
+			}
+			HAL_UART_Transmit_DMA(&huart2, UART2TX_Send, UART2TX_Size);
+			HAL_UART_Receive_DMA(&huart2, UART2RX_Cache, UART2RX_CacheSize);
+		
+		}
+	}
   /* USER CODE END 3 */
 }
 
@@ -190,12 +383,12 @@ static void MX_ADC1_Init(void)
   /** Common config 
   */
   hadc1.Instance = ADC1;
-  hadc1.Init.ScanConvMode = ADC_SCAN_DISABLE;
-  hadc1.Init.ContinuousConvMode = DISABLE;
+  hadc1.Init.ScanConvMode = ADC_SCAN_ENABLE;
+  hadc1.Init.ContinuousConvMode = ENABLE;
   hadc1.Init.DiscontinuousConvMode = DISABLE;
   hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
-  hadc1.Init.NbrOfConversion = 1;
+  hadc1.Init.NbrOfConversion = 4;
   if (HAL_ADC_Init(&hadc1) != HAL_OK)
   {
     Error_Handler();
@@ -205,6 +398,31 @@ static void MX_ADC1_Init(void)
   sConfig.Channel = ADC_CHANNEL_0;
   sConfig.Rank = ADC_REGULAR_RANK_1;
   sConfig.SamplingTime = ADC_SAMPLETIME_1CYCLE_5;
+  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /** Configure Regular Channel 
+  */
+  sConfig.Channel = ADC_CHANNEL_1;
+  sConfig.Rank = ADC_REGULAR_RANK_2;
+  sConfig.SamplingTime = ADC_SAMPLETIME_28CYCLES_5;
+  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /** Configure Regular Channel 
+  */
+  sConfig.Channel = ADC_CHANNEL_2;
+  sConfig.Rank = ADC_REGULAR_RANK_3;
+  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /** Configure Regular Channel 
+  */
+  sConfig.Channel = ADC_CHANNEL_3;
+  sConfig.Rank = ADC_REGULAR_RANK_4;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
   {
     Error_Handler();
@@ -429,7 +647,8 @@ static void MX_USART2_UART_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN USART2_Init 2 */
-
+	__HAL_UART_ENABLE_IT(&huart2, UART_IT_IDLE);
+	HAL_UART_Receive_DMA(&huart2, UART2RX_Cache, UART2RX_CacheSize);
   /* USER CODE END USART2_Init 2 */
 
 }
