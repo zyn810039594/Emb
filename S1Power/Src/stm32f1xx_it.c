@@ -263,12 +263,12 @@ void USART2_IRQHandler(void)
 		HAL_UART_DMAStop(&huart2); 
 		temp  = hdma_usart2_rx.Instance->CNDTR; 
 		UART2RX_Len =  UART2RX_CacheSize - temp; 
-		if (UART2RX_Len >= UART2RX_CacheSize)
+		if (UART2RX_Len >= 30)
 		{
-			if ((UART2RX_Cache[(UART2RX_Len - 1)] == '%')&&(UART2RX_Cache[UART2RX_Len - UART2RX_CacheSize] == '$'))
+			if ((UART2RX_Cache[(UART2RX_Len - 1)] == '%')&&(UART2RX_Cache[UART2RX_Len - 30] == '$'))
 			{
 				UART2RX_Finish = 1; 
-				UART2RX_Position = &UART2RX_Cache[UART2RX_Len - UART2RX_CacheSize];
+				UART2RX_Position = &UART2RX_Cache[UART2RX_Len - 30];
 			}
 			else
 			{

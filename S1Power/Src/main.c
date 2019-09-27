@@ -55,6 +55,7 @@ DMA_HandleTypeDef hdma_usart2_rx;
 DMA_HandleTypeDef hdma_usart2_tx;
 
 /* USER CODE BEGIN PV */
+u8 SystemBegin = 0;
 vu8 UART2RX_Len = 0;
 vu8 UART2RX_Finish = 0;
 u8 UART2RX_Cache[70];
@@ -67,7 +68,9 @@ float ModeCoefficient = 1;
 u8* UART2RX_Position = NULL;
 u8 UART2TX_Send[5] = "$0:0%";
 u8 UART2TX_Size = 5;
-volatile uint32_t ADCCache[4];
+u8 UART2TX_Initialization[5] = "$9:9%";
+uint32_t ADCCache[4];
+double ADCResult[4];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -123,6 +126,19 @@ int main(void)
   MX_USART2_UART_Init();
   MX_IWDG_Init();
   /* USER CODE BEGIN 2 */
+	while (!SystemBegin)
+	{
+		if (UART2RX_Finish == 1)
+		{
+			UART2RX_Finish = 0;
+			if ((UART2RX_Position[1]) == '9')
+			{
+				SystemBegin = 1;
+			}
+			HAL_UART_Receive_DMA(&huart2, UART2RX_Cache, UART2RX_CacheSize);
+		}
+		HAL_IWDG_Refresh(&hiwdg);
+	}
 	HAL_IWDG_Refresh(&hiwdg);
 	HAL_ADCEx_Calibration_Start(&hadc1);
 	HAL_ADC_Start_DMA(&hadc1, ADCCache, 4); 
@@ -131,6 +147,7 @@ int main(void)
 	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
 	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_4);
 	HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
+	HAL_UART_Transmit_DMA(&huart2, UART2TX_Initialization, UART2TX_Size);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -267,34 +284,42 @@ int main(void)
 				TIM1->CCR2 = XPoint;
 				TIM1->CCR3 = (100 - XPoint + YPoint);
 				TIM1->CCR4 = (100 - XPoint + YPoint);
+				TIM2->CCR1 = ZPoint;
 				break;
 			case 2:
 				TIM1->CCR1 = YPoint;
 				TIM1->CCR2 = YPoint;
 				TIM1->CCR3 = (100 - XPoint + YPoint);
 				TIM1->CCR4 = (100 - XPoint + YPoint);
+				TIM2->CCR1 = ZPoint;
 				break;
 			case 3:
 				TIM1->CCR1 = (XPoint + YPoint - 100);
 				TIM1->CCR2 = (XPoint + YPoint - 100);
 				TIM1->CCR3 = YPoint;
 				TIM1->CCR4 = YPoint;
+				TIM2->CCR1 = ZPoint;
 				break;
 			case 4:
 				TIM1->CCR1 = (XPoint + YPoint - 100);
 				TIM1->CCR2 = (XPoint + YPoint - 100);
 				TIM1->CCR3 = (200 - XPoint);
 				TIM1->CCR4 = (200 - XPoint);
+				TIM2->CCR1 = ZPoint;
 				break;
 			case 5:
 				TIM1->CCR1 = XPoint;
 				TIM1->CCR2 = (200 - XPoint);
 				TIM1->CCR3 = (200 - XPoint);
 				TIM1->CCR4 = XPoint;
+				TIM2->CCR1 = ZPoint;
 				break;
 			}			
-			TIM2->CCR1 = ZPoint;
-			if ((3.3 / 4096*ADCCache[2]) > 2)
+			for (int i = 0; i < 4; ++i)
+			{
+				ADCResult[i] = 3.3 / 4096*ADCCache[i];
+			}
+			if ((ADCResult[2]) > 2)
 			{
 				UART2TX_Send[1] = '1';
 			}
@@ -302,7 +327,7 @@ int main(void)
 			{
 				UART2TX_Send[1] = '0';
 			}
-			if ((3.3 / 4096*ADCCache[3]) > 2)
+			if ((ADCResult[3]) > 2)
 			{
 				UART2TX_Send[3] = '1';
 			}
@@ -397,7 +422,7 @@ static void MX_ADC1_Init(void)
   */
   sConfig.Channel = ADC_CHANNEL_0;
   sConfig.Rank = ADC_REGULAR_RANK_1;
-  sConfig.SamplingTime = ADC_SAMPLETIME_1CYCLE_5;
+  sConfig.SamplingTime = ADC_SAMPLETIME_55CYCLES_5;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
   {
     Error_Handler();
@@ -406,7 +431,6 @@ static void MX_ADC1_Init(void)
   */
   sConfig.Channel = ADC_CHANNEL_1;
   sConfig.Rank = ADC_REGULAR_RANK_2;
-  sConfig.SamplingTime = ADC_SAMPLETIME_28CYCLES_5;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
   {
     Error_Handler();
@@ -450,7 +474,7 @@ static void MX_IWDG_Init(void)
   /* USER CODE END IWDG_Init 1 */
   hiwdg.Instance = IWDG;
   hiwdg.Init.Prescaler = IWDG_PRESCALER_64;
-  hiwdg.Init.Reload = 1250;
+  hiwdg.Init.Reload = 250;
   if (HAL_IWDG_Init(&hiwdg) != HAL_OK)
   {
     Error_Handler();
