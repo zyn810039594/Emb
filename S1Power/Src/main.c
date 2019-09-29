@@ -62,7 +62,8 @@ u8 UART2RX_Cache[70];
 char UART2RX_CacheSize = 70;
 u8 ModeFlag = 0;
 u8 AFlag, BFlag, CFlag, DFlag;
-int XPoint, YPoint, ZPoint;
+u16 XPoint, YPoint, ZPoint;
+u16 Machine[4];
 u8 Mode = 0;
 float ModeCoefficient = 1;
 u8* UART2RX_Position = NULL;
@@ -146,7 +147,7 @@ int main(void)
 	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
 	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
 	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_4);
-	HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
+	HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2);
 	HAL_UART_Transmit_DMA(&huart2, UART2TX_Initialization, UART2TX_Size);
   /* USER CODE END 2 */
 
@@ -274,45 +275,88 @@ int main(void)
 				Mode = 5;
 				break;
 			}
-			XPoint = (int)((XPoint - 100) * ModeCoefficient)*20+500;
-			YPoint = (int)((YPoint - 100) * ModeCoefficient)*20+500;
-			ZPoint = (ZPoint - 100) * 20 + 500;
+			
 			switch (Mode)
 			{
 			case 1:
-				TIM1->CCR1 = XPoint;
-				TIM1->CCR2 = XPoint;
-				TIM1->CCR3 = (100 - XPoint + YPoint);
-				TIM1->CCR4 = (100 - XPoint + YPoint);
-				TIM2->CCR1 = ZPoint;
+				Machine[0] = XPoint;
+				Machine[1] = XPoint;
+				Machine[2] = (100 - XPoint + YPoint);
+				Machine[3] = (100 - XPoint + YPoint);
+				for (int i = 1; i < 4; ++i)
+				{
+					Machine[i] = (int)(Machine[i] * 10) + 500;
+				}
+				ZPoint = ZPoint * 10 + 500;
+				TIM1->CCR1 = Machine[0];
+				TIM1->CCR2 = Machine[1];
+				TIM1->CCR3 = Machine[2];
+				TIM1->CCR4 = Machine[3];
+				TIM2->CCR2 = ZPoint;
 				break;
 			case 2:
-				TIM1->CCR1 = YPoint;
-				TIM1->CCR2 = YPoint;
-				TIM1->CCR3 = (100 - XPoint + YPoint);
-				TIM1->CCR4 = (100 - XPoint + YPoint);
-				TIM2->CCR1 = ZPoint;
+				Machine[0] = YPoint;
+				Machine[1] = YPoint;
+				Machine[2] = (100 - XPoint + YPoint);
+				Machine[3] = (100 - XPoint + YPoint);
+				for (int i = 1; i < 4; ++i)
+				{
+					Machine[i] = (int)(Machine[i] * 10) + 500;
+				}
+				ZPoint = ZPoint * 10 + 500;
+				TIM1->CCR1 = Machine[0];
+				TIM1->CCR2 = Machine[1];
+				TIM1->CCR3 = Machine[2];
+				TIM1->CCR4 = Machine[3];
+				TIM2->CCR2 = ZPoint;
 				break;
 			case 3:
-				TIM1->CCR1 = (XPoint + YPoint - 100);
-				TIM1->CCR2 = (XPoint + YPoint - 100);
-				TIM1->CCR3 = YPoint;
-				TIM1->CCR4 = YPoint;
-				TIM2->CCR1 = ZPoint;
+				Machine[0] = (XPoint + YPoint - 100);
+				Machine[1] = (XPoint + YPoint - 100);
+				Machine[2] = YPoint;
+				Machine[3] = YPoint;
+				for (int i = 1; i < 4; ++i)
+				{
+					Machine[i] = (int)(Machine[i] * 10) + 500;
+				}
+				ZPoint = ZPoint * 10 + 500;
+				TIM1->CCR1 = Machine[0];
+				TIM1->CCR2 = Machine[1];
+				TIM1->CCR3 = Machine[2];
+				TIM1->CCR4 = Machine[3];
+				TIM2->CCR2 = ZPoint;
 				break;
 			case 4:
-				TIM1->CCR1 = (XPoint + YPoint - 100);
-				TIM1->CCR2 = (XPoint + YPoint - 100);
-				TIM1->CCR3 = (200 - XPoint);
-				TIM1->CCR4 = (200 - XPoint);
-				TIM2->CCR1 = ZPoint;
+				Machine[0] = (XPoint + YPoint - 100);
+				Machine[1] = (XPoint + YPoint - 100);
+				Machine[2] = (200 - XPoint);
+				Machine[3] = (200 - XPoint);
+				for (int i = 1; i < 4; ++i)
+				{
+					Machine[i] = (int)(Machine[i] * 10) + 500;
+				}
+				ZPoint = ZPoint * 10 + 500;
+				TIM1->CCR1 = Machine[0];
+				TIM1->CCR2 = Machine[1];
+				TIM1->CCR3 = Machine[2];
+				TIM1->CCR4 = Machine[3];
+				TIM2->CCR2 = ZPoint;
 				break;
 			case 5:
-				TIM1->CCR1 = XPoint;
-				TIM1->CCR2 = (200 - XPoint);
-				TIM1->CCR3 = (200 - XPoint);
-				TIM1->CCR4 = XPoint;
-				TIM2->CCR1 = ZPoint;
+				Machine[0] = XPoint;
+				Machine[1] = (200 - XPoint);
+				Machine[2] = (200 - XPoint);
+				Machine[3] = XPoint;
+				for (int i = 1; i < 4; ++i)
+				{
+					Machine[i] = (int)(Machine[i] * 10) + 500;
+				}
+				ZPoint = ZPoint * 10 + 500;
+				TIM1->CCR1 = Machine[0];
+				TIM1->CCR2 = Machine[1];
+				TIM1->CCR3 = Machine[2];
+				TIM1->CCR4 = Machine[3];
+				TIM2->CCR2 = ZPoint;
 				break;
 			}			
 			for (int i = 0; i < 4; ++i)
@@ -532,7 +576,7 @@ static void MX_TIM1_Init(void)
     Error_Handler();
   }
   sConfigOC.OCMode = TIM_OCMODE_PWM1;
-  sConfigOC.Pulse = 1500;
+  sConfigOC.Pulse = 0;
   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
   sConfigOC.OCNPolarity = TIM_OCNPOLARITY_HIGH;
   sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
@@ -542,6 +586,7 @@ static void MX_TIM1_Init(void)
   {
     Error_Handler();
   }
+  sConfigOC.Pulse = 1500;
   if (HAL_TIM_PWM_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_2) != HAL_OK)
   {
     Error_Handler();
@@ -620,10 +665,6 @@ static void MX_TIM2_Init(void)
   sConfigOC.Pulse = 1500;
   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
   sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
-  if (HAL_TIM_PWM_ConfigChannel(&htim2, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
-  {
-    Error_Handler();
-  }
   if (HAL_TIM_PWM_ConfigChannel(&htim2, &sConfigOC, TIM_CHANNEL_2) != HAL_OK)
   {
     Error_Handler();

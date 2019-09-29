@@ -70,26 +70,31 @@ extern UART_HandleTypeDef huart1;
 extern UART_HandleTypeDef huart2;
 extern UART_HandleTypeDef huart3;
 /* USER CODE BEGIN EV */
+extern u8 SystemBegin;
 //串口1RX口
 extern volatile u8 U1_RX_Len;
 extern volatile u8 U1_RX_EndFlag;
-extern u8 U1_RX_Buffer[40];
+extern u8 U1_RX_Buffer[70];
 extern char U1_RX_BufferSize;
+extern u8* U1_RX_Position;
 //串口2RX口
 extern volatile u8 U2_RX_Len;
 extern volatile u8 U2_RX_EndFlag;
-extern u8 U2_RX_Buffer[40];
+extern u8 U2_RX_Buffer[12];
 extern char U2_RX_BufferSize;
+extern u8* U2_RX_Position;
 //串口3RX口
 extern volatile u8 U3_RX_Len;
 extern volatile u8 U3_RX_EndFlag;
-extern u8 U3_RX_Buffer[40];
+extern u8 U3_RX_Buffer[50];
 extern char U3_RX_BufferSize;
+extern u8* U3_RX_Position;
 //串口4RX口
 extern volatile u8 U4_RX_Len;
 extern volatile u8 U4_RX_EndFlag;
 extern u8 U4_RX_Buffer[40];
 extern char U4_RX_BufferSize;
+extern u8* U4_RX_Position;
 /* USER CODE END EV */
 
 /******************************************************************************/
@@ -304,7 +309,34 @@ void DMA1_Stream6_IRQHandler(void)
 void USART1_IRQHandler(void)
 {
   /* USER CODE BEGIN USART1_IRQn 0 */
-
+	uint32_t tmp_flag = 0;
+	uint32_t temp;
+	tmp_flag = __HAL_UART_GET_FLAG(&huart1, UART_FLAG_IDLE);
+	if ((tmp_flag != RESET))
+	{ 
+		__HAL_UART_CLEAR_IDLEFLAG(&huart1); 
+		temp = huart1.Instance->SR; 
+		temp = huart1.Instance->DR; 
+		HAL_UART_DMAStop(&huart1); 
+		temp  = __HAL_DMA_GET_COUNTER(&hdma_usart1_rx); 
+		U1_RX_Len =  U1_RX_BufferSize - temp; 
+		if (U1_RX_Len >= 30)
+		{
+			if ((U1_RX_Buffer[(U1_RX_Len - 1)] == '%')&&(U1_RX_Buffer[U1_RX_Len - 30] == '$'))
+			{
+				U1_RX_EndFlag = 1; 
+				U1_RX_Position = &U1_RX_Buffer[U1_RX_Len - 30];
+			}
+			else
+			{
+				HAL_UART_Receive_DMA(&huart1, U1_RX_Buffer, U1_RX_BufferSize);
+			}
+		}
+		else
+		{
+			HAL_UART_Receive_DMA(&huart1, U1_RX_Buffer, U1_RX_BufferSize);
+		}
+	}
   /* USER CODE END USART1_IRQn 0 */
   HAL_UART_IRQHandler(&huart1);
   /* USER CODE BEGIN USART1_IRQn 1 */
@@ -318,7 +350,34 @@ void USART1_IRQHandler(void)
 void USART2_IRQHandler(void)
 {
   /* USER CODE BEGIN USART2_IRQn 0 */
-
+	uint32_t tmp_flag = 0;
+	uint32_t temp;
+	tmp_flag = __HAL_UART_GET_FLAG(&huart2, UART_FLAG_IDLE);
+	if ((tmp_flag != RESET))
+	{ 
+		__HAL_UART_CLEAR_IDLEFLAG(&huart2); 
+		temp = huart2.Instance->SR; 
+		temp = huart2.Instance->DR; 
+		HAL_UART_DMAStop(&huart2); 
+		temp  = __HAL_DMA_GET_COUNTER(&hdma_usart2_rx); 
+		U2_RX_Len =  U2_RX_BufferSize- temp; 
+		if (U2_RX_Len >= 5)
+		{
+			if ((U2_RX_Buffer[(U2_RX_Len - 1)] == '%')&&(U2_RX_Buffer[U2_RX_Len - 5] == '$'))
+			{
+				U2_RX_EndFlag = 1; 
+				U2_RX_Position = &U2_RX_Buffer[U2_RX_Len - 5];
+			}
+			else
+			{
+				HAL_UART_Receive_DMA(&huart2, U2_RX_Buffer, U2_RX_BufferSize);
+			}
+		}
+		else
+		{
+			HAL_UART_Receive_DMA(&huart2, U2_RX_Buffer, U2_RX_BufferSize);
+		}
+	}
   /* USER CODE END USART2_IRQn 0 */
   HAL_UART_IRQHandler(&huart2);
   /* USER CODE BEGIN USART2_IRQn 1 */
@@ -332,7 +391,34 @@ void USART2_IRQHandler(void)
 void USART3_IRQHandler(void)
 {
   /* USER CODE BEGIN USART3_IRQn 0 */
-
+	uint32_t tmp_flag = 0;
+	uint32_t temp;
+	tmp_flag = __HAL_UART_GET_FLAG(&huart3, UART_FLAG_IDLE);
+	if ((tmp_flag != RESET))
+	{ 
+		__HAL_UART_CLEAR_IDLEFLAG(&huart3); 
+		temp = huart3.Instance->SR; 
+		temp = huart3.Instance->DR; 
+		HAL_UART_DMAStop(&huart3); 
+		temp  = __HAL_DMA_GET_COUNTER(&hdma_usart3_rx); 
+		U3_RX_Len =  U3_RX_BufferSize - temp; 
+		if (U3_RX_Len >= 23)
+		{
+			if ((U3_RX_Buffer[(U3_RX_Len - 1)] == '%')&&(U3_RX_Buffer[U3_RX_Len - 23] == '$'))
+			{
+				U3_RX_EndFlag = 1; 
+				U3_RX_Position = &U3_RX_Buffer[U3_RX_Len - 23];
+			}
+			else
+			{
+				HAL_UART_Receive_DMA(&huart3, U3_RX_Buffer, U3_RX_BufferSize);
+			}
+		}
+		else
+		{
+			HAL_UART_Receive_DMA(&huart3, U3_RX_Buffer, U3_RX_BufferSize);
+		}
+	}
   /* USER CODE END USART3_IRQn 0 */
   HAL_UART_IRQHandler(&huart3);
   /* USER CODE BEGIN USART3_IRQn 1 */
@@ -360,7 +446,45 @@ void DMA1_Stream7_IRQHandler(void)
 void UART4_IRQHandler(void)
 {
   /* USER CODE BEGIN UART4_IRQn 0 */
-
+	uint32_t tmp_flag = 0;
+	uint32_t temp;
+	tmp_flag = __HAL_UART_GET_FLAG(&huart4, UART_FLAG_IDLE);
+	if ((tmp_flag != RESET))
+	{ 
+		__HAL_UART_CLEAR_IDLEFLAG(&huart4); 
+		temp = huart4.Instance->SR; 
+		temp = huart4.Instance->DR; 
+		HAL_UART_DMAStop(&huart4); 
+		temp  = __HAL_DMA_GET_COUNTER(&hdma_uart4_rx); 
+		U4_RX_Len =  U4_RX_BufferSize - temp; 
+		if (U4_RX_Len >= 14)
+		{
+			for (int i = 0; i < 40; ++i)
+			{
+				if (U4_RX_Buffer[i] == 'T')
+				{
+					for (int j = i; j < 40; ++j)
+					{
+						if (U4_RX_Buffer[j] == '\n')
+						{
+							U4_RX_Position = &U4_RX_Buffer[i];
+							U4_RX_EndFlag = 1; 
+							break;
+						}
+					}
+					break;
+				}
+			}
+			if (U4_RX_EndFlag == 0)
+			{
+				HAL_UART_Receive_DMA(&huart4, U4_RX_Buffer, U4_RX_BufferSize);
+			}
+		}
+		else
+		{
+			HAL_UART_Receive_DMA(&huart4, U4_RX_Buffer, U4_RX_BufferSize);
+		}
+	}
   /* USER CODE END UART4_IRQn 0 */
   HAL_UART_IRQHandler(&huart4);
   /* USER CODE BEGIN UART4_IRQn 1 */

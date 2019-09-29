@@ -65,29 +65,126 @@ DMA_HandleTypeDef hdma_usart3_tx;
 
 /* USER CODE BEGIN PV */
 
+u8 SystemBegin = 0;
+
 //Printf指向的指针变量
 volatile UART_HandleTypeDef* UartHandle = &huart1;
 
 //串口1RX口
 volatile u8 U1_RX_Len = 0;
 volatile u8 U1_RX_EndFlag = 0;
-u8 U1_RX_Buffer[40];
-char U1_RX_BufferSize = 40;
+u8 U1_RX_Buffer[70];
+char U1_RX_BufferSize = 70;
+u8* U1_RX_Position = NULL;
 //串口2RX口
 volatile u8 U2_RX_Len = 0;
 volatile u8 U2_RX_EndFlag = 0;
-u8 U2_RX_Buffer[40];
-char U2_RX_BufferSize = 40;
+u8 U2_RX_Buffer[12];
+char U2_RX_BufferSize = 12;
+u8* U2_RX_Position = NULL;
 //串口3RX口
 volatile u8 U3_RX_Len = 0;
 volatile u8 U3_RX_EndFlag = 0;
-u8 U3_RX_Buffer[40];
-char U3_RX_BufferSize = 40;
+u8 U3_RX_Buffer[50];
+char U3_RX_BufferSize = 50;
+u8* U3_RX_Position = NULL;
 //串口4RX口
 volatile u8 U4_RX_Len = 0;
 volatile u8 U4_RX_EndFlag = 0;
 u8 U4_RX_Buffer[40];
 char U4_RX_BufferSize = 40;
+u8* U4_RX_Position = 0;
+
+u8 U2_TX_Begin[30] = "$9:100:100:100:1100:1500:1500%";
+
+float ControlTemperture = 0;
+u16 Pitch = 0;
+u16 Yaw = 0;
+u16 Roll = 0;
+u16 GeomagneticAngle = 0;
+uint32_t WaterTemperture = 0;
+uint32_t Depth = 0;
+u16 Light = 0;
+u16 PTZ = 0;
+u16 Crab = 0;
+u8 ControlWater[2] = { 6, 0 };
+u8 PowerWater[4] = { 6, 1, 6, 1 };
+u8 ScreenFinish[3] = { 0 };
+u8 SendBuffer[5] = { 0x55, 0, 0, 0, 0x00 };
+u8 SendByte = 0;
+
+u8 SendDepth[5] = { 0 };
+u8 SendWaterT[4] = { 0 };
+u8 SendGAngle[3] = { 0 };
+u8 SendPitch[3] = { 0 };
+u8 Num[11][2] = 
+{
+	{ 0xa3, 0xb0 },
+	{ 0xa3, 0xb1 },
+	{ 0xa3, 0xb2 },
+	{ 0xa3, 0xb3 },
+	{ 0xa3, 0xb4 },
+	{ 0xa3, 0xb5 },
+	{ 0xa3, 0xb6 },
+	{ 0xa3, 0xb7 },
+	{ 0xa3, 0xb8 },
+	{ 0xa3, 0xb9 },
+	{ 0xa3, 0xae }
+};
+u8 SendPowerWater[3][6][2] =  
+{
+{
+	{ 0xb5, 0xe7 },
+	{ 0xd4, 0xb4 },
+	{ 0xb2, 0xd6 },
+	{ 0xa3, 0xb1 },
+	{ 0xc2, 0xa9 },
+	{ 0xcb, 0xae }
+},
+{
+	{ 0xb5, 0xe7 },
+	{ 0xd4, 0xb4 },
+	{ 0xb2, 0xd6 },
+	{ 0xa3, 0xb2 },
+	{ 0xc2, 0xa9 },
+	{ 0xcb, 0xae } 
+},
+{
+	{ 0xa1, 0xa1 },
+	{ 0xa1, 0xa1 },
+	{ 0xa1, 0xa1 },
+	{ 0xa1, 0xa1 },
+	{ 0xa1, 0xa1 },
+	{ 0xa1, 0xa1 }
+}
+};
+u8 SendControlWater[2][5][2] =
+{
+{
+	{ 0xbf, 0xd8 },
+	{ 0xd6, 0xc6 },
+	{ 0xb2, 0xd6 },
+	{ 0xc2, 0xa9 },
+	{ 0xcb, 0xae } 
+},
+{
+	{ 0xa1, 0xa1 },
+	{ 0xa1, 0xa1 },
+	{ 0xa1, 0xa1 },
+	{ 0xa1, 0xa1 },
+	{ 0xa1, 0xa1 }
+}
+};
+u8 ControlWaterOn[25] = { 0x55, 0x07, 0x04, 0x01, 0x00, 0x55, 0x0A, 0x00, 0x00, 0x00, 0x55, 0x31, 0x05, 0x01, 0x00, 0xBF, 0xD8, 0xD6, 0xC6, 0xB2, 0xD6, 0xC2, 0xA9, 0xCB, 0xAE };
+u8 ControlWaterOff[25] = { 0x55, 0x07, 0x04, 0x01, 0x00, 0x55, 0x0A, 0x00, 0x00, 0x00, 0x55, 0x31, 0x05, 0x01, 0x00, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1 };
+u8 PowerWaterOn[2][27] = {
+	{ 0x55, 0x07, 0x05, 0x01, 0x00, 0x55, 0x0A, 0x00, 0x00, 0x00, 0x55, 0x31, 0x06, 0x01, 0x00, 0xB5, 0xE7, 0xD4, 0xB4, 0xB2, 0xD6, 0xA3, 0xB1, 0xC2, 0xA9, 0xCB, 0xAE },
+	{ 0x55, 0x07, 0x06, 0x01, 0x00, 0x55, 0x0A, 0x00, 0x00, 0x00, 0x55, 0x31, 0x06, 0x01, 0x00, 0xB5, 0xE7, 0xD4, 0xB4, 0xB2, 0xD6, 0xA3, 0xB2, 0xC2, 0xA9, 0xCB, 0xAE }
+};
+u8 PowerWaterOff[2][27] = {
+	{ 0x55, 0x07, 0x05, 0x01, 0x00, 0x55, 0x0A, 0x00, 0x00, 0x00, 0x55, 0x31, 0x06, 0x01, 0x00, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1 },
+	{ 0x55, 0x07, 0x06, 0x01, 0x00, 0x55, 0x0A, 0x00, 0x00, 0x00, 0x55, 0x31, 0x06, 0x01, 0x00, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1 }
+};
 
 /* USER CODE END PV */
 
@@ -105,7 +202,10 @@ static void MX_ADC1_Init(void);
 static void MX_UART5_Init(void);
 static void MX_USART6_UART_Init(void);
 /* USER CODE BEGIN PFP */
-
+void Send5byte(u8 a, u8 b, u8 c); 
+void Sendbyte(u8 byte);
+void SendLetter(u8 Letter[4]);
+void SendNum(u8 H, u8 L, u8 Number);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -158,17 +258,322 @@ int main(void)
   MX_UART5_Init();
   MX_USART6_UART_Init();
   /* USER CODE BEGIN 2 */
-
+	while (!SystemBegin)
+	{
+		if (U1_RX_EndFlag == 1)
+		{
+			U1_RX_EndFlag = 0;
+			if ((U1_RX_Position[1]) == '9')
+			{
+				SystemBegin = 1;
+			}
+			HAL_UART_Receive_DMA(&huart1, U1_RX_Buffer, U1_RX_BufferSize);
+		}
+		HAL_IWDG_Refresh(&hiwdg);
+	}
+	HAL_IWDG_Refresh(&hiwdg);
+	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
+	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
+	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
+	
+	HAL_UART_Receive_DMA(&huart3, U3_RX_Buffer, U3_RX_BufferSize);   //打开DMA接收，数据存入rx_buffer数组中。
+	HAL_UART_Receive_DMA(&huart2, U2_RX_Buffer, U2_RX_BufferSize);   //打开DMA接收，数据存入rx_buffer数组中。
+	HAL_UART_Receive_DMA(&huart4, U4_RX_Buffer, U4_RX_BufferSize);   //打开DMA接收，数据存入rx_buffer数组中。
+	HAL_UART_Transmit_DMA(&huart2, U2_TX_Begin,30);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+	uint32_t DeepTemp = 0;
+	int i = 0;
+	int j = 0;
+	int ScreenTime = 0;
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-  }
+	  
+		if (U4_RX_EndFlag == 1)
+		{
+			U4_RX_EndFlag = 0;
+			if(U4_RX_Position[4] == '.')
+			{
+				WaterTemperture = (U4_RX_Position[2] - '0') * 1000 + (U4_RX_Position[3] - '0') * 100 + (U4_RX_Position[5] - '0') * 10 + (U4_RX_Position[6] - '0');
+				if (U4_RX_Position[9] == '-')
+				{
+					Depth = 0;
+				}
+				else
+				{
+					if (U4_RX_Position[10] == '.')
+					{
+						Depth = (U4_RX_Position[9] - '0') * 100 + (U4_RX_Position[11] - '0') * 10 + (U4_RX_Position[12] - '0');
+					}
+					else if (U4_RX_Position[11] == '.')
+					{
+						Depth = (U4_RX_Position[9] - '0') * 1000 + (U4_RX_Position[10] - '0') * 100 + (U4_RX_Position[12] - '0') * 10 + (U4_RX_Position[13] - '0');
+					}
+					else if (U4_RX_Position[12] == '.')
+					{
+						Depth = (U4_RX_Position[9] - '0') * 10000 + (U4_RX_Position[10] - '0') * 1000 + (U4_RX_Position[11] - '0') * 100 + (U4_RX_Position[13] - '0') * 10 + (U4_RX_Position[14] - '0');
+					}
+				}
+			}
+			else if(U4_RX_Position[3] == '.')
+			{
+				WaterTemperture = (U4_RX_Position[2] - '0') * 100 + (U4_RX_Position[4] - '0') * 10 + (U4_RX_Position[5] - '0');
+				if (U4_RX_Position[8] == '-')
+				{
+					Depth = 0;
+				}
+				else
+				{
+					if (U4_RX_Position[9] == '.')
+					{
+						Depth = (U4_RX_Position[8] - '0') * 100 + (U4_RX_Position[10] - '0') * 10 + (U4_RX_Position[11] - '0');
+
+					}
+					else if (U4_RX_Position[10] == '.')
+					{
+						Depth = (U4_RX_Position[8] - '0') * 1000 + (U4_RX_Position[9] - '0') * 100 + (U4_RX_Position[11] - '0') * 10 + (U4_RX_Position[12] - '0');
+
+					}
+					else if (U4_RX_Position[11] == '.')
+					{
+						Depth = (U4_RX_Position[8] - '0') * 10000 + (U4_RX_Position[9] - '0') * 1000 + (U4_RX_Position[10] - '0') * 100 + (U4_RX_Position[12] - '0') * 10 + (U4_RX_Position[13] - '0');
+
+					}
+				}
+			}
+			if (!ScreenFinish[0])
+			{
+				SendDepth[0] = Depth / 10000;
+				Depth %= 10000;
+				SendDepth[1] = Depth / 1000;
+				Depth %= 1000;
+				SendDepth[2] = Depth / 100;
+				Depth %= 100;
+				SendDepth[3] = Depth / 10;
+				SendDepth[4] = Depth % 10;
+				SendWaterT[0] = WaterTemperture / 1000;
+				WaterTemperture %= 1000;
+				SendWaterT[1] = WaterTemperture / 100;
+				WaterTemperture %= 100;
+				SendWaterT[2] = WaterTemperture / 10;
+				SendWaterT[3] = WaterTemperture % 10;
+				ScreenFinish[0] = 1;
+			}
+			
+			HAL_UART_Receive_DMA(&huart4, U4_RX_Buffer, U4_RX_BufferSize);
+			HAL_IWDG_Refresh(&hiwdg);
+		}
+		if (U2_RX_EndFlag == 1)
+		{
+			U2_RX_EndFlag = 0;
+			if (U2_RX_Position[1] == '1')
+			{
+				++PowerWater[0];
+			}
+			else if (U2_RX_Position[1] == '0')
+			{
+				--PowerWater[0];
+			}
+			if (PowerWater[0] == 10)
+			{
+				if (PowerWater[1] == 0)
+				{
+					PowerWater[1] = 1;
+					HAL_UART_Transmit_DMA(&huart5, PowerWaterOn[0], 27);
+					HAL_Delay(50);
+				}
+				PowerWater[0] = 5;
+			}
+			else if (PowerWater[0] == 0)
+			{
+				if (PowerWater[1] == 1)
+				{
+					PowerWater[1] = 0;
+					HAL_UART_Transmit_DMA(&huart5, PowerWaterOff[0], 27);
+					HAL_Delay(50);
+				}
+				PowerWater[0] = 5;
+			}
+			if (U2_RX_Position[3] == '1')
+			{
+				++PowerWater[2];
+			}
+			else if (U2_RX_Position[3] == '0')
+			{
+				--PowerWater[2];
+			}
+			if (PowerWater[2] == 10)
+			{
+				if (PowerWater[3] == 0)
+				{
+					HAL_UART_Transmit_DMA(&huart5, PowerWaterOn[1], 27);
+					HAL_Delay(50);
+				}
+				PowerWater[2] = 5;
+			}
+			else if (PowerWater[2] == 0)
+			{
+				if (PowerWater[3] == 1)
+				{
+					PowerWater[3] = 0;
+					HAL_UART_Transmit_DMA(&huart5, PowerWaterOff[1], 27);
+					HAL_Delay(50);
+				}
+				PowerWater[2] = 5;
+			}
+			HAL_UART_Receive_DMA(&huart2, U2_RX_Buffer, U2_RX_BufferSize);
+			HAL_IWDG_Refresh(&hiwdg);
+		}
+		if (U3_RX_EndFlag == 1)
+		{
+			U3_RX_EndFlag = 0;
+			
+			if (!ScreenFinish[2])
+			{
+				ControlTemperture = (U3_RX_Position[1] - '0') * 10 + (U3_RX_Position[2] - '0') * 1 + (U3_RX_Position[3] - '0') * 0.1;
+				Pitch = (U3_RX_Position[5] - '0') * 100 + (U3_RX_Position[6] - '0') * 10 + (U3_RX_Position[7] - '0');
+				Yaw = (U3_RX_Position[9] - '0') * 100 + (U3_RX_Position[10] - '0') * 10 + (U3_RX_Position[11] - '0');
+				Roll = (U3_RX_Position[13] - '0') * 100 + (U3_RX_Position[14] - '0') * 10 + (U3_RX_Position[15] - '0');
+				GeomagneticAngle = (U3_RX_Position[17] - '0') * 100 + (U3_RX_Position[18] - '0') * 10 + (U3_RX_Position[19] - '0');
+				SendGAngle[0] = GeomagneticAngle / 100;
+				GeomagneticAngle %= 100;
+				SendGAngle[1] = GeomagneticAngle / 10;
+				SendGAngle[2] = GeomagneticAngle % 10;
+				SendPitch[0] = Pitch / 100;
+				Pitch %= 100;
+				SendPitch[1] = Pitch / 10;
+				SendPitch[2] = Pitch % 10;
+				ScreenFinish[2] = 1;
+			}
+			if (U3_RX_Position[21] == '1')
+			{
+				++ControlWater[0];
+			}
+			else if (U3_RX_Position[21] == '0')
+			{
+				--ControlWater[0];
+			}
+			if (ControlWater[0] == 10)
+			{
+				if (ControlWater[1] == 0)
+				{
+					HAL_UART_Transmit_DMA(&huart5, ControlWaterOn, 25);
+					HAL_Delay(50);
+				}
+				ControlWater[0] = 5;
+			}
+			else if (ControlWater[0] == 0)
+			{
+				if (ControlWater[1] == 1)
+				{
+					ControlWater[1] = 0;
+					HAL_UART_Transmit_DMA(&huart5, ControlWaterOff, 25);
+					HAL_Delay(50);
+				}
+				ControlWater[0] = 5;
+			}
+			HAL_UART_Receive_DMA(&huart3, U3_RX_Buffer, U3_RX_BufferSize);
+			HAL_IWDG_Refresh(&hiwdg);
+		}
+	  
+		if (U1_RX_EndFlag == 1)
+		{
+			U1_RX_EndFlag = 0;
+			Light = (U1_RX_Position[18] - '0') + (U1_RX_Position[17] - '0') * 10 + (U1_RX_Position[16] - '0') * 100 + (U1_RX_Position[15] - '0') * 1000;
+			PTZ = (U1_RX_Position[23] - '0') + (U1_RX_Position[22] - '0') * 10 + (U1_RX_Position[21] - '0') * 100 + (U1_RX_Position[20] - '0') * 1000;
+			Crab = (U1_RX_Position[28] - '0') + (U1_RX_Position[27] - '0') * 10 + (U1_RX_Position[26] - '0') * 100 + (U1_RX_Position[25] - '0') * 1000;
+			TIM1->CCR1 = Light;
+			TIM1->CCR2 = PTZ;
+			TIM1->CCR3 = Crab;
+			HAL_UART_Transmit_DMA(&huart2, U1_RX_Position, 30);
+			HAL_UART_Receive_DMA(&huart1, U1_RX_Buffer, U1_RX_BufferSize);
+			HAL_IWDG_Refresh(&hiwdg);
+		}
+		if ((ScreenFinish[0] == 1)&&(ScreenFinish[2] == 1))
+		{
+			switch (ScreenTime)
+			{
+			case 0:
+				if (j == 3)
+				{
+					SendNum(1, 4 + j, 10);
+					++j;
+				}
+				else if (j == 6)
+				{
+					i = 0;
+					j = 0;
+					ScreenTime = 1;
+				}
+				else
+				{
+					SendNum(1, 4 + j, SendDepth[i]);
+					++i;
+					++j;
+				}
+				break;
+			case 1:
+				if (j == 2)
+				{
+					SendNum(2, 4 + j, 10);
+					++j;
+				}
+				else if (j == 5)
+				{
+					i = 0;
+					j = 0;
+					ScreenTime = 2;
+				}
+				else
+				{
+					SendNum(2, 4 + j, SendWaterT[i]);
+					++i;
+					++j;
+				}
+				break;
+			case 2:
+				if (j == 3)
+				{
+					i = 0;
+					j = 0;
+					ScreenTime = 3;
+				}
+				else
+				{
+					SendNum(1, 16 + j, SendGAngle[i]);
+					++i;
+					++j;
+				}
+				break;
+			case 3:
+				if (j == 3)
+				{
+					i = 0;
+					j = 0;
+					ScreenTime = 4;
+				}
+				else
+				{
+					SendNum(8, 1+j, SendPitch[i]);
+					++j;
+					++i;
+				}
+				break;
+			case 4:
+				ScreenTime = 0;
+				ScreenFinish[0] = 0;
+				ScreenFinish[2] = 0;
+				break;
+			}
+		}
+		HAL_Delay(15);
+		HAL_IWDG_Refresh(&hiwdg);
+	}
   /* USER CODE END 3 */
 }
 
@@ -412,7 +817,6 @@ static void MX_UART4_Init(void)
   /* USER CODE BEGIN UART4_Init 2 */
 
   __HAL_UART_ENABLE_IT(&huart4, UART_IT_IDLE);        //使能idle中断
-  HAL_UART_Receive_DMA(&huart4, U4_RX_Buffer, U4_RX_BufferSize);  //打开DMA接收，数据存入rx_buffer数组中。
 
   /* USER CODE END UART4_Init 2 */
 
@@ -514,7 +918,6 @@ static void MX_USART2_UART_Init(void)
   }
   /* USER CODE BEGIN USART2_Init 2 */
   __HAL_UART_ENABLE_IT(&huart2, UART_IT_IDLE);        //使能idle中断
-  HAL_UART_Receive_DMA(&huart2, U2_RX_Buffer, U2_RX_BufferSize);  //打开DMA接收，数据存入rx_buffer数组中。
   /* USER CODE END USART2_Init 2 */
 
 }
@@ -548,7 +951,6 @@ static void MX_USART3_UART_Init(void)
   }
   /* USER CODE BEGIN USART3_Init 2 */
   __HAL_UART_ENABLE_IT(&huart3, UART_IT_IDLE);        //使能idle中断
-  HAL_UART_Receive_DMA(&huart3, U3_RX_Buffer, U3_RX_BufferSize);  //打开DMA接收，数据存入rx_buffer数组中。
   /* USER CODE END USART3_Init 2 */
 
 }
@@ -643,6 +1045,32 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
+
+void Send5byte(u8 a, u8 b, u8 c)
+{
+	SendBuffer[1] = a;
+	SendBuffer[2] = b;
+	SendBuffer[3] = c;
+	HAL_UART_Transmit_DMA(&huart5, SendBuffer, 5);
+}
+void Sendbyte(u8 byte)
+{
+	SendByte = 0;
+	HAL_UART_Transmit_DMA(&huart5, &SendByte, 1);
+}
+void SendLetter(u8 Letter[4])
+{
+	HAL_UART_Transmit_DMA(&huart5, Letter, 4);
+}
+void SendNum(u8 Row, u8 Column, u8 Number)
+{
+	static u8 SendTempBuffer[10] = { 0x55, 0x07, 0x00, 0x00, 0x00, 0x55, 0x08, 0x00, 0x00, 0x00 };
+	SendTempBuffer[2] = Row;
+	SendTempBuffer[3] = Column;
+	SendTempBuffer[7] = Num[Number][0];
+	SendTempBuffer[8] = Num[Number][1];
+	HAL_UART_Transmit_DMA(&huart5, SendTempBuffer, 10);
+}
 /* USER CODE END 4 */
 
 /**
