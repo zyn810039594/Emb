@@ -285,7 +285,7 @@ int main(void)
 				Machine[3] = (100 - XPoint + YPoint);
 				for (int i = 1; i < 4; ++i)
 				{
-					Machine[i] = (int)(Machine[i] * 10) + 500;
+					Machine[i] = (int)(((Machine[i] * 10) + 500)*ModeCoefficient);
 				}
 				ZPoint = ZPoint * 10 + 500;
 				TIM1->CCR1 = Machine[0];
@@ -301,7 +301,7 @@ int main(void)
 				Machine[3] = (100 - XPoint + YPoint);
 				for (int i = 1; i < 4; ++i)
 				{
-					Machine[i] = (int)(Machine[i] * 10) + 500;
+					Machine[i] = (int)(((Machine[i] * 10) + 500)*ModeCoefficient);
 				}
 				ZPoint = ZPoint * 10 + 500;
 				TIM1->CCR1 = Machine[0];
@@ -317,7 +317,7 @@ int main(void)
 				Machine[3] = YPoint;
 				for (int i = 1; i < 4; ++i)
 				{
-					Machine[i] = (int)(Machine[i] * 10) + 500;
+					Machine[i] = (int)(((Machine[i] * 10) + 500)*ModeCoefficient);
 				}
 				ZPoint = ZPoint * 10 + 500;
 				TIM1->CCR1 = Machine[0];
@@ -333,7 +333,7 @@ int main(void)
 				Machine[3] = (200 - XPoint);
 				for (int i = 1; i < 4; ++i)
 				{
-					Machine[i] = (int)(Machine[i] * 10) + 500;
+					Machine[i] = (int)(((Machine[i] * 10) + 500)*ModeCoefficient);
 				}
 				ZPoint = ZPoint * 10 + 500;
 				TIM1->CCR1 = Machine[0];
@@ -349,7 +349,7 @@ int main(void)
 				Machine[3] = XPoint;
 				for (int i = 1; i < 4; ++i)
 				{
-					Machine[i] = (int)(Machine[i] * 10) + 500;
+					Machine[i] = (int)(((Machine[i] * 10) + 500)*ModeCoefficient);
 				}
 				ZPoint = ZPoint * 10 + 500;
 				TIM1->CCR1 = Machine[0];
