@@ -132,7 +132,7 @@ int main(void)
 		if (UART2RX_Finish == 1)
 		{
 			UART2RX_Finish = 0;
-			if ((UART2RX_Position[1]) == '9')
+			if ((UART2RX_Position[1]) == '9' || (UART2RX_Position[1]) == '1')
 			{
 				SystemBegin = 1;
 			}
@@ -148,6 +148,7 @@ int main(void)
 	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
 	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_4);
 	HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2);
+	HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
 	HAL_UART_Transmit_DMA(&huart2, UART2TX_Initialization, UART2TX_Size);
   /* USER CODE END 2 */
 
@@ -293,6 +294,7 @@ int main(void)
 				TIM1->CCR3 = Machine[2];
 				TIM1->CCR4 = Machine[3];
 				TIM2->CCR2 = ZPoint;
+				TIM2->CCR3 = ZPoint;
 				break;
 			case 2:
 				Machine[0] = YPoint;
@@ -309,6 +311,7 @@ int main(void)
 				TIM1->CCR3 = Machine[2];
 				TIM1->CCR4 = Machine[3];
 				TIM2->CCR2 = ZPoint;
+				TIM2->CCR3 = ZPoint;
 				break;
 			case 3:
 				Machine[0] = (XPoint + YPoint - 100);
@@ -325,6 +328,7 @@ int main(void)
 				TIM1->CCR3 = Machine[2];
 				TIM1->CCR4 = Machine[3];
 				TIM2->CCR2 = ZPoint;
+				TIM2->CCR3 = ZPoint;
 				break;
 			case 4:
 				Machine[0] = (XPoint + YPoint - 100);
@@ -341,6 +345,7 @@ int main(void)
 				TIM1->CCR3 = Machine[2];
 				TIM1->CCR4 = Machine[3];
 				TIM2->CCR2 = ZPoint;
+				TIM2->CCR3 = ZPoint;
 				break;
 			case 5:
 				Machine[0] = XPoint;
@@ -357,6 +362,7 @@ int main(void)
 				TIM1->CCR3 = Machine[2];
 				TIM1->CCR4 = Machine[3];
 				TIM2->CCR2 = ZPoint;
+				TIM2->CCR3 = ZPoint;
 				break;
 			}			
 			for (int i = 0; i < 4; ++i)

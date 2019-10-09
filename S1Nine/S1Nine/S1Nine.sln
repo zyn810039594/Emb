@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29209.62
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{803FD0C6-D64E-4E16-9DC3-1DAEC859A3D2}") = "S1Nine", "S1Nine.vgdbproj", "{53C804C0-9EB4-4771-8090-DACF21F143B9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Arduino_Genuino_Uno = Debug|Arduino_Genuino_Uno
+		Release|Arduino_Genuino_Uno = Release|Arduino_Genuino_Uno
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{53C804C0-9EB4-4771-8090-DACF21F143B9}.Debug|Arduino_Genuino_Uno.ActiveCfg = Debug|Arduino_Genuino_Uno
+		{53C804C0-9EB4-4771-8090-DACF21F143B9}.Debug|Arduino_Genuino_Uno.Build.0 = Debug|Arduino_Genuino_Uno
+		{53C804C0-9EB4-4771-8090-DACF21F143B9}.Release|Arduino_Genuino_Uno.ActiveCfg = Release|Arduino_Genuino_Uno
+		{53C804C0-9EB4-4771-8090-DACF21F143B9}.Release|Arduino_Genuino_Uno.Build.0 = Release|Arduino_Genuino_Uno
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9F8A9CB4-115C-4AC2-8D3C-7607B9190B64}
+	EndGlobalSection
+EndGlobal

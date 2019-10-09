@@ -289,6 +289,7 @@ void USART1_IRQHandler(void)
 			{
 				U1_RX_EndFlag = 1; 
 				U1_RX_Position = &U1_RX_Buffer[U1_RX_Len - 30];
+				__HAL_UART_DISABLE_IT(&huart1, UART_IT_IDLE);
 			}
 			else
 			{
@@ -330,6 +331,7 @@ void USART2_IRQHandler(void)
 			{
 				U2_RX_EndFlag = 1; 
 				U2_RX_Position = &U2_RX_Buffer[U2_RX_Len - 5];
+				__HAL_UART_DISABLE_IT(&huart2, UART_IT_IDLE);
 			}
 			else
 			{
@@ -371,6 +373,7 @@ void USART3_IRQHandler(void)
 			{
 				U3_RX_EndFlag = 1; 
 				U3_RX_Position = &U3_RX_Buffer[U3_RX_Len - 23];
+				__HAL_UART_DISABLE_IT(&huart3, UART_IT_IDLE);
 			}
 			else
 			{
@@ -432,6 +435,7 @@ void UART4_IRQHandler(void)
 						{
 							U4_RX_Position = &U4_RX_Buffer[i];
 							U4_RX_EndFlag = 1; 
+							__HAL_UART_DISABLE_IT(&huart4, UART_IT_IDLE);
 							break;
 						}
 					}

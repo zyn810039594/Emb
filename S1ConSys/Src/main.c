@@ -182,7 +182,7 @@ u8 SendControlWater[2][5][2] =
 }
 };
 u8 ControlWaterOn[25] = { 0x55, 0x07, 0x04, 0x01, 0x00, 0x55, 0x0A, 0x00, 0x00, 0x00, 0x55, 0x31, 0x05, 0x01, 0x00, 0xBF, 0xD8, 0xD6, 0xC6, 0xB2, 0xD6, 0xC2, 0xA9, 0xCB, 0xAE };
-u8 ControlWaterOff[25] = { 0x55, 0x07, 0x04, 0x01, 0x00, 0x55, 0x0A, 0x00, 0x00, 0x00, 0x55, 0x31, 0x05, 0x01, 0x00, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1 };
+u8 ControlWaterOff[55] = { 0x55, 0x07, 0x04, 0x01, 0x00, 0x55, 0x0A, 0x00, 0x00, 0x00, 0x55, 0x31, 0x14, 0x01, 0x00, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1, 0xA1 };
 u8 PowerWaterOn[2][27] = {
 	{ 0x55, 0x07, 0x05, 0x01, 0x00, 0x55, 0x0A, 0x00, 0x00, 0x00, 0x55, 0x31, 0x06, 0x01, 0x00, 0xB5, 0xE7, 0xD4, 0xB4, 0xB2, 0xD6, 0xA3, 0xB1, 0xC2, 0xA9, 0xCB, 0xAE },
 	{ 0x55, 0x07, 0x06, 0x01, 0x00, 0x55, 0x0A, 0x00, 0x00, 0x00, 0x55, 0x31, 0x06, 0x01, 0x00, 0xB5, 0xE7, 0xD4, 0xB4, 0xB2, 0xD6, 0xA3, 0xB2, 0xC2, 0xA9, 0xCB, 0xAE }
@@ -227,6 +227,7 @@ int fputc(int ch, FILE* f)
 {
 	uint8_t temp[1] = { ch };
 	HAL_UART_Transmit(UartHandle, temp, 1, 2); 
+	return 1;
 }
 
 /* USER CODE END 0 */
@@ -881,7 +882,9 @@ void U1Task(void const * argument)
 		  HAL_UART_Transmit_DMA(&huart2, U1_RX_Position, 30);
 		  HAL_UART_Receive_DMA(&huart1, U1_RX_Buffer, U1_RX_BufferSize);
 		  HAL_IWDG_Refresh(&hiwdg);
+		  __HAL_UART_ENABLE_IT(&huart1, UART_IT_IDLE);
 	  }
+	  osDelay(1);
   }
   /* USER CODE END 5 */ 
 }
@@ -921,7 +924,9 @@ void U2Task(void const * argument)
 
 		  HAL_UART_Receive_DMA(&huart2, U2_RX_Buffer, U2_RX_BufferSize);
 		  HAL_IWDG_Refresh(&hiwdg);
+		  __HAL_UART_ENABLE_IT(&huart2, UART_IT_IDLE);
 	  }
+	  osDelay(1);
   }
   /* USER CODE END U2Task */
 }
@@ -970,7 +975,9 @@ void U3Task(void const * argument)
 		  }
 		  HAL_UART_Receive_DMA(&huart3, U3_RX_Buffer, U3_RX_BufferSize);
 		  HAL_IWDG_Refresh(&hiwdg);
+		  __HAL_UART_ENABLE_IT(&huart3, UART_IT_IDLE);
 	  }
+	  osDelay(1);
   }
   /* USER CODE END U3Task */
 }
@@ -1061,7 +1068,9 @@ void U4Task(void const * argument)
 			
 		  HAL_UART_Receive_DMA(&huart4, U4_RX_Buffer, U4_RX_BufferSize);
 		  HAL_IWDG_Refresh(&hiwdg);
+		  __HAL_UART_ENABLE_IT(&huart4, UART_IT_IDLE);
 	  }
+	  osDelay(1);
   }
   /* USER CODE END U4Task */
 }
@@ -1164,8 +1173,9 @@ void ScreenTask(void const * argument)
 		osDelay(15);
 		if (ControlWater[0] >= 10)
 		{
-			if (ControlWater[1] == 0)
+			if (1/*ControlWater[1] == 0*/)
 			{
+				ControlWater[1] = 1;
 				HAL_UART_Transmit_DMA(&huart5, ControlWaterOn, 25);
 				osDelay(50);
 			}
@@ -1173,17 +1183,17 @@ void ScreenTask(void const * argument)
 		}
 		else if (ControlWater[0] <= 0)
 		{
-			if (ControlWater[1] == 1)
+			if (1/*ControlWater[1] == 1*/)
 			{
 				ControlWater[1] = 0;
-				HAL_UART_Transmit_DMA(&huart5, ControlWaterOff, 25);
+				HAL_UART_Transmit_DMA(&huart5, ControlWaterOff, 55);
 				osDelay(50);
 			}
 			ControlWater[0] = 5;
 		}
 		if (PowerWater[0] >= 10)
 		{
-			if (PowerWater[1] == 0)
+			if (1/*PowerWater[1] == 0*/)
 			{
 				PowerWater[1] = 1;
 				HAL_UART_Transmit_DMA(&huart5, PowerWaterOn[0], 27);
@@ -1193,7 +1203,7 @@ void ScreenTask(void const * argument)
 		}
 		else if (PowerWater[0] <= 0)
 		{
-			if (PowerWater[1] == 1)
+			if (1/*PowerWater[1] == 1*/)
 			{
 				PowerWater[1] = 0;
 				HAL_UART_Transmit_DMA(&huart5, PowerWaterOff[0], 27);
@@ -1203,8 +1213,9 @@ void ScreenTask(void const * argument)
 		}
 		if (PowerWater[2] >= 10)
 		{
-			if (PowerWater[3] == 0)
+			if (1/*PowerWater[3] == 0*/)
 			{
+				PowerWater[3] = 1;
 				HAL_UART_Transmit_DMA(&huart5, PowerWaterOn[1], 27);
 				osDelay(50);
 			}
@@ -1212,7 +1223,7 @@ void ScreenTask(void const * argument)
 		}
 		else if (PowerWater[2] <= 0)
 		{
-			if (PowerWater[3] == 1)
+			if (1/*PowerWater[3] == 1*/)
 			{
 				PowerWater[3] = 0;
 				HAL_UART_Transmit_DMA(&huart5, PowerWaterOff[1], 27);
@@ -1221,6 +1232,7 @@ void ScreenTask(void const * argument)
 			PowerWater[2] = 5;
 		}
 		HAL_IWDG_Refresh(&hiwdg);
+		osDelay(1);
 	}
   /* USER CODE END ScreenTask */
 }

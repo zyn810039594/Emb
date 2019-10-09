@@ -263,7 +263,7 @@ int main(void)
 		if (U1_RX_EndFlag == 1)
 		{
 			U1_RX_EndFlag = 0;
-			if ((U1_RX_Position[1]) == '9')
+			if ((U1_RX_Position[1]) == '9' || (U1_RX_Position[1]) == '1')
 			{
 				SystemBegin = 1;
 			}
